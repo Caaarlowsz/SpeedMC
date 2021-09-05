@@ -1,6 +1,5 @@
 package me.thauandev.invencivel;
 
-public enum ImortalEnum
-{
-  OFF, ON;
+public enum ImortalEnum {
+	OFF, ON;
 }

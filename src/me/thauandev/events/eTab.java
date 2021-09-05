@@ -26,8 +26,8 @@ public class eTab implements Listener {
 				IChatBaseComponent top = ChatSerializer.a(
 						"{'extra': [{text: '', color: 'aqua'}],'color': gold, 'text': '   §c§lSPEED§f§lMC  \n        §cInformações§7 do servidor   '}");
 
-				IChatBaseComponent bottom = ChatSerializer
-						.a("{'extra': [{'color': 'aqua', 'text': ' \n        §7Nosso site: §cwww.speedmc.com.br \n§7Nosso Twitter: §c@SpeedMC_ "
+				IChatBaseComponent bottom = ChatSerializer.a(
+						"{'extra': [{'color': 'aqua', 'text': ' \n        §7Nosso site: §cwww.speedmc.com.br \n§7Nosso Twitter: §c@SpeedMC_ "
 								+ "', 'underline': 'true'}], 'color': 'gold', 'text': ''}");
 				if (((CraftPlayer) jogador).getHandle().playerConnection.networkManager.getVersion() < eTab.VERSION) {
 					return;

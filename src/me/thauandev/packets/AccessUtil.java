@@ -3,8 +3,9 @@ package me.thauandev.packets;
 import java.lang.reflect.Field;
 
 public class AccessUtil {
-	
-	public static Field setAccessible(Field f) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+
+	public static Field setAccessible(Field f)
+			throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		f.setAccessible(true);
 		Field modifiersField = Field.class.getDeclaredField("modifiers");
 		modifiersField.setAccessible(true);

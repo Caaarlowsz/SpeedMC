@@ -12,36 +12,37 @@ import org.bukkit.inventory.ItemStack;
 import me.thauandev.API.CooldownAPI;
 import me.thauandev.API.KitAPI;
 
-public class Monk implements Listener{
-	
-	 @EventHandler
-	  public void monkHabilidade(PlayerInteractEntityEvent e) {
-	    final Player p = e.getPlayer();
+public class Monk implements Listener {
 
-	    if ((e.getRightClicked() instanceof Player)){
-	      Player jogadorClicado = (Player)e.getRightClicked();
+	@EventHandler
+	public void monkHabilidade(PlayerInteractEntityEvent e) {
+		final Player p = e.getPlayer();
 
-        	 if ((p.getItemInHand().getType() == Material.BLAZE_ROD) && (KitAPI.getKit(p) == "Monk") && (CooldownAPI.Cooldown.containsKey(p.getName()))){
-         		e.setCancelled(true);
-         		p.sendMessage("§fO seu §3§lCOOLDOWN §facaba em: §c§l" + CooldownAPI.Cooldown(p) + "s");
-         		return;
-        	 }
-	      if ((p.getItemInHand().getType() == Material.BLAZE_ROD) && (KitAPI.getKit(p) == "Monk") && (!CooldownAPI.Cooldown.containsKey(p.getName()))){
- 
-	              
+		if ((e.getRightClicked() instanceof Player)) {
+			Player jogadorClicado = (Player) e.getRightClicked();
 
-	              int random = new Random().nextInt(jogadorClicado.getInventory().getSize() - 10 + 1 + 10);
+			if ((p.getItemInHand().getType() == Material.BLAZE_ROD) && (KitAPI.getKit(p) == "Monk")
+					&& (CooldownAPI.Cooldown.containsKey(p.getName()))) {
+				e.setCancelled(true);
+				p.sendMessage("§fO seu §3§lCOOLDOWN §facaba em: §c§l" + CooldownAPI.Cooldown(p) + "s");
+				return;
+			}
+			if ((p.getItemInHand().getType() == Material.BLAZE_ROD) && (KitAPI.getKit(p) == "Monk")
+					&& (!CooldownAPI.Cooldown.containsKey(p.getName()))) {
 
-	              ItemStack ItemSelecionado = jogadorClicado.getInventory().getItem(random);
-	              ItemStack ItemMudado = jogadorClicado.getItemInHand();
+				int random = new Random().nextInt(jogadorClicado.getInventory().getSize() - 10 + 1 + 10);
 
-	              jogadorClicado.setItemInHand(ItemSelecionado);
-	              jogadorClicado.getInventory().setItem(random, ItemMudado);
-	              jogadorClicado.sendMessage("§cVocê acaba de ser monkado. Certifique-se que nada no seu inventário foi alterado!");
-	              
-	              CooldownAPI.addCooldown(p, 35);
-	      }
-	      return;
-	            }
-	          }
-	  }
+				ItemStack ItemSelecionado = jogadorClicado.getInventory().getItem(random);
+				ItemStack ItemMudado = jogadorClicado.getItemInHand();
+
+				jogadorClicado.setItemInHand(ItemSelecionado);
+				jogadorClicado.getInventory().setItem(random, ItemMudado);
+				jogadorClicado.sendMessage(
+						"§cVocê acaba de ser monkado. Certifique-se que nada no seu inventário foi alterado!");
+
+				CooldownAPI.addCooldown(p, 35);
+			}
+			return;
+		}
+	}
+}

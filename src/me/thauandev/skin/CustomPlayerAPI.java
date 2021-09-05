@@ -20,7 +20,7 @@ import net.minecraft.util.com.mojang.authlib.GameProfile;
 import net.minecraft.util.com.mojang.authlib.properties.Property;
 
 public class CustomPlayerAPI {
-	
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static final LoadingCache<GameProfile, Property> Textures = (LoadingCache<GameProfile, Property>) CacheBuilder
 			.newBuilder().expireAfterWrite(30L, TimeUnit.MINUTES)

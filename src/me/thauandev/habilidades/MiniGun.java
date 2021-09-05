@@ -13,22 +13,21 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.util.Vector;
 
-import me.thauandev.main.Main;
 import me.thauandev.API.CooldownAPI;
 import me.thauandev.API.KitAPI;
+import me.thauandev.main.Main;
 
 public class MiniGun implements Listener {
 
 	private static Integer shed_id = null;
 
-	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onTntLaunch(PlayerInteractEvent e) {
 		final Player p = e.getPlayer();
 		if (KitAPI.getKit(p).equalsIgnoreCase("MiniGun") && (p.getItemInHand().getType() == Material.ARROW)) {
 			if ((e.getAction() == Action.RIGHT_CLICK_AIR) || (e.getAction() == Action.RIGHT_CLICK_BLOCK)) {
 				e.setCancelled(true);
-				if (CooldownAPI.Cooldown.containsKey(p.getName())){
+				if (CooldownAPI.Cooldown.containsKey(p.getName())) {
 					p.sendMessage("§fO seu §3§lCOOLDOWN §facaba em: §c§l" + CooldownAPI.Cooldown(p) + "s");
 					return;
 				}

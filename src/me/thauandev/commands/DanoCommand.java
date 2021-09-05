@@ -14,24 +14,25 @@ import me.thauandev.bans.API;
 import me.thauandev.configuração.cfGrupo;
 
 public class DanoCommand implements CommandExecutor, Listener {
-	
+
 	public static boolean dano = false;
-	
+
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		Player p = (Player) sender;
-		if(cmd.getName().equalsIgnoreCase("dano")) {
-			if((!cfGrupo.ChecarGrupo(p, "Dono") && (!cfGrupo.ChecarGrupo(p, "Gerente") && (!cfGrupo.ChecarGrupo(p, "Admin") && (!cfGrupo.ChecarGrupo(p, "Mod+")))))){
+		if (cmd.getName().equalsIgnoreCase("dano")) {
+			if ((!cfGrupo.ChecarGrupo(p, "Dono") && (!cfGrupo.ChecarGrupo(p, "Gerente")
+					&& (!cfGrupo.ChecarGrupo(p, "Admin") && (!cfGrupo.ChecarGrupo(p, "Mod+")))))) {
 				API.sendMsg(p, "§c§l(!) §cVocê não possui permissão para executar este comando!");
 				return true;
 			}
-			if(args.length == 0) {
+			if (args.length == 0) {
 				p.sendMessage("§c§lSPEED§f§lMC §cUse §c/dano (ON) (OFF)");
 				return true;
 			}
-			if(args.length == 1) {
-				if(args[0].equalsIgnoreCase("on")) {
-					if((dano)) {
+			if (args.length == 1) {
+				if (args[0].equalsIgnoreCase("on")) {
+					if ((dano)) {
 						p.sendMessage("§c§lSPEED§f§lMC §fO §a§lDANO §7§lGLOBAL §fFoi §a§lATIVADO");
 						return true;
 					}
@@ -39,9 +40,9 @@ public class DanoCommand implements CommandExecutor, Listener {
 					p.sendMessage("§c§lSPEED§f§lMC §fVocê §a§lATIVOU §fo dano global.");
 					Bukkit.broadcastMessage("§c§lSPEED§f§lMC §fO §a§lDANO §7§lGLOBAL §fFoi §a§lATIVADO");
 					return true;
- 				}
-				if(args[0].equalsIgnoreCase("off")) {
-					if(!(dano)) {
+				}
+				if (args[0].equalsIgnoreCase("off")) {
+					if (!(dano)) {
 						p.sendMessage("§c§lSPEED§f§lMC  §cO dano global já está desativado!");
 						return true;
 					}
@@ -54,18 +55,20 @@ public class DanoCommand implements CommandExecutor, Listener {
 		}
 		return false;
 	}
+
 	@EventHandler
 	public void onDamage(EntityDamageByEntityEvent e) {
-		if(e.getEntity() instanceof Player && e.getDamager() instanceof Player) {
-			if(!(dano)) {
+		if (e.getEntity() instanceof Player && e.getDamager() instanceof Player) {
+			if (!(dano)) {
 				e.setCancelled(true);
 			}
 		}
 	}
+
 	@EventHandler
 	public void aoDano(EntityDamageEvent e) {
-		if(e.getEntity() instanceof Player) {
-			if(!(dano)) {
+		if (e.getEntity() instanceof Player) {
+			if (!(dano)) {
 				e.setCancelled(true);
 			}
 		}

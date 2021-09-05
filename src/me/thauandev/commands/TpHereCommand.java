@@ -10,21 +10,24 @@ import me.thauandev.bans.API;
 import me.thauandev.configuração.cfGrupo;
 
 public class TpHereCommand implements CommandExecutor {
-	
+
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		Player p = (Player) sender;
-		if(cmd.getName().equalsIgnoreCase("tphere") || cmd.getName().equalsIgnoreCase("s")) {
-			if((!cfGrupo.ChecarGrupo(p, "Dono") && (!cfGrupo.ChecarGrupo(p, "Gerente") && (!cfGrupo.ChecarGrupo(p, "Admin") && (!cfGrupo.ChecarGrupo(p, "Mod+") && (!cfGrupo.ChecarGrupo(p, "Mod") && (!cfGrupo.ChecarGrupo(p, "Trial") && (!cfGrupo.ChecarGrupo(p, "Youtuber+"))))))))){
+		if (cmd.getName().equalsIgnoreCase("tphere") || cmd.getName().equalsIgnoreCase("s")) {
+			if ((!cfGrupo.ChecarGrupo(p, "Dono") && (!cfGrupo.ChecarGrupo(p, "Gerente") && (!cfGrupo.ChecarGrupo(p,
+					"Admin")
+					&& (!cfGrupo.ChecarGrupo(p, "Mod+") && (!cfGrupo.ChecarGrupo(p, "Mod")
+							&& (!cfGrupo.ChecarGrupo(p, "Trial") && (!cfGrupo.ChecarGrupo(p, "Youtuber+"))))))))) {
 				p.sendMessage("§c§lSPEED§f§lMC §cVocê não possui permissão para executar este comando!");
 				return true;
 			}
-			if(args.length == 0) {
+			if (args.length == 0) {
 				p.sendMessage("§cUse §c§l/tphere §cou §c§l/s §cpara puxar um jogador até você!");
 				return true;
 			}
 			Player k = Bukkit.getPlayer(args[0]);
-			if(k == null) {
+			if (k == null) {
 				API.sendMsg(p, "§7O jogador §a§l" + args[0] + " §7está offline!");
 				return true;
 			}

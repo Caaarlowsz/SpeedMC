@@ -15,6 +15,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.PluginManager;
 
+import me.thauandev.configuração.cfGrupo;
 import me.thauandev.main.Main;
 import me.thauandev.nametag.Array;
 import me.thauandev.nametag.NameTagChangeEvento;
@@ -22,7 +23,6 @@ import me.thauandev.nametag.NameTagChangeEvento.NametagChangeReason;
 import me.thauandev.nametag.NametagUtils;
 import me.thauandev.nametag.PlayerLoader;
 import me.thauandev.scoreboard.sScoreAPI;
-import me.thauandev.configuração.cfGrupo;
 import net.minecraft.server.v1_7_R4.EntityPlayer;
 import net.minecraft.server.v1_7_R4.PacketPlayOutNamedEntitySpawn;
 import net.minecraft.util.com.mojang.authlib.GameProfile;
@@ -39,7 +39,10 @@ public class FakeCommand implements Listener, CommandExecutor {
 		if ((sender instanceof Player)) {
 			final Player p = (Player) sender;
 			if (cmd.getName().equalsIgnoreCase("fake")) {
-				if(cfGrupo.ChecarGrupo(p, "Dono") || cfGrupo.ChecarGrupo(p, "Gerente") || cfGrupo.ChecarGrupo(p, "Admin") || cfGrupo.ChecarGrupo(p, "Mod+") || cfGrupo.ChecarGrupo(p, "Mod") || cfGrupo.ChecarGrupo(p, "Youtuber+") || cfGrupo.ChecarGrupo(p, "Youtuber")){
+				if (cfGrupo.ChecarGrupo(p, "Dono") || cfGrupo.ChecarGrupo(p, "Gerente")
+						|| cfGrupo.ChecarGrupo(p, "Admin") || cfGrupo.ChecarGrupo(p, "Mod+")
+						|| cfGrupo.ChecarGrupo(p, "Mod") || cfGrupo.ChecarGrupo(p, "Youtuber+")
+						|| cfGrupo.ChecarGrupo(p, "Youtuber")) {
 					if (args.length == 0) {
 						p.sendMessage("§1§lFAKE§f Voce nao selecionou um fake.");
 						return false;
@@ -50,11 +53,11 @@ public class FakeCommand implements Listener, CommandExecutor {
 								fakes.remove(p.getName());
 								p.setDisplayName((String) fake.get(p.getName()));
 								p.setPlayerListName("§7" + (String) fake.get(p.getName()));
-								
+
 								String suffix = " §7(" + sScoreAPI.getRank(p) + "§7)";
-						          reason = NameTagChangeEvento.NametagChangeReason.SET_SUFFIX;
-						          suffix = NametagUtils.formatColors(suffix);
-						          
+								reason = NameTagChangeEvento.NametagChangeReason.SET_SUFFIX;
+								suffix = NametagUtils.formatColors(suffix);
+
 								mudarNome(p, (String) fake.get(p.getName()));
 								p.sendMessage("§1§lFAKE§f Fake §e§lRESETADO§f Com sucesso!");
 								Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(null), new Runnable() {
@@ -65,8 +68,7 @@ public class FakeCommand implements Listener, CommandExecutor {
 							}
 						} else if (!fakes.contains(args[0])) {
 							if (usandoFake.contains(p)) {
-								p.sendMessage(
-										"§1§lFAKE§f Tire Seu Fake para colocar outro.");
+								p.sendMessage("§1§lFAKE§f Tire Seu Fake para colocar outro.");
 								return true;
 							}
 
@@ -88,13 +90,13 @@ public class FakeCommand implements Listener, CommandExecutor {
 									String prefix = "§7";
 									p.setDisplayName("§7" + p.getName());
 									p.setPlayerListName("§7" + p.getName());
-									  
+
 									String suffix = " §7(" + sScoreAPI.getRank(p) + "§7)";
-							          reason = NameTagChangeEvento.NametagChangeReason.SET_SUFFIX;
-							          suffix = NametagUtils.formatColors(suffix);
-							          
-							           Array.SetarNameTagSoft(p.getName(), prefix , suffix, reason);
-							           PlayerLoader.update(p.getName(), prefix , suffix);
+									reason = NameTagChangeEvento.NametagChangeReason.SET_SUFFIX;
+									suffix = NametagUtils.formatColors(suffix);
+
+									Array.SetarNameTagSoft(p.getName(), prefix, suffix, reason);
+									PlayerLoader.update(p.getName(), prefix, suffix);
 
 								}
 							}, 2L);
@@ -124,7 +126,6 @@ public class FakeCommand implements Listener, CommandExecutor {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	public static void mudarNome(Player p, String nome) {
 		EntityPlayer ep = ((CraftPlayer) p).getHandle();
 		PacketPlayOutNamedEntitySpawn packet = new PacketPlayOutNamedEntitySpawn(ep);

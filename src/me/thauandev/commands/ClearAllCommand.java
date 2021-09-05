@@ -12,20 +12,20 @@ import me.thauandev.bans.API;
 import me.thauandev.configuração.cfGrupo;
 
 public class ClearAllCommand implements CommandExecutor {
-	
-	@SuppressWarnings("deprecation")
+
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		Player p = (Player) sender;
-		if((!cfGrupo.ChecarGrupo(p, "Dono") && (!cfGrupo.ChecarGrupo(p, "Gerente") && (!cfGrupo.ChecarGrupo(p, "Admin"))))){
+		if ((!cfGrupo.ChecarGrupo(p, "Dono")
+				&& (!cfGrupo.ChecarGrupo(p, "Gerente") && (!cfGrupo.ChecarGrupo(p, "Admin"))))) {
 			API.sendMsg(p, "§c§lSPEED§f§lMC §cVocê não possui permissão para executar este comando!");
 			return true;
 		}
-		if(cmd.getName().equalsIgnoreCase("clearall")) {
+		if (cmd.getName().equalsIgnoreCase("clearall")) {
 			API.sendMsg(p, "§aVocê limpou o inventário de todos os jogadores!");
-			for(Player todos : Bukkit.getOnlinePlayers()) {
-				if(todos  != p) {
-					if(!ArraysAPI.Admin.contains(todos)) {
+			for (Player todos : Bukkit.getOnlinePlayers()) {
+				if (todos != p) {
+					if (!ArraysAPI.Admin.contains(todos)) {
 						todos.getInventory().clear();
 						todos.getInventory().setArmorContents(null);
 						todos.updateInventory();
@@ -36,7 +36,7 @@ public class ClearAllCommand implements CommandExecutor {
 				}
 			}
 			return true;
- 		}
+		}
 		return false;
 	}
 }

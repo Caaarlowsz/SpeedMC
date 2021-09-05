@@ -11,14 +11,20 @@ import me.thauandev.bans.API;
 import me.thauandev.configuração.cfGrupo;
 
 public class cRemoveHead implements CommandExecutor {
-	
+
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		
+
 		Player p = (Player) sender;
-		
-		if(cmd.getName().equalsIgnoreCase("removerhead") || cmd.getName().equalsIgnoreCase("removerhat") || cmd.getName().equalsIgnoreCase("removehead") || cmd.getName().equalsIgnoreCase("removehat")) {
-			if(!cfGrupo.ChecarGrupo(p, "Dono") && !cfGrupo.ChecarGrupo(p, "Gerente") && !cfGrupo.ChecarGrupo(p, "Admin") && !cfGrupo.ChecarGrupo(p, "Mod+") && !cfGrupo.ChecarGrupo(p, "Mod") && !cfGrupo.ChecarGrupo(p, "Trial") && !cfGrupo.ChecarGrupo(p, "Youtuber+") && !cfGrupo.ChecarGrupo(p, "Youtuber") && !cfGrupo.ChecarGrupo(p, "S-Pro") && !cfGrupo.ChecarGrupo(p, "Pro") && !cfGrupo.ChecarGrupo(p, "Mvp") && !cfGrupo.ChecarGrupo(p, "Helper")) {
+
+		if (cmd.getName().equalsIgnoreCase("removerhead") || cmd.getName().equalsIgnoreCase("removerhat")
+				|| cmd.getName().equalsIgnoreCase("removehead") || cmd.getName().equalsIgnoreCase("removehat")) {
+			if (!cfGrupo.ChecarGrupo(p, "Dono") && !cfGrupo.ChecarGrupo(p, "Gerente")
+					&& !cfGrupo.ChecarGrupo(p, "Admin") && !cfGrupo.ChecarGrupo(p, "Mod+")
+					&& !cfGrupo.ChecarGrupo(p, "Mod") && !cfGrupo.ChecarGrupo(p, "Trial")
+					&& !cfGrupo.ChecarGrupo(p, "Youtuber+") && !cfGrupo.ChecarGrupo(p, "Youtuber")
+					&& !cfGrupo.ChecarGrupo(p, "S-Pro") && !cfGrupo.ChecarGrupo(p, "Pro")
+					&& !cfGrupo.ChecarGrupo(p, "Mvp") && !cfGrupo.ChecarGrupo(p, "Helper")) {
 				p.sendMessage("§c§lSPEED§f§lMC §fVocê não possui permissão para executar este comando!");
 				return true;
 			} else {
@@ -27,7 +33,7 @@ public class cRemoveHead implements CommandExecutor {
 				p.sendMessage("§c§lSPEED§f§lMC §fCabeça removida com sucesso!");
 			}
 		}
-		
+
 		return false;
 	}
 }

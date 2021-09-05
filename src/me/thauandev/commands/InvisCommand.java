@@ -9,16 +9,18 @@ import me.thauandev.API.ArraysAPI;
 import me.thauandev.configuração.cfGrupo;
 
 public class InvisCommand implements CommandExecutor {
-	
+
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		Player p = (Player) sender;
-		if(cmd.getName().equalsIgnoreCase("invis")) {
-			if(!cfGrupo.ChecarGrupo(p, "Dono") && !cfGrupo.ChecarGrupo(p, "Gerente") && !cfGrupo.ChecarGrupo(p, "Admin") && !cfGrupo.ChecarGrupo(p, "Mod+") && !cfGrupo.ChecarGrupo(p, "Mod") && !cfGrupo.ChecarGrupo(p, "Trial")) {
+		if (cmd.getName().equalsIgnoreCase("invis")) {
+			if (!cfGrupo.ChecarGrupo(p, "Dono") && !cfGrupo.ChecarGrupo(p, "Gerente")
+					&& !cfGrupo.ChecarGrupo(p, "Admin") && !cfGrupo.ChecarGrupo(p, "Mod+")
+					&& !cfGrupo.ChecarGrupo(p, "Mod") && !cfGrupo.ChecarGrupo(p, "Trial")) {
 				p.sendMessage("§c§lSPEED§f§lMC §fVocê não possui permissão para utilizar este comando!");
 				return true;
 			}
-			if(args.length == 0) {
-				if(ArraysAPI.Admin.contains(p)) {
+			if (args.length == 0) {
+				if (ArraysAPI.Admin.contains(p)) {
 					AdminCommand.setAdmin(p);
 					p.sendMessage("§6§lINVIS: §fVocê está invisível para todos os jogadores");
 					return true;

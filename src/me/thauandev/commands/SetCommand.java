@@ -8,14 +8,14 @@ import org.bukkit.entity.Player;
 import me.thauandev.API.WarpsAPI;
 import me.thauandev.configuração.cfGrupo;
 
-
 public class SetCommand implements CommandExecutor {
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		
-		Player p = (Player)sender;
+
+		Player p = (Player) sender;
 		if (cmd.getName().equalsIgnoreCase("set")) {
-			if((!cfGrupo.ChecarGrupo(p, "Dono") && (!cfGrupo.ChecarGrupo(p, "Gerente") && (!cfGrupo.ChecarGrupo(p, "Builder"))))){
+			if ((!cfGrupo.ChecarGrupo(p, "Dono")
+					&& (!cfGrupo.ChecarGrupo(p, "Gerente") && (!cfGrupo.ChecarGrupo(p, "Builder"))))) {
 				p.sendMessage("§c§lSPEED§f§lMC §fVoce nao possui §fAcesso ao §cSET§f!");
 				return true;
 			}
@@ -135,7 +135,6 @@ public class SetCommand implements CommandExecutor {
 				return true;
 			}
 		}
- 		return false;
-  }
+		return false;
+	}
 }
-

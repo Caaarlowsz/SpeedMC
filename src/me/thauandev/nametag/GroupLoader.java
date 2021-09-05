@@ -1,20 +1,20 @@
 package me.thauandev.nametag;
-      
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
+
 import org.bukkit.plugin.java.JavaPlugin;
-      
-      
+
 public class GroupLoader {
-       
+
 	@SuppressWarnings("unused")
 	private static final String PREFIX = "[NAMETAG CONFIG] ";
 	static final boolean DEBUG = true;
-        
+
 	public static LinkedHashMap<String, LinkedHashMap<String, String>> Carregar(JavaPlugin Plugin) {
 		String folder = "plugins/" + Plugin.getName();
 		File folderFile = new File(folder);
@@ -34,7 +34,7 @@ public class GroupLoader {
 		}
 		return CriarConfig(source);
 	}
-        
+
 	private static LinkedHashMap<String, LinkedHashMap<String, String>> CriarConfig(File target) {
 		PrintWriter out = null;
 		try {
@@ -43,37 +43,38 @@ public class GroupLoader {
 			e.printStackTrace();
 		}
 		out.println("// This file declares custom permissions and ties prefixes and suffixes to them.");
-		out.println("// Players who possess these permissions will have the prefix and suffix assigned to the given permission.");
+		out.println(
+				"// Players who possess these permissions will have the prefix and suffix assigned to the given permission.");
 		out.println("nametag.group.admin prefix = \"[&cAdmin&f] \"");
 		out.println("nametag.group.mod prefix = \"[&bMod&f] \"");
 		out.println("nametag.group.member prefix = \"[&eMember&f] \"");
 		out.println("nametag.group.swag prefix = \"&eThe &b\"");
 		out.println("nametag.group.swag suffix = \" &cSwagmaster\"");
-          
+
 		LinkedHashMap<String, LinkedHashMap<String, String>> map = new LinkedHashMap<String, LinkedHashMap<String, String>>();
-          
+
 		LinkedHashMap<String, String> admin = new LinkedHashMap<String, String>();
 		admin.put("prefix", "[&cAdmin&f] ");
 		map.put("nametag.group.admin", admin);
-          
+
 		LinkedHashMap<String, String> mod = new LinkedHashMap<String, String>();
 		mod.put("prefix", "[&bMod&f] ");
 		map.put("nametag.group.mod", mod);
-          
+
 		LinkedHashMap<String, String> member = new LinkedHashMap<String, String>();
 		member.put("prefix", "[&eMember&f] ");
 		map.put("nametag.group.member", member);
-        
+
 		LinkedHashMap<String, String> swag = new LinkedHashMap<String, String>();
 		swag.put("prefix", "&eThe &b");
 		swag.put("suffix", " &cSwagmaster");
 		map.put("nametag.group.swag", swag);
-          
+
 		out.close();
-	          
+
 		return map;
 	}
-        
+
 	public static LinkedHashMap<String, LinkedHashMap<String, String>> CarregarConfig(File source) {
 		Scanner in = null;
 		try {
@@ -81,11 +82,11 @@ public class GroupLoader {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-          
+
 		LinkedHashMap<String, LinkedHashMap<String, String>> map = new LinkedHashMap<String, LinkedHashMap<String, String>>();
-          
+
 		boolean syntaxError = false;
-          
+
 		while (in.hasNext()) {
 			String line = in.nextLine();
 			if ((!line.trim().startsWith("//")) && (!line.isEmpty())) {
@@ -93,15 +94,15 @@ public class GroupLoader {
 				if (syntaxError) {
 					Print("Error in syntax, not enough elements on line!");
 				}
-				
+
 				Scanner lineScanner = new Scanner(line);
-              
+
 				String node = lineScanner.next();
 				String operation = lineScanner.next();
 				String equals = lineScanner.next();
 				if (!equals.trim().equals("=")) {
 					Print("Error in syntax, \"=\" expected at third element, \"" + equals + "\" given.");
-                
+
 					syntaxError = true;
 					break;
 				}
@@ -112,29 +113,29 @@ public class GroupLoader {
 					break;
 				}
 				String value = PegarValue(rawValue);
-					
+
 				LinkedHashMap<String, String> entry = new LinkedHashMap<String, String>();
-				
+
 				if (map.get(node) != null) {
-					entry = (LinkedHashMap<String, String>)map.get(node);
+					entry = (LinkedHashMap<String, String>) map.get(node);
 				}
-              
+
 				entry.put(operation.toLowerCase(), value);
-				
+
 				if (map.get(node) == null) {
 					map.put(node, entry);
 				}
 				lineScanner.close();
 			}
-		}	
+		}
 		in.close();
-          
+
 		if (syntaxError) {
 			return new LinkedHashMap<String, LinkedHashMap<String, String>>();
 		}
 		return map;
 	}
-      
+
 	private static void Print(String Jogador) {
 		System.out.println("[NAMETAG CONFIG] " + Jogador);
 	}
@@ -143,7 +144,7 @@ public class GroupLoader {
 	private static void PrintDebug(String Jogador) {
 		System.out.println("[NAMETAG CONFIG] " + Jogador);
 	}
-        
+
 	private static boolean CheckWords(String line) {
 		int count = 0;
 		Scanner reader = new Scanner(line);
@@ -157,7 +158,7 @@ public class GroupLoader {
 		}
 		return true;
 	}
-        
+
 	private static boolean CheckValue(String rawValue) {
 		rawValue = rawValue.trim();
 		if (!rawValue.startsWith("\"")) {
@@ -168,7 +169,7 @@ public class GroupLoader {
 		}
 		return false;
 	}
-        
+
 	private static String PegarValue(String rawValue) {
 		rawValue = rawValue.trim();
 		String f1 = "";

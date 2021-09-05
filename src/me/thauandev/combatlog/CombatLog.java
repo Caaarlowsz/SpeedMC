@@ -17,31 +17,31 @@ import me.thauandev.main.Main;
 import me.thauandev.scoreboard.sScoreAPI;
 
 public class CombatLog implements Listener {
-	
+
 	public static ArrayList<Player> combat = new ArrayList<>();
-	
+
 	public static String getCombat(Player p) {
-		if(combat.contains(p)) {
+		if (combat.contains(p)) {
 			return "§a§lSIM";
 		}
-		if(!combat.contains(p)) {
+		if (!combat.contains(p)) {
 			return "§c§lNAO";
 		}
 		return "§c§lNAO";
 	}
-	
+
 	@EventHandler
 	public void aoHitar(EntityDamageByEntityEvent e) {
-		if(e.getEntity() instanceof Player && e.getDamager() instanceof Player) {
+		if (e.getEntity() instanceof Player && e.getDamager() instanceof Player) {
 			Player p = (Player) e.getEntity();
 			Player k = (Player) e.getDamager();
-			if(API.getWarp(p) != "Spawn" && API.getWarp(k) != "Spawn") {
-				
-				if(!combat.contains(p)) {
+			if (API.getWarp(p) != "Spawn" && API.getWarp(k) != "Spawn") {
+
+				if (!combat.contains(p)) {
 					combat.add(p);
 					sScoreAPI.scoreboard(p);
 					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
-						
+
 						@Override
 						public void run() {
 							combat.remove(p);
@@ -49,11 +49,11 @@ public class CombatLog implements Listener {
 						}
 					}, 10 * 20);
 				}
-				if(!combat.contains(k)) {
+				if (!combat.contains(k)) {
 					combat.add(k);
 					sScoreAPI.scoreboard(k);
 					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
-						
+
 						@Override
 						public void run() {
 							combat.remove(k);
@@ -64,19 +64,24 @@ public class CombatLog implements Listener {
 			}
 		}
 	}
+
 	@EventHandler
 	public void aoSair(PlayerQuitEvent e) {
 		Player p = e.getPlayer();
-		if(combat.contains(p)) {
+		if (combat.contains(p)) {
 			cfStatus.setDeaths(p);
 		}
 	}
+
 	@EventHandler
 	public void aoComando(PlayerCommandPreprocessEvent e) {
 		Player p = e.getPlayer();
-		if(combat.contains(p)) {
-			if(!e.getMessage().contains("/report")) {
-				if(!cfGrupo.ChecarGrupo(p, "Dono") && !cfGrupo.ChecarGrupo(p, "Gerente") && !cfGrupo.ChecarGrupo(p, "Admin") && !cfGrupo.ChecarGrupo(p, "Mod+") && !cfGrupo.ChecarGrupo(p, "Mod") && !cfGrupo.ChecarGrupo(p, "Trial") &&!cfGrupo.ChecarGrupo(p, "Youtuber+")) {
+		if (combat.contains(p)) {
+			if (!e.getMessage().contains("/report")) {
+				if (!cfGrupo.ChecarGrupo(p, "Dono") && !cfGrupo.ChecarGrupo(p, "Gerente")
+						&& !cfGrupo.ChecarGrupo(p, "Admin") && !cfGrupo.ChecarGrupo(p, "Mod+")
+						&& !cfGrupo.ChecarGrupo(p, "Mod") && !cfGrupo.ChecarGrupo(p, "Trial")
+						&& !cfGrupo.ChecarGrupo(p, "Youtuber+")) {
 					e.setCancelled(true);
 				}
 			}

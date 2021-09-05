@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 
 import me.thauandev.main.Main;
 
-
 public class Mudar implements CommandExecutor {
 
 	@Override

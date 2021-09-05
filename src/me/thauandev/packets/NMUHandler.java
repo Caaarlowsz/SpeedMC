@@ -5,26 +5,25 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import net.minecraft.util.io.netty.channel.Channel;
-import net.minecraft.util.io.netty.channel.ChannelDuplexHandler;
-import net.minecraft.util.io.netty.channel.ChannelHandlerContext;
-import net.minecraft.util.io.netty.channel.ChannelPromise;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
 
 import me.thauandev.main.Main;
+import net.minecraft.util.io.netty.channel.Channel;
+import net.minecraft.util.io.netty.channel.ChannelDuplexHandler;
+import net.minecraft.util.io.netty.channel.ChannelHandlerContext;
+import net.minecraft.util.io.netty.channel.ChannelPromise;
 
 public class NMUHandler implements Handler {
 
-	private static Class<?>	entityPlayer		= NMSUtils.getNMSClass("EntityPlayer");
-	private static Class<?>	playerConnection	= NMSUtils.getNMSClass("PlayerConnection");
-	private static Class<?>	networkManager		= NMSUtils.getNMSClass("NetworkManager");
+	private static Class<?> entityPlayer = NMSUtils.getNMSClass("EntityPlayer");
+	private static Class<?> playerConnection = NMSUtils.getNMSClass("PlayerConnection");
+	private static Class<?> networkManager = NMSUtils.getNMSClass("NetworkManager");
 
-	private static Field	channelField		= getChannelField();
-	private static Field	network				= NMSUtils.getField(playerConnection, "networkManager");
-	private static Field	connection			= NMSUtils.getField(entityPlayer, "playerConnection");
+	private static Field channelField = getChannelField();
+	private static Field network = NMSUtils.getField(playerConnection, "networkManager");
+	private static Field connection = NMSUtils.getField(entityPlayer, "playerConnection");
 
 	private static Field getChannelField() {
 		Field channelField = null;
@@ -50,7 +49,8 @@ public class NMUHandler implements Handler {
 				@Override
 				public void run() {
 					try {
-						channel.pipeline().addBefore("packet_handler", "packet_listener_player", new ChannelHandler(player));
+						channel.pipeline().addBefore("packet_handler", "packet_listener_player",
+								new ChannelHandler(player));
 					} catch (Exception e) {
 					}
 				}
@@ -98,7 +98,8 @@ public class NMUHandler implements Handler {
 								channel = (Channel) channelField.get(a);
 							}
 							if (channel.pipeline().get("packet_listener_server") == null) {
-								channel.pipeline().addBefore("packet_handler", "packet_listener_server", new ChannelHandler(null));
+								channel.pipeline().addBefore("packet_handler", "packet_listener_server",
+										new ChannelHandler(null));
 							}
 						} catch (Exception e) {
 						}
@@ -140,12 +141,15 @@ public class NMUHandler implements Handler {
 			Server server = Bukkit.getServer();
 			Object dedicatedserver = NMSUtils.getMethod(server.getClass(), "getServer").invoke(server);
 			Class<?> serverconnectionclass = NMSUtils.getNMSClass("ServerConnection");
-			Object serverconnection = NMSUtils.getFirstFieldOfType(NMSUtils.getNMSClass("MinecraftServer"), serverconnectionclass).get(dedicatedserver);
+			Object serverconnection = NMSUtils
+					.getFirstFieldOfType(NMSUtils.getNMSClass("MinecraftServer"), serverconnectionclass)
+					.get(dedicatedserver);
 			Field f = NMSUtils.getLastFieldOfType(serverconnectionclass, List.class);
 			List currentlist = (List<?>) f.get(serverconnection);
 			Field f1 = NMSUtils.getField(currentlist.getClass().getSuperclass(), "list");
 			Object list = f1.get(currentlist);
-			if (list.getClass().equals(ListenerList.class)) return;
+			if (list.getClass().equals(ListenerList.class))
+				return;
 			List newlist = Collections.synchronizedList(new ListenerList());
 			for (Object o : currentlist) {
 				newlist.add(o);
@@ -156,11 +160,11 @@ public class NMUHandler implements Handler {
 		}
 	}
 
-	private static Class<?>	packet	= NMSUtils.getNMSClass("Packet");
+	private static Class<?> packet = NMSUtils.getNMSClass("Packet");
 
 	class ChannelHandler extends ChannelDuplexHandler {
 
-		private Player	player;
+		private Player player;
 
 		public ChannelHandler(Player p) {
 			this.player = p;
@@ -173,7 +177,8 @@ public class NMUHandler implements Handler {
 			if (packet.isAssignableFrom(msg.getClass())) {
 				pckt = ((Main) Main.getPlugin()).onPacketSend(this.player, msg, cancellable);
 			}
-			if (cancellable.isCancelled()) return;
+			if (cancellable.isCancelled())
+				return;
 			super.write(ctx, pckt, promise);
 		}
 
@@ -184,7 +189,8 @@ public class NMUHandler implements Handler {
 			if (packet.isAssignableFrom(msg.getClass())) {
 				pckt = ((Main) Main.getPlugin()).onPacketReceive(this.player, msg, cancellable);
 			}
-			if (cancellable.isCancelled()) return;
+			if (cancellable.isCancelled())
+				return;
 			super.channelRead(ctx, pckt);
 		}
 

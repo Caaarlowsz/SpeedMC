@@ -12,22 +12,23 @@ import me.thauandev.bans.API;
 import me.thauandev.configuração.cfGrupo;
 
 public class HeadCommand implements CommandExecutor {
-	
+
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		Player p = (Player) sender;
-		if(cmd.getName().equalsIgnoreCase("head")) {
-			if((!cfGrupo.ChecarGrupo(p, "Dono") && (!cfGrupo.ChecarGrupo(p, "Gerente") && (!cfGrupo.ChecarGrupo(p, "Admin"))))){
+		if (cmd.getName().equalsIgnoreCase("head")) {
+			if ((!cfGrupo.ChecarGrupo(p, "Dono")
+					&& (!cfGrupo.ChecarGrupo(p, "Gerente") && (!cfGrupo.ChecarGrupo(p, "Admin"))))) {
 				API.sendMsg(p, "§c§lSPEED§f§lMC §cVocê não possui permissão para executar este comando.");
 				return true;
 			}
-			if(args.length == 0) {
+			if (args.length == 0) {
 				p.sendMessage("§c§lSPEED§f§lMC §fUtilize §b/head §b(JOGADOR)§f!");
 				return true;
 			}
-			if(args.length == 1) {
+			if (args.length == 1) {
 				String jogador = args[0];
-				ItemStack item = new ItemStack(Material.SKULL_ITEM, 1, (short)3);
+				ItemStack item = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
 				SkullMeta itemm = (SkullMeta) item.getItemMeta();
 				itemm.setOwner(jogador);
 				item.setItemMeta(itemm);

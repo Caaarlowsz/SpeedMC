@@ -6,9 +6,9 @@ import org.bukkit.entity.Player;
 
 public abstract class Packet {
 
-	private Player		player;
-	private Object		packet;
-	private Cancellable	cancel;
+	private Player player;
+	private Object packet;
+	private Cancellable cancel;
 
 	public Packet(Object packet, Cancellable cancel, Player player) {
 		this.player = player;
@@ -55,7 +55,8 @@ public abstract class Packet {
 	}
 
 	public String getPlayername() {
-		if (!this.hasPlayer()) return null;
+		if (!this.hasPlayer())
+			return null;
 		return this.player.getName();
 	}
 
@@ -83,25 +84,35 @@ public abstract class Packet {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (this.getClass() != obj.getClass()) return false;
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (this.getClass() != obj.getClass())
+			return false;
 		Packet other = (Packet) obj;
 		if (this.cancel == null) {
-			if (other.cancel != null) return false;
-		} else if (!this.cancel.equals(other.cancel)) return false;
+			if (other.cancel != null)
+				return false;
+		} else if (!this.cancel.equals(other.cancel))
+			return false;
 		if (this.packet == null) {
-			if (other.packet != null) return false;
-		} else if (!this.packet.equals(other.packet)) return false;
+			if (other.packet != null)
+				return false;
+		} else if (!this.packet.equals(other.packet))
+			return false;
 		if (this.player == null) {
-			if (other.player != null) return false;
-		} else if (!this.player.equals(other.player)) return false;
+			if (other.player != null)
+				return false;
+		} else if (!this.player.equals(other.player))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Packet{ " + (this.getClass().equals(SentPacket.class) ? "[> OUT >]" : "[< IN <]") + " " + this.getPacketName() + " " + (this.hasPlayer() ? this.getPlayername() : "#server#") + " }";
+		return "Packet{ " + (this.getClass().equals(SentPacket.class) ? "[> OUT >]" : "[< IN <]") + " "
+				+ this.getPacketName() + " " + (this.hasPlayer() ? this.getPlayername() : "#server#") + " }";
 	}
 
 }

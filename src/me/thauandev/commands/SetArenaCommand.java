@@ -17,7 +17,7 @@ public class SetArenaCommand implements Listener, CommandExecutor {
 	public static Main plugin;
 
 	public SetArenaCommand() {
-	
+
 	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -111,7 +111,7 @@ public class SetArenaCommand implements Listener, CommandExecutor {
 				plugin.getConfig().set("arena7.world", p.getLocation().getWorld().getName());
 				Main.plugin.saveConfig();
 			}
-			
+
 		}
 		return false;
 	}
@@ -178,7 +178,7 @@ public class SetArenaCommand implements Listener, CommandExecutor {
 			lobby5.setPitch((float) plugin.getConfig().getDouble("arena5.pitch"));
 			lobby5.setYaw((float) plugin.getConfig().getDouble("arena5.yaw"));
 			p.teleport(lobby5);
-			
+
 			break;
 		case 5:
 			World w6 = Bukkit.getServer().getWorld(plugin.getConfig().getString("arena6.world"));
@@ -189,7 +189,7 @@ public class SetArenaCommand implements Listener, CommandExecutor {
 			lobby6.setPitch((float) plugin.getConfig().getDouble("arena6.pitch"));
 			lobby6.setYaw((float) plugin.getConfig().getDouble("arena6.yaw"));
 			p.teleport(lobby6);
-			
+
 			break;
 		case 6:
 			World w7 = Bukkit.getServer().getWorld(plugin.getConfig().getString("arena7.world"));

@@ -9,10 +9,10 @@ import org.bukkit.event.HandlerList;
 @Deprecated
 public class PacketReceiveEvent extends Event {
 
-	private static HandlerList	handlers	= new HandlerList();
-	private Player				player;
-	private Object				packet;
-	private Cancellable			cancel;
+	private static HandlerList handlers = new HandlerList();
+	private Player player;
+	private Object packet;
+	private Cancellable cancel;
 
 	public PacketReceiveEvent(Object packet, Cancellable cancel, Player player) {
 		super(true);

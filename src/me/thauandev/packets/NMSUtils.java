@@ -9,10 +9,11 @@ import org.bukkit.Bukkit;
 
 public class NMSUtils {
 
-	private static String	version	= getVersion();
+	private static String version = getVersion();
 
 	public static String getVersion() {
-		if (version != null) return version;
+		if (version != null)
+			return version;
 		String name = Bukkit.getServer().getClass().getPackage().getName();
 		String version = name.substring(name.lastIndexOf('.') + 1) + ".";
 		return version;
@@ -57,8 +58,8 @@ public class NMSUtils {
 		}
 	}
 
-	private static Class<?>	c	= getOBCClass("block.CraftBlock");
-	private static Method	m	= getMethod(c, "getNMSBlock");
+	private static Class<?> c = getOBCClass("block.CraftBlock");
+	private static Method m = getMethod(c, "getNMSBlock");
 
 	public static Object getBlockHandleWithException(Object obj) throws Exception {
 		return m.invoke(obj);
@@ -95,7 +96,8 @@ public class NMSUtils {
 
 	public static Field getFieldOfTypeWithException(Class<?> clazz, Class<?> type, String name) throws Exception {
 		Field field = clazz.getDeclaredField(name);
-		if (!field.getType().equals(type)) throw new Exception("Field Not Found");
+		if (!field.getType().equals(type))
+			throw new Exception("Field Not Found");
 		field.setAccessible(true);
 		Field modifiersField = Field.class.getDeclaredField("modifiers");
 		modifiersField.setAccessible(true);
@@ -145,7 +147,8 @@ public class NMSUtils {
 				field = f;
 			}
 		}
-		if (field == null) throw new Exception("Field Not Found");
+		if (field == null)
+			throw new Exception("Field Not Found");
 		field.setAccessible(true);
 		Field modifiersField = Field.class.getDeclaredField("modifiers");
 		modifiersField.setAccessible(true);
@@ -180,7 +183,8 @@ public class NMSUtils {
 
 	public static boolean ClassListEqual(Class<?>[] l1, Class<?>[] l2) {
 		boolean equal = true;
-		if (l1.length != l2.length) return false;
+		if (l1.length != l2.length)
+			return false;
 		for (int i = 0; i < l1.length; i++)
 			if (l1[i] != l2[i]) {
 				equal = false;

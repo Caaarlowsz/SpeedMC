@@ -1,26 +1,33 @@
 package me.thauandev.skin;
 
-import org.bukkit.entity.*;
+import java.lang.reflect.Field;
+import java.util.Collection;
+import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_7_R4.entity.*;
-import java.lang.reflect.*;
-import java.util.concurrent.*;
-import java.util.*;
-import net.minecraft.server.v1_7_R4.*;
+import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
+import org.bukkit.entity.Player;
+
 import net.minecraft.server.v1_7_R4.Entity;
+import net.minecraft.server.v1_7_R4.EntityHuman;
+import net.minecraft.server.v1_7_R4.EntityPlayer;
+import net.minecraft.server.v1_7_R4.MathHelper;
+import net.minecraft.server.v1_7_R4.Packet;
+import net.minecraft.server.v1_7_R4.PacketPlayOutEntityDestroy;
+import net.minecraft.server.v1_7_R4.PacketPlayOutEntityHeadRotation;
+import net.minecraft.server.v1_7_R4.PacketPlayOutEntityMetadata;
+import net.minecraft.server.v1_7_R4.PacketPlayOutNamedEntitySpawn;
+import net.minecraft.server.v1_7_R4.PacketPlayOutPlayerInfo;
 import net.minecraft.util.com.mojang.authlib.GameProfile;
 import net.minecraft.util.com.mojang.authlib.properties.Property;
 
-import java.util.regex.*;
-
-@SuppressWarnings("unused")
 public class FakePlayerUtils {
 	public static void changePlayerName(final Player player, final String name) {
 		changePlayerName(player, name, true);
 	}
 
-	@SuppressWarnings("deprecation")
 	public static void changePlayerName(final Player player, final String name, final boolean respawn) {
 		final Player[] players = Bukkit.getServer().getOnlinePlayers();
 		final EntityPlayer entityPlayer = ((CraftPlayer) player).getHandle();
@@ -47,7 +54,6 @@ public class FakePlayerUtils {
 		removePlayerSkin(player, true);
 	}
 
-	@SuppressWarnings("deprecation")
 	public static void removePlayerSkin(final Player player, final boolean respawn) {
 		final EntityPlayer entityPlayer = ((CraftPlayer) player).getHandle();
 		final GameProfile playerProfile = entityPlayer.getProfile();
@@ -61,7 +67,6 @@ public class FakePlayerUtils {
 		changePlayerSkin(player, name, uuid, true);
 	}
 
-	@SuppressWarnings("deprecation")
 	public static void changePlayerSkin(final Player player, final String name, final UUID uuid,
 			final boolean respawn) {
 		final EntityPlayer entityPlayer = ((CraftPlayer) player).getHandle();

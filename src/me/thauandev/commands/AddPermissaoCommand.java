@@ -11,20 +11,20 @@ import me.thauandev.configuração.cfGrupo;
 import me.thauandev.configuração.cfPermissão;
 
 public class AddPermissaoCommand implements CommandExecutor {
-	
+
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		Player p = (Player) sender;
-		if(cmd.getName().equalsIgnoreCase("addpermission")) {
-			if((!cfGrupo.ChecarGrupo(p, "Dono") && (!cfGrupo.ChecarGrupo(p, "Admin")))){
+		if (cmd.getName().equalsIgnoreCase("addpermission")) {
+			if ((!cfGrupo.ChecarGrupo(p, "Dono") && (!cfGrupo.ChecarGrupo(p, "Admin")))) {
 				API.sendMsg(p, "§c§lSPEED§f§lMC §cVocê não possui permissão para executar este comando!");
 				return true;
 			}
-			if(args.length == 0) {
+			if (args.length == 0) {
 				p.sendMessage("§c§lSPEED§f§lMC §7Utilize §c/addpermission (nick) (perm)");
 				return true;
 			}
-			if(args.length == 1) {
+			if (args.length == 1) {
 				p.sendMessage("§c§lSPEED§f§lMC §7Utilize §c/addpermission (nick) (perm)");
 				return true;
 			}
@@ -33,16 +33,16 @@ public class AddPermissaoCommand implements CommandExecutor {
 			cfPermissão.setarPermissao(k, permissao, "true");
 			p.sendMessage("§c§lSPEED§f§lMC §7Permissão §c" + permissao + " §7adicionada ao jogador §c" + k.getName());
 		}
-		if(cmd.getName().equalsIgnoreCase("removepermission")) {
-			if((!cfGrupo.ChecarGrupo(p, "Dono") && (!cfGrupo.ChecarGrupo(p, "Admin")))){
+		if (cmd.getName().equalsIgnoreCase("removepermission")) {
+			if ((!cfGrupo.ChecarGrupo(p, "Dono") && (!cfGrupo.ChecarGrupo(p, "Admin")))) {
 				API.sendMsg(p, "§c§lSPEED§f§lMC §cVocê não possui permissão para executar este comando!");
 				return true;
 			}
-			if(args.length == 0) {
+			if (args.length == 0) {
 				p.sendMessage("§c§lSPEED§f§lMC §7Utilize §c/removepermission (nick) (perm)");
 				return true;
 			}
-			if(args.length == 1) {
+			if (args.length == 1) {
 				p.sendMessage("§c§lSPEED§f§lMC §7Utilize §c/removepermission (nick) (perm)");
 				return true;
 			}
@@ -50,7 +50,7 @@ public class AddPermissaoCommand implements CommandExecutor {
 			String permissao = args[1];
 			cfPermissão.setarPermissao(k, permissao, "false");
 			p.sendMessage("§c§lSPEED§f§lMC §7Permissão §c" + permissao + " §7retirada do jogador §c" + k.getName());
-			
+
 		}
 		return false;
 	}

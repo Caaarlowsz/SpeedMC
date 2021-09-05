@@ -18,7 +18,6 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 
 import me.thauandev.main.Main;
 
-@SuppressWarnings("deprecation")
 public class Block implements Listener {
 
 	@EventHandler
@@ -53,8 +52,7 @@ public class Block implements Listener {
 			p.updateInventory();
 		}
 	}
-	
-	
+
 	@EventHandler
 	public void onOpenInventorySpec(InventoryOpenEvent event) {
 		Player p = (Player) event.getPlayer();

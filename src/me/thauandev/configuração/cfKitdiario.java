@@ -12,43 +12,47 @@ import me.thauandev.API.CalendarioAPI;
 import me.thauandev.API.CalendarioAPI.Calendario;
 
 public class cfKitdiario {
-	
+
 	private static FileConfiguration playerkitdiario;
 	private static File player_kitdiario;
-	
-	public static void setarconfig(Plugin plugin){
-		
-		if(!plugin.getDataFolder().exists()){
+
+	public static void setarconfig(Plugin plugin) {
+
+		if (!plugin.getDataFolder().exists()) {
 			plugin.getDataFolder().mkdir();
 		}
 		player_kitdiario = new File(plugin.getDataFolder(), "kitdiario.yml");
-		if(player_kitdiario.exists()){
-			try{
+		if (player_kitdiario.exists()) {
+			try {
 				player_kitdiario.createNewFile();
-			}catch(IOException e){
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 		playerkitdiario = YamlConfiguration.loadConfiguration(player_kitdiario);
 	}
-	public static FileConfiguration pegargrupo(){
+
+	public static FileConfiguration pegargrupo() {
 		return playerkitdiario;
 	}
-	public static void salvarconfiguracao(){
-		try{
+
+	public static void salvarconfiguracao() {
+		try {
 			playerkitdiario.save(player_kitdiario);
-		}catch(IOException e){
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	public static void setarTempo(Player p, String Kit){
-		
+
+	public static void setarTempo(Player p, String Kit) {
+
 		pegargrupo().set("kitdiario." + p.getUniqueId() + ".Nick", p.getName());
 		pegargrupo().set("kitdiario." + p.getUniqueId() + ".kit", Kit);
 		pegargrupo().set("kitdiario." + p.getUniqueId() + ".dia", CalendarioAPI.PegarCalendario(Calendario.Dia));
 		pegargrupo().set("kitdiario." + p.getUniqueId() + ".hora", CalendarioAPI.PegarCalendario(Calendario.Hora));
 		pegargrupo().set("kitdiario." + p.getUniqueId() + ".minuto", CalendarioAPI.PegarCalendario(Calendario.Minuto));
-		pegargrupo().set("kitdiario." + p.getUniqueId() + ".segundos", CalendarioAPI.PegarCalendario(Calendario.Segundo));
+		pegargrupo().set("kitdiario." + p.getUniqueId() + ".segundos",
+				CalendarioAPI.PegarCalendario(Calendario.Segundo));
 		cfKitdiario.salvarconfiguracao();
 	}
 }

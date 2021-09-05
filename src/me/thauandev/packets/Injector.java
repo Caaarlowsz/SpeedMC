@@ -2,11 +2,9 @@ package me.thauandev.packets;
 
 import org.bukkit.entity.Player;
 
-
-
 public class Injector {
 
-	private Handler	handler;
+	private Handler handler;
 
 	public boolean inject() {
 		try {

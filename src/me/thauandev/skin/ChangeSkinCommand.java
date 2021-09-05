@@ -7,10 +7,8 @@ import org.bukkit.entity.Player;
 
 import me.thauandev.configuração.cfGrupo;
 
-
 public class ChangeSkinCommand extends CommandBase {
 
-	@SuppressWarnings({ "deprecation" })
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
 		if (cmd.getName().equalsIgnoreCase("changeskin")) {
@@ -25,7 +23,9 @@ public class ChangeSkinCommand extends CommandBase {
 				return true;
 			}
 
-			if(cfGrupo.ChecarGrupo(p, "Dono") || cfGrupo.ChecarGrupo(p, "Gerente") || cfGrupo.ChecarGrupo(p, "Admin") || cfGrupo.ChecarGrupo(p, "Mod+") || cfGrupo.ChecarGrupo(p, "Mod")|| cfGrupo.ChecarGrupo(p, "youtuber+")|| cfGrupo.ChecarGrupo(p, "youtuber")){
+			if (cfGrupo.ChecarGrupo(p, "Dono") || cfGrupo.ChecarGrupo(p, "Gerente") || cfGrupo.ChecarGrupo(p, "Admin")
+					|| cfGrupo.ChecarGrupo(p, "Mod+") || cfGrupo.ChecarGrupo(p, "Mod")
+					|| cfGrupo.ChecarGrupo(p, "youtuber+") || cfGrupo.ChecarGrupo(p, "youtuber")) {
 
 				String skin = args[0];
 				FakePlayerUtils.changePlayerSkin(p, skin, Bukkit.getOfflinePlayer(args[0]).getUniqueId());

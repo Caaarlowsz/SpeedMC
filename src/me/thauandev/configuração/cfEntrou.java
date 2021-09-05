@@ -11,58 +11,62 @@ public class cfEntrou {
 
 	private static FileConfiguration player_status;
 	private static File playerstatus;
-	
-	public static void setarConfig(Plugin plugin){
-		
-		if(!plugin.getDataFolder().exists()){
+
+	public static void setarConfig(Plugin plugin) {
+
+		if (!plugin.getDataFolder().exists()) {
 			plugin.getDataFolder().mkdir();
 		}
 		playerstatus = new File(plugin.getDataFolder(), "");
-		if(playerstatus.exists()){
-			try{
+		if (playerstatus.exists()) {
+			try {
 				playerstatus.createNewFile();
-			}catch(IOException e){
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 		player_status = YamlConfiguration.loadConfiguration(playerstatus);
 	}
-	public static FileConfiguration pegarconfig(){
+
+	public static FileConfiguration pegarconfig() {
 		return player_status;
 	}
-	public static void salvarconfiguracao(){
-		try{
+
+	public static void salvarconfiguracao() {
+		try {
 			player_status.save(playerstatus);
-		}catch(IOException e){
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	private static FileConfiguration player_status1;
 	private static File playerstatus1;
-	
-	public static void setarConfig1(Plugin plugin){
-		
-		if(!plugin.getDataFolder().exists()){
+
+	public static void setarConfig1(Plugin plugin) {
+
+		if (!plugin.getDataFolder().exists()) {
 			plugin.getDataFolder().mkdir();
 		}
 		playerstatus1 = new File(plugin.getDataFolder(), "");
-		if(playerstatus1.exists()){
-			try{
+		if (playerstatus1.exists()) {
+			try {
 				playerstatus1.createNewFile();
-			}catch(IOException e){
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 		player_status1 = YamlConfiguration.loadConfiguration(playerstatus1);
 	}
-	public static FileConfiguration pegarconfig1(){
+
+	public static FileConfiguration pegarconfig1() {
 		return player_status1;
 	}
-	public static void salvarconfiguracao1(){
-		try{
+
+	public static void salvarconfiguracao1() {
+		try {
 			player_status1.save(playerstatus1);
-		}catch(IOException e){
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

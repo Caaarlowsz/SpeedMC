@@ -7,7 +7,8 @@ public class CalendarioAPI {
 	public static enum Calendario {
 		Dia, Mes, Ano, DiaDaSemana, Hora, Minuto, Segundo;
 	}
-	public static int PegarCalendario(Calendario c) { 
+
+	public static int PegarCalendario(Calendario c) {
 		switch (c) {
 		case Dia:
 			return Calendar.getInstance().get(5);

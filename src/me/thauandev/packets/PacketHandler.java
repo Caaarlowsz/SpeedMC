@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
 
 public abstract class PacketHandler {
 
-	private static final List<PacketHandler>	handlers	= new ArrayList<PacketHandler>();
+	private static final List<PacketHandler> handlers = new ArrayList<PacketHandler>();
 
 	public static boolean addHandler(PacketHandler handler) {
 		boolean b = handlers.contains(handler);
@@ -24,9 +24,11 @@ public abstract class PacketHandler {
 	public static void notifyHandlers(SentPacket packet) {
 		for (PacketHandler handler : getHandlers()) {
 			try {
-				PacketOptions options = handler.getClass().getMethod("onSend", SentPacket.class).getAnnotation(PacketOptions.class);
+				PacketOptions options = handler.getClass().getMethod("onSend", SentPacket.class)
+						.getAnnotation(PacketOptions.class);
 				if (options != null) {
-					if (options.forcePlayer() && options.forceServer()) throw new IllegalArgumentException("Cannot force player and server packets at the same time!");
+					if (options.forcePlayer() && options.forceServer())
+						throw new IllegalArgumentException("Cannot force player and server packets at the same time!");
 					if (options.forcePlayer()) {
 						if (!packet.hasPlayer()) {
 							continue;
@@ -39,7 +41,7 @@ public abstract class PacketHandler {
 				}
 				handler.onSend(packet);
 			} catch (Exception e) {
-				
+
 				e.printStackTrace(System.err);
 			}
 		}
@@ -48,9 +50,11 @@ public abstract class PacketHandler {
 	public static void notifyHandlers(ReceivedPacket packet) {
 		for (PacketHandler handler : getHandlers()) {
 			try {
-				PacketOptions options = handler.getClass().getMethod("onReceive", ReceivedPacket.class).getAnnotation(PacketOptions.class);
+				PacketOptions options = handler.getClass().getMethod("onReceive", ReceivedPacket.class)
+						.getAnnotation(PacketOptions.class);
 				if (options != null) {
-					if (options.forcePlayer() && options.forceServer()) throw new IllegalArgumentException("Cannot force player and server packets at the same time!");
+					if (options.forcePlayer() && options.forceServer())
+						throw new IllegalArgumentException("Cannot force player and server packets at the same time!");
 					if (options.forcePlayer()) {
 						if (!packet.hasPlayer()) {
 							continue;
@@ -63,7 +67,7 @@ public abstract class PacketHandler {
 				}
 				handler.onReceive(packet);
 			} catch (Exception e) {
-				
+
 				e.printStackTrace(System.err);
 			}
 		}
@@ -75,7 +79,8 @@ public abstract class PacketHandler {
 
 	public static List<PacketHandler> getForPlugin(Plugin plugin) {
 		List<PacketHandler> handlers = new ArrayList<>();
-		if (plugin == null) return handlers;
+		if (plugin == null)
+			return handlers;
 		for (PacketHandler h : getHandlers())
 			if (plugin.equals(h.getPlugin())) {
 				handlers.add(h);
@@ -85,11 +90,13 @@ public abstract class PacketHandler {
 
 	// Sending methods
 	public void sendPacket(Player p, Object packet) {
-		if (p == null || packet == null) throw new NullPointerException();
+		if (p == null || packet == null)
+			throw new NullPointerException();
 		try {
 			Object handle = NMSUtils.getHandle(p);
 			Object connection = NMSUtils.getField(handle.getClass(), "playerConnection").get(handle);
-			NMSUtils.getMethod(connection.getClass(), "sendPacket", NMSUtils.getNMSClass("Packet")).invoke(connection, new Object[] { packet });
+			NMSUtils.getMethod(connection.getClass(), "sendPacket", NMSUtils.getNMSClass("Packet")).invoke(connection,
+					new Object[] { packet });
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -97,7 +104,8 @@ public abstract class PacketHandler {
 	}
 
 	public Object cloneObject(Object obj) throws Exception {
-		if (obj == null) return obj;
+		if (obj == null)
+			return obj;
 		Object clone = obj.getClass().newInstance();
 		for (Field f : obj.getClass().getDeclaredFields()) {
 			f = AccessUtil.setAccessible(f);
@@ -108,7 +116,7 @@ public abstract class PacketHandler {
 
 	// //////////////////////////////////////////////////
 
-	private Plugin	plugin;
+	private Plugin plugin;
 
 	@Deprecated
 	public PacketHandler() {
