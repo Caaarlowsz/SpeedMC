@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 
 import org.bukkit.Bukkit;
 
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class Array {
 
@@ -21,7 +21,7 @@ public class Array {
 	public String link = "";
 
 	public static void InciarTag() {
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				LinkedHashMap<String, LinkedHashMap<String, String>> JogadorData2 = new LinkedHashMap<String, LinkedHashMap<String, String>>();
 
@@ -45,9 +45,9 @@ public class Array {
 	}
 
 	public static void SetarNameTagHard(String Jogador, String Prefix, String Suffix,
-			NameTagChangeEvento.NametagChangeReason Reacão) {
+			NameTagChangeEvento.NametagChangeReason Reacï¿½o) {
 		NameTagChangeEvento e = new NameTagChangeEvento(Jogador, NametagAPI.PegarPrefix(Jogador),
-				NametagAPI.PegarSuffix(Jogador), Prefix, Suffix, NameTagChangeEvento.NametagChangeType.HARD, Reacão);
+				NametagAPI.PegarSuffix(Jogador), Prefix, Suffix, NameTagChangeEvento.NametagChangeType.HARD, Reacï¿½o);
 
 		Bukkit.getServer().getPluginManager().callEvent(e);
 		if (!e.isCancelled()) {
@@ -56,9 +56,9 @@ public class Array {
 	}
 
 	public static void SetarNameTagSoft(String Jogador, String Prefix, String Suffix,
-			NameTagChangeEvento.NametagChangeReason Reacão) {
+			NameTagChangeEvento.NametagChangeReason Reacï¿½o) {
 		NameTagChangeEvento e = new NameTagChangeEvento(Jogador, NametagAPI.PegarPrefix(Jogador),
-				NametagAPI.PegarSuffix(Jogador), Prefix, Suffix, NameTagChangeEvento.NametagChangeType.SOFT, Reacão);
+				NametagAPI.PegarSuffix(Jogador), Prefix, Suffix, NameTagChangeEvento.NametagChangeType.SOFT, Reacï¿½o);
 		Bukkit.getServer().getPluginManager().callEvent(e);
 		if (!e.isCancelled()) {
 			NametagManager.Overlap(Jogador, Prefix, Suffix);

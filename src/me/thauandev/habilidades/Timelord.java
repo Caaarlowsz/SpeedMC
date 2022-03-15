@@ -15,7 +15,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 import me.thauandev.API.CooldownAPI;
 import me.thauandev.API.KitAPI;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class Timelord implements Listener {
 
@@ -29,7 +29,7 @@ public class Timelord implements Listener {
 				&& ((e.getAction() == Action.RIGHT_CLICK_AIR) || (e.getAction() == Action.RIGHT_CLICK_BLOCK))) {
 			if (KitAPI.getKit(p) == "Timelord") {
 				if (CooldownAPI.Cooldown.containsKey(p.getName())) {
-					p.sendMessage("§fO seu §3§lCOOLDOWN §facaba em: §c§l" + CooldownAPI.Cooldown(p) + "s");
+					p.sendMessage("ï¿½fO seu ï¿½3ï¿½lCOOLDOWN ï¿½facaba em: ï¿½cï¿½l" + CooldownAPI.Cooldown(p) + "s");
 					return;
 				}
 			}
@@ -40,12 +40,12 @@ public class Timelord implements Listener {
 					if ((t instanceof Player)) {
 						final Player ta = (Player) t;
 						frozenPlayers.add(((Player) t).getName());
-						((Player) t).sendMessage("§fVocê foi congelado por um §e§lTIMELORD§f!");
+						((Player) t).sendMessage("ï¿½fVocï¿½ foi congelado por um ï¿½eï¿½lTIMELORDï¿½f!");
 
 						CooldownAPI.addCooldown(p, 35);
-						p.sendMessage("§aVocê congelou os jogador a sua volta");
+						p.sendMessage("ï¿½aVocï¿½ congelou os jogador a sua volta");
 
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+						Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 							public void run() {
 								frozenPlayers.remove(ta.getName());
 							}

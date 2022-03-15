@@ -9,7 +9,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class cfStatus {
 
@@ -17,7 +17,7 @@ public class cfStatus {
 	public static FileConfiguration cfile;
 
 	public cfStatus() {
-		Plugin plugin = Main.getPlugin();
+		Plugin plugin = SpeedPvP.getPlugin();
 
 		if (plugin.getDataFolder().exists() == false) {
 			plugin.getDataFolder().mkdir();

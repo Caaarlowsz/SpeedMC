@@ -9,7 +9,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
 
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 import net.minecraft.util.io.netty.channel.Channel;
 import net.minecraft.util.io.netty.channel.ChannelDuplexHandler;
 import net.minecraft.util.io.netty.channel.ChannelHandlerContext;
@@ -175,7 +175,7 @@ public class NMUHandler implements Handler {
 			Cancellable cancellable = new Cancellable();
 			Object pckt = msg;
 			if (packet.isAssignableFrom(msg.getClass())) {
-				pckt = ((Main) Main.getPlugin()).onPacketSend(this.player, msg, cancellable);
+				pckt = ((SpeedPvP) SpeedPvP.getPlugin()).onPacketSend(this.player, msg, cancellable);
 			}
 			if (cancellable.isCancelled())
 				return;
@@ -187,7 +187,7 @@ public class NMUHandler implements Handler {
 			Cancellable cancellable = new Cancellable();
 			Object pckt = msg;
 			if (packet.isAssignableFrom(msg.getClass())) {
-				pckt = ((Main) Main.getPlugin()).onPacketReceive(this.player, msg, cancellable);
+				pckt = ((SpeedPvP) SpeedPvP.getPlugin()).onPacketReceive(this.player, msg, cancellable);
 			}
 			if (cancellable.isCancelled())
 				return;

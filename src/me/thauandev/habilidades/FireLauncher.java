@@ -15,7 +15,7 @@ import org.bukkit.util.Vector;
 
 import me.thauandev.API.CooldownAPI;
 import me.thauandev.API.KitAPI;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class FireLauncher implements Listener {
 
@@ -29,16 +29,16 @@ public class FireLauncher implements Listener {
 		if ((p.getItemInHand().getType() == Material.BLAZE_POWDER) && (KitAPI.getKit(p) == "FireLauncher")
 				&& (CooldownAPI.Cooldown.containsKey(p.getName()))) {
 			e.setCancelled(true);
-			p.sendMessage("§fO seu §3§lCOOLDOWN §facaba em: §c§l" + CooldownAPI.Cooldown(p) + "s");
+			p.sendMessage("ï¿½fO seu ï¿½3ï¿½lCOOLDOWN ï¿½facaba em: ï¿½cï¿½l" + CooldownAPI.Cooldown(p) + "s");
 		} else {
 			if ((p.getItemInHand().getType() == Material.BLAZE_POWDER) && (KitAPI.getKit(p) == "FireLauncher")
 					&& (!CooldownAPI.Cooldown.containsKey(p.getName()))) {
-				p.sendMessage("§aVocê ativou a sua habilidade!");
+				p.sendMessage("ï¿½aVocï¿½ ativou a sua habilidade!");
 
 				CooldownAPI.addCooldown(p, 35);
 				inFire.add(p);
 
-				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 
 						if (inFire.contains(p)) {
@@ -58,7 +58,7 @@ public class FireLauncher implements Listener {
 
 							t.getPlayer().getWorld().playEffect(t.getPlayer().getLocation(), Effect.SMOKE, 9999999,
 									9999999);
-							t.sendMessage("§7Você está sendo atacado por um §2§lFirelauncher§7!");
+							t.sendMessage("ï¿½7Vocï¿½ estï¿½ sendo atacado por um ï¿½2ï¿½lFirelauncherï¿½7!");
 
 							Vector vector = t.getLocation().getDirection();
 							vector.multiply(0.0F);

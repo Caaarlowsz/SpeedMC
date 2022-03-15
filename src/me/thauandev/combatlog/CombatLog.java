@@ -11,9 +11,9 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import me.thauandev.API.API;
-import me.thauandev.configuração.cfGrupo;
-import me.thauandev.configuração.cfStatus;
-import me.thauandev.main.Main;
+ï¿½ï¿½o.cfGrupo;
+import me.thauandev.configuraï¿½ï¿½o.cfStatus;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 import me.thauandev.scoreboard.sScoreAPI;
 
 public class CombatLog implements Listener {
@@ -22,12 +22,12 @@ public class CombatLog implements Listener {
 
 	public static String getCombat(Player p) {
 		if (combat.contains(p)) {
-			return "§a§lSIM";
+			return "ï¿½aï¿½lSIM";
 		}
 		if (!combat.contains(p)) {
-			return "§c§lNAO";
+			return "ï¿½cï¿½lNAO";
 		}
-		return "§c§lNAO";
+		return "ï¿½cï¿½lNAO";
 	}
 
 	@EventHandler
@@ -40,7 +40,7 @@ public class CombatLog implements Listener {
 				if (!combat.contains(p)) {
 					combat.add(p);
 					sScoreAPI.scoreboard(p);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.plugin, new Runnable() {
 
 						@Override
 						public void run() {
@@ -52,7 +52,7 @@ public class CombatLog implements Listener {
 				if (!combat.contains(k)) {
 					combat.add(k);
 					sScoreAPI.scoreboard(k);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.plugin, new Runnable() {
 
 						@Override
 						public void run() {

@@ -15,7 +15,7 @@ import org.bukkit.util.Vector;
 
 import me.thauandev.API.CooldownAPI;
 import me.thauandev.API.KitAPI;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class MiniGun implements Listener {
 
@@ -28,13 +28,13 @@ public class MiniGun implements Listener {
 			if ((e.getAction() == Action.RIGHT_CLICK_AIR) || (e.getAction() == Action.RIGHT_CLICK_BLOCK)) {
 				e.setCancelled(true);
 				if (CooldownAPI.Cooldown.containsKey(p.getName())) {
-					p.sendMessage("§fO seu §3§lCOOLDOWN §facaba em: §c§l" + CooldownAPI.Cooldown(p) + "s");
+					p.sendMessage("ï¿½fO seu ï¿½3ï¿½lCOOLDOWN ï¿½facaba em: ï¿½cï¿½l" + CooldownAPI.Cooldown(p) + "s");
 					return;
 				}
 				CooldownAPI.addCooldown(p, 40);
 				cancel();
 				shed_id = Integer.valueOf(
-						Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Main.plugin, new Runnable() {
+						Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(SpeedPvP.plugin, new Runnable() {
 							public void run() {
 								Location loc = p.getLocation();
 								loc.setY(loc.getY() + 0.5D);
@@ -43,7 +43,7 @@ public class MiniGun implements Listener {
 								h.setVelocity(velo1);
 							}
 						}, 2L, 2L));
-				Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(Main.plugin, new Runnable() {
+				Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(SpeedPvP.plugin, new Runnable() {
 					public void run() {
 						MiniGun.cancel();
 					}

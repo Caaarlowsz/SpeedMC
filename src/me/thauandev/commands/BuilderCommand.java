@@ -19,9 +19,9 @@ import org.bukkit.inventory.ItemStack;
 import me.thauandev.API.API;
 import me.thauandev.API.ArraysAPI;
 import me.thauandev.API.KitAPI;
-import me.thauandev.configuração.cfGrupo;
-import me.thauandev.invencivel.Proteção;
-import me.thauandev.main.Main;
+import me.thauandev.configuraï¿½ï¿½o.cfGrupo;
+ï¿½ï¿½o;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 import me.thauandev.scoreboard.sScoreAPI;
 
 public class BuilderCommand implements CommandExecutor, Listener {
@@ -39,7 +39,7 @@ public class BuilderCommand implements CommandExecutor, Listener {
 				&& e.getAction() == Action.RIGHT_CLICK_AIR
 				|| e.getAction() == Action.RIGHT_CLICK_BLOCK && p.getItemInHand().hasItemMeta()
 						&& p.getItemInHand().getItemMeta().hasDisplayName()
-						&& p.getItemInHand().getItemMeta().getDisplayName().equals("§aTroca Rapida")) {
+						&& p.getItemInHand().getItemMeta().getDisplayName().equals("ï¿½aTroca Rapida")) {
 
 			for (Player todos : Bukkit.getOnlinePlayers()) {
 
@@ -47,7 +47,7 @@ public class BuilderCommand implements CommandExecutor, Listener {
 				p.showPlayer(todos);
 			}
 
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 				public void run() {
 
 					ArraysAPI.Admin.add(p);
@@ -70,7 +70,7 @@ public class BuilderCommand implements CommandExecutor, Listener {
 				Player t = (Player) e.getRightClicked();
 
 				if (ArraysAPI.Checando.contains(t)) {
-					p.sendMessage("§c§lSPEED§f§lMC §7Acesso negado!");
+					p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½7Acesso negado!");
 					return;
 
 				}
@@ -79,7 +79,7 @@ public class BuilderCommand implements CommandExecutor, Listener {
 				t.setHealth(0.5D);
 				ArraysAPI.Checando.add(t);
 
-				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 
 						ArraysAPI.Checando.remove(t);
@@ -94,7 +94,7 @@ public class BuilderCommand implements CommandExecutor, Listener {
 		}
 		if (p.getItemInHand().getType() == Material.IRON_FENCE && ArraysAPI.Admin.contains(p)) {
 			Player t = (Player) e.getRightClicked();
-			p.sendMessage("§a§l(!) §7Você prendeu o jogador: §6§l" + t.getName());
+			p.sendMessage("ï¿½aï¿½l(!) ï¿½7Vocï¿½ prendeu o jogador: ï¿½6ï¿½l" + t.getName());
 			t.getLocation().add(0.0D, 13.0D, 0.0D).getBlock().setType(Material.BEDROCK);
 			t.getLocation().add(0.0D, 11.0D, 1.0D).getBlock().setType(Material.BEDROCK);
 			t.getLocation().add(1.0D, 11.0D, 0.0D).getBlock().setType(Material.BEDROCK);
@@ -122,7 +122,7 @@ public class BuilderCommand implements CommandExecutor, Listener {
 							&& (!cfGrupo.ChecarGrupo(p, "Mod+") && (!cfGrupo.ChecarGrupo(p, "Builder")
 									&& (!cfGrupo.ChecarGrupo(p, "Dono") && (!cfGrupo.ChecarGrupo(p, "Admin")
 											&& (!cfGrupo.ChecarGrupo(p, "Gerente")))))))))) {
-				p.sendMessage("§c§l(!) §cVocê não possui permissão para executar este comando!");
+				p.sendMessage("ï¿½cï¿½l(!) ï¿½cVocï¿½ nï¿½o possui permissï¿½o para executar este comando!");
 				return true;
 			}
 			if (!ArraysAPI.Admin.contains(p)) {
@@ -135,9 +135,9 @@ public class BuilderCommand implements CommandExecutor, Listener {
 				p.getInventory().clear();
 				p.getInventory().setArmorContents(null);
 
-				Proteção.setImortal(p, false);
-				p.sendMessage("§2§lBUILDER: §fModo Builder: §aATIVADO");
-				API.sendWarn("§7§o[" + p.getName() + "§7§o entrou no modo BUILDER]");
+				Proteï¿½ï¿½o.setImortal(p, false);
+				p.sendMessage("ï¿½2ï¿½lBUILDER: ï¿½fModo Builder: ï¿½aATIVADO");
+				API.sendWarn("ï¿½7ï¿½o[" + p.getName() + "ï¿½7ï¿½o entrou no modo BUILDER]");
 				KitAPI.setKitAntes(p, "Admin");
 				API.setWarp(p, "Admin");
 				p.setHealth(20.0D);
@@ -156,8 +156,8 @@ public class BuilderCommand implements CommandExecutor, Listener {
 			if (ArraysAPI.Admin.contains(p)) {
 
 				ArraysAPI.Admin.remove(p);
-				p.sendMessage("§2§lBUILDER: §fModo Builder: §cDESATIVADO");
-				API.sendWarn("§7§o[" + p.getName() + "§7§o saiu do modo BUILDER]");
+				p.sendMessage("ï¿½2ï¿½lBUILDER: ï¿½fModo Builder: ï¿½cDESATIVADO");
+				API.sendWarn("ï¿½7ï¿½o[" + p.getName() + "ï¿½7ï¿½o saiu do modo BUILDER]");
 				KitAPI.setKitAntes(p, kit.get(p));
 				API.setWarp(p, warp.get(p));
 				p.setGameMode(GameMode.SURVIVAL);

@@ -1,4 +1,4 @@
-package me.thauandev.configuração;
+package me.thauandev.configuraÃ§Ã£o;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +17,7 @@ public class cfConfig {
 		if (!plugin.getDataFolder().exists()) {
 			plugin.getDataFolder().mkdir();
 		}
-		configplayer = new File(plugin.getDataFolder(), "configuraçao.yml");
+		configplayer = new File(plugin.getDataFolder(), "configuraï¿½ao.yml");
 		if (configplayer.exists()) {
 			try {
 				configplayer.createNewFile();

@@ -5,8 +5,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.thauandev.configuração.cfGrupo;
-import me.thauandev.main.Main;
+import me.thauandev.configuraï¿½ï¿½o.cfGrupo;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class Logar implements CommandExecutor {
 
@@ -16,12 +16,12 @@ public class Logar implements CommandExecutor {
 			Player p = (Player) sender;
 			if (arg3.length == 1) {
 				if (arg3[0].equalsIgnoreCase(
-						(String) Main.plugin.getConfig().get("Login." + p.getName().toLowerCase() + ".senha"))) {
-					p.sendMessage("§c§lSPEED§f§lMC §fVocê se logou com sucesso!");
-					Main.login.remove(p.getName());
-					Main.login.remove(p.getName());
-					Main.login.remove(p.getName());
-					Main.login.remove(p.getName());
+						(String) SpeedPvP.plugin.getConfig().get("Login." + p.getName().toLowerCase() + ".senha"))) {
+					p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½fVocï¿½ se logou com sucesso!");
+					SpeedPvP.login.remove(p.getName());
+					SpeedPvP.login.remove(p.getName());
+					SpeedPvP.login.remove(p.getName());
+					SpeedPvP.login.remove(p.getName());
 				}
 				if (cfGrupo.ChecarGrupo(p, "Membro")) {
 					p.chat("/tag normal");
@@ -64,7 +64,7 @@ public class Logar implements CommandExecutor {
 				}
 				return true;
 			} else {
-				p.sendMessage("§c§lSPEED§f§lMC §fA senha digitada está incorreta.");
+				p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½fA senha digitada estï¿½ incorreta.");
 			}
 
 		}

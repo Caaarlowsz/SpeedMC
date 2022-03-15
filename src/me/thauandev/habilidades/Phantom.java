@@ -14,7 +14,7 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 import me.thauandev.API.CooldownAPI;
 import me.thauandev.API.KitAPI;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class Phantom implements Listener {
 
@@ -27,7 +27,7 @@ public class Phantom implements Listener {
 		if ((KitAPI.getKit(p) == "Phantom") && (CooldownAPI.Cooldown.containsKey(p.getName()))
 				&& (p.getItemInHand().getType() == Material.FEATHER)) {
 			e.setCancelled(true);
-			p.sendMessage("§fO seu §3§lCOOLDOWN §facaba em: §c§l" + CooldownAPI.Cooldown(p) + "s");
+			p.sendMessage("ï¿½fO seu ï¿½3ï¿½lCOOLDOWN ï¿½facaba em: ï¿½cï¿½l" + CooldownAPI.Cooldown(p) + "s");
 		} else {
 			if ((KitAPI.getKit(p) == "Phantom") && (!CooldownAPI.Cooldown.containsKey(p.getName())
 					&& (p.getItemInHand().getType() == Material.FEATHER))) {
@@ -37,41 +37,41 @@ public class Phantom implements Listener {
 				p.getInventory().setArmorContents(null);
 				ItemStack Peito = new ItemStack(Material.LEATHER_CHESTPLATE);
 				LeatherArmorMeta kPeito = (LeatherArmorMeta) Peito.getItemMeta();
-				kPeito.setDisplayName("§f§lPhantom");
+				kPeito.setDisplayName("ï¿½fï¿½lPhantom");
 				kPeito.setColor(Color.WHITE);
 				Peito.setItemMeta(kPeito);
 
-				ItemStack Calça = new ItemStack(Material.LEATHER_LEGGINGS);
-				LeatherArmorMeta kCaça = (LeatherArmorMeta) Calça.getItemMeta();
-				kCaça.setDisplayName("§f§lPhantom");
-				kCaça.setColor(Color.WHITE);
-				Calça.setItemMeta(kCaça);
+				ItemStack Calï¿½a = new ItemStack(Material.LEATHER_LEGGINGS);
+				LeatherArmorMeta kCaï¿½a = (LeatherArmorMeta) Calï¿½a.getItemMeta();
+				kCaï¿½a.setDisplayName("ï¿½fï¿½lPhantom");
+				kCaï¿½a.setColor(Color.WHITE);
+				Calï¿½a.setItemMeta(kCaï¿½a);
 
 				ItemStack Bota = new ItemStack(Material.LEATHER_BOOTS);
 				LeatherArmorMeta kBota = (LeatherArmorMeta) Bota.getItemMeta();
-				kBota.setDisplayName("§f§lPhantom");
+				kBota.setDisplayName("ï¿½fï¿½lPhantom");
 				kBota.setColor(Color.WHITE);
 				Bota.setItemMeta(kBota);
 
 				ItemStack Capacete = new ItemStack(Material.LEATHER_HELMET);
 				LeatherArmorMeta kCasapete = (LeatherArmorMeta) Capacete.getItemMeta();
-				kCasapete.setDisplayName("§f§lPhantom");
+				kCasapete.setDisplayName("ï¿½fï¿½lPhantom");
 				kCasapete.setColor(Color.WHITE);
 				Capacete.setItemMeta(kCasapete);
 
 				p.getInventory().setChestplate(Peito);
-				p.getInventory().setLeggings(Calça);
+				p.getInventory().setLeggings(Calï¿½a);
 				p.getInventory().setHelmet(Capacete);
 				p.getInventory().setBoots(Bota);
 				p.updateInventory();
 
-				p.sendMessage("§aVocê pode voar por 5 segundos!");
+				p.sendMessage("ï¿½aVocï¿½ pode voar por 5 segundos!");
 				CooldownAPI.addCooldown(p, 35);
 
 				p.setAllowFlight(true);
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
-						p.sendMessage("§cO seu modo pássaro acabou!");
+						p.sendMessage("ï¿½cO seu modo pï¿½ssaro acabou!");
 						p.getInventory().setArmorContents(null);
 
 						p.closeInventory();

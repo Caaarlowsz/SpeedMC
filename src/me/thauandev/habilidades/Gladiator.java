@@ -27,7 +27,7 @@ import org.bukkit.potion.PotionEffectType;
 import me.thauandev.API.CooldownAPI;
 import me.thauandev.API.KitAPI;
 import me.thauandev.configuração.cfGrupo;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class Gladiator implements Listener {
 
@@ -122,7 +122,7 @@ public class Gladiator implements Listener {
 					noExecut.add(r);
 					fighting.put(p.getName(), r.getName());
 					fighting.put(r.getName(), p.getName());
-					this.id2 = Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					this.id2 = Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 						public void run() {
 							if ((Gladiator.fighting.containsKey(p.getName()))
 									&& (((String) Gladiator.fighting.get(p.getName())).equalsIgnoreCase(r.getName()))
@@ -131,7 +131,7 @@ public class Gladiator implements Listener {
 							}
 						}
 					}, 2400L);
-					this.id1 = Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					this.id1 = Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 						public void run() {
 							if ((Gladiator.fighting.containsKey(p.getName()))
 									&& (((String) Gladiator.fighting.get(p.getName())).equalsIgnoreCase(r.getName()))
@@ -190,7 +190,7 @@ public class Gladiator implements Listener {
 				&& (fighting.containsKey(e.getPlayer().getName()))) {
 			e.setCancelled(true);
 			e.getClickedBlock().setType(Material.GLASS);
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 				public void run() {
 					if (Gladiator.fighting.containsKey(e.getPlayer().getName())) {
 						e.getClickedBlock().setType(Material.GLASS);

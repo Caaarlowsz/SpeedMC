@@ -7,8 +7,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import me.thauandev.API.ArraysAPI;
-import me.thauandev.configuração.cfGrupo;
-import me.thauandev.main.Main;
+import me.thauandev.configuraï¿½ï¿½o.cfGrupo;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class DicaCommand implements CommandExecutor {
 
@@ -17,14 +17,14 @@ public class DicaCommand implements CommandExecutor {
 		Player p = (Player) Sender;
 
 		if (ArraysAPI.CooldownDica.contains(p)) {
-			p.sendMessage("§c§lSPEED§f§lMC §7Você está em cooldown nesse comando.");
+			p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½7Vocï¿½ estï¿½ em cooldown nesse comando.");
 			return true;
 		}
 		if (Args.length == 0) {
-			p.sendMessage("§c§lSPEED§f§lMC §7Por favor utilize §c/dica (dica)");
+			p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½7Por favor utilize ï¿½c/dica (dica)");
 			return true;
 		}
-		p.sendMessage("§c§lSPEED§f§lMC §7Sua dica foi enviada com sucesso para algum moderador de nosso servidor!");
+		p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½7Sua dica foi enviada com sucesso para algum moderador de nosso servidor!");
 		String dica = " ";
 		for (int i = 0; i < Args.length; i++) {
 			if (i == Args.length - 1) {
@@ -35,7 +35,7 @@ public class DicaCommand implements CommandExecutor {
 		}
 		ArraysAPI.CooldownDica.add(p);
 
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				if (ArraysAPI.CooldownDica.contains(p)) {
 					ArraysAPI.CooldownDica.remove(p);
@@ -49,9 +49,9 @@ public class DicaCommand implements CommandExecutor {
 									|| ((cfGrupo.ChecarGrupo(s, "Trial"))))))))))))))) {
 
 				s.sendMessage(" ");
-				s.sendMessage("      §c§lDICA     ");
-				s.sendMessage("   §7Player §c" + p.getName());
-				s.sendMessage("   §7Dica §c" + dica);
+				s.sendMessage("      ï¿½cï¿½lDICA     ");
+				s.sendMessage("   ï¿½7Player ï¿½c" + p.getName());
+				s.sendMessage("   ï¿½7Dica ï¿½c" + dica);
 				s.sendMessage(" ");
 			}
 		}

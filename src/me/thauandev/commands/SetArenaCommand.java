@@ -11,10 +11,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class SetArenaCommand implements Listener, CommandExecutor {
-	public static Main plugin;
+	public static SpeedPvP plugin;
 
 	public SetArenaCommand() {
 
@@ -24,12 +24,12 @@ public class SetArenaCommand implements Listener, CommandExecutor {
 		Player p = (Player) sender;
 		if ((p.hasPermission("myth.setarena")) && (label.equalsIgnoreCase("setarena"))) {
 			if (args.length == 0) {
-				p.sendMessage("§c§lSPEED§f§lMC §7Utilize /setarena (1-7");
+				p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½7Utilize /setarena (1-7");
 				return true;
 			}
 			if (args[0].equalsIgnoreCase("1")) {
-				Main.getPlugin().getConfig();
-				p.sendMessage("§c§lSPEED§f§lMC §7A Arena 1 Foi Setada Com Sucesso");
+				SpeedPvP.getPlugin().getConfig();
+				p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½7A Arena 1 Foi Setada Com Sucesso");
 				plugin.getConfig().set("arena1.x", Double.valueOf(p.getLocation().getX()));
 				plugin.getConfig().set("arena1.y", Double.valueOf(p.getLocation().getY()));
 				plugin.getConfig().set("arena1.z", Double.valueOf(p.getLocation().getZ()));
@@ -37,11 +37,11 @@ public class SetArenaCommand implements Listener, CommandExecutor {
 				plugin.getConfig().set("arena1.pitch", Float.valueOf(p.getLocation().getPitch()));
 				plugin.getConfig().set("arena1.yaw", Float.valueOf(p.getLocation().getYaw()));
 				plugin.getConfig().set("arena1.world", p.getLocation().getWorld().getName());
-				Main.plugin.saveConfig();
+				SpeedPvP.plugin.saveConfig();
 			}
 			if (args[0].equalsIgnoreCase("2")) {
-				Main.getPlugin().getConfig();
-				p.sendMessage("§c§lSPEED§f§lMC §7A Arena 2 Foi Setada Com Sucesso");
+				SpeedPvP.getPlugin().getConfig();
+				p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½7A Arena 2 Foi Setada Com Sucesso");
 				plugin.getConfig().set("arena2.x", Double.valueOf(p.getLocation().getX()));
 				plugin.getConfig().set("arena2.y", Double.valueOf(p.getLocation().getY()));
 				plugin.getConfig().set("arena2.z", Double.valueOf(p.getLocation().getZ()));
@@ -49,11 +49,11 @@ public class SetArenaCommand implements Listener, CommandExecutor {
 				plugin.getConfig().set("arena2.pitch", Float.valueOf(p.getLocation().getPitch()));
 				plugin.getConfig().set("arena2.yaw", Float.valueOf(p.getLocation().getYaw()));
 				plugin.getConfig().set("arena2.world", p.getLocation().getWorld().getName());
-				Main.plugin.saveConfig();
+				SpeedPvP.plugin.saveConfig();
 			}
 			if (args[0].equalsIgnoreCase("3")) {
-				Main.getPlugin().getConfig();
-				p.sendMessage("§c§lSPEED§f§lMC §7A Arena 3 Foi Setada Com Sucesso");
+				SpeedPvP.getPlugin().getConfig();
+				p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½7A Arena 3 Foi Setada Com Sucesso");
 				plugin.getConfig().set("arena3.x", Double.valueOf(p.getLocation().getX()));
 				plugin.getConfig().set("arena3.y", Double.valueOf(p.getLocation().getY()));
 				plugin.getConfig().set("arena3.z", Double.valueOf(p.getLocation().getZ()));
@@ -61,11 +61,11 @@ public class SetArenaCommand implements Listener, CommandExecutor {
 				plugin.getConfig().set("arena3.pitch", Float.valueOf(p.getLocation().getPitch()));
 				plugin.getConfig().set("arena3.yaw", Float.valueOf(p.getLocation().getYaw()));
 				plugin.getConfig().set("arena3.world", p.getLocation().getWorld().getName());
-				Main.plugin.saveConfig();
+				SpeedPvP.plugin.saveConfig();
 			}
 			if (args[0].equalsIgnoreCase("4")) {
-				Main.getPlugin().getConfig();
-				p.sendMessage("§c§lSPEED§f§lMC §7A Arena 4 Foi Setada Com Sucesso");
+				SpeedPvP.getPlugin().getConfig();
+				p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½7A Arena 4 Foi Setada Com Sucesso");
 				plugin.getConfig().set("arena4.x", Double.valueOf(p.getLocation().getX()));
 				plugin.getConfig().set("arena4.y", Double.valueOf(p.getLocation().getY()));
 				plugin.getConfig().set("arena4.z", Double.valueOf(p.getLocation().getZ()));
@@ -73,11 +73,11 @@ public class SetArenaCommand implements Listener, CommandExecutor {
 				plugin.getConfig().set("arena4.pitch", Float.valueOf(p.getLocation().getPitch()));
 				plugin.getConfig().set("arena4.yaw", Float.valueOf(p.getLocation().getYaw()));
 				plugin.getConfig().set("arena4.world", p.getLocation().getWorld().getName());
-				Main.plugin.saveConfig();
+				SpeedPvP.plugin.saveConfig();
 			}
 			if (args[0].equalsIgnoreCase("5")) {
-				Main.getPlugin().getConfig();
-				p.sendMessage("§c§lSPEED§f§lMC §7A Arena 5 Foi Setada Com Sucesso");
+				SpeedPvP.getPlugin().getConfig();
+				p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½7A Arena 5 Foi Setada Com Sucesso");
 				plugin.getConfig().set("arena5.x", Double.valueOf(p.getLocation().getX()));
 				plugin.getConfig().set("arena5.y", Double.valueOf(p.getLocation().getY()));
 				plugin.getConfig().set("arena5.z", Double.valueOf(p.getLocation().getZ()));
@@ -85,11 +85,11 @@ public class SetArenaCommand implements Listener, CommandExecutor {
 				plugin.getConfig().set("arena5.pitch", Float.valueOf(p.getLocation().getPitch()));
 				plugin.getConfig().set("arena5.yaw", Float.valueOf(p.getLocation().getYaw()));
 				plugin.getConfig().set("arena5.world", p.getLocation().getWorld().getName());
-				Main.plugin.saveConfig();
+				SpeedPvP.plugin.saveConfig();
 			}
 			if (args[0].equalsIgnoreCase("6")) {
-				Main.getPlugin().getConfig();
-				p.sendMessage("§c§lSPEED§f§lMC §7A Arena 6 Foi Setada Com Sucesso");
+				SpeedPvP.getPlugin().getConfig();
+				p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½7A Arena 6 Foi Setada Com Sucesso");
 				plugin.getConfig().set("arena6.x", Double.valueOf(p.getLocation().getX()));
 				plugin.getConfig().set("arena6.y", Double.valueOf(p.getLocation().getY()));
 				plugin.getConfig().set("arena6.z", Double.valueOf(p.getLocation().getZ()));
@@ -97,11 +97,11 @@ public class SetArenaCommand implements Listener, CommandExecutor {
 				plugin.getConfig().set("arena6.pitch", Float.valueOf(p.getLocation().getPitch()));
 				plugin.getConfig().set("arena6.yaw", Float.valueOf(p.getLocation().getYaw()));
 				plugin.getConfig().set("arena6.world", p.getLocation().getWorld().getName());
-				Main.plugin.saveConfig();
+				SpeedPvP.plugin.saveConfig();
 			}
 			if (args[0].equalsIgnoreCase("7")) {
-				Main.getPlugin().getConfig();
-				p.sendMessage("§c§lSPEED§f§lMC §7A Arena 7 Foi Setada Com Sucesso");
+				SpeedPvP.getPlugin().getConfig();
+				p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½7A Arena 7 Foi Setada Com Sucesso");
 				plugin.getConfig().set("arena7.x", Double.valueOf(p.getLocation().getX()));
 				plugin.getConfig().set("arena7.y", Double.valueOf(p.getLocation().getY()));
 				plugin.getConfig().set("arena7.z", Double.valueOf(p.getLocation().getZ()));
@@ -109,7 +109,7 @@ public class SetArenaCommand implements Listener, CommandExecutor {
 				plugin.getConfig().set("arena7.pitch", Float.valueOf(p.getLocation().getPitch()));
 				plugin.getConfig().set("arena7.yaw", Float.valueOf(p.getLocation().getYaw()));
 				plugin.getConfig().set("arena7.world", p.getLocation().getWorld().getName());
-				Main.plugin.saveConfig();
+				SpeedPvP.plugin.saveConfig();
 			}
 
 		}

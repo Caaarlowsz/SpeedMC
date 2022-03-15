@@ -1,4 +1,4 @@
-package me.thauandev.configuração;
+package me.thauandev.configuraÃ§Ã£o;
 
 import java.io.File;
 
@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import me.thauandev.API.TopKillStreak;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 import me.thauandev.scoreboard.sScoreAPI;
 
 public class cfStatus {
@@ -19,7 +19,7 @@ public class cfStatus {
 	public static FileConfiguration cfile;
 
 	public cfStatus() {
-		Plugin plugin = Main.getPlugin();
+		Plugin plugin = SpeedPvP.getPlugin();
 
 		if (plugin.getDataFolder().exists() == false) {
 			plugin.getDataFolder().mkdir();

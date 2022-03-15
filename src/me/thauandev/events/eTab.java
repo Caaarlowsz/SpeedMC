@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.spigotmc.ProtocolInjector;
 
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 import net.minecraft.server.v1_7_R4.ChatSerializer;
 import net.minecraft.server.v1_7_R4.IChatBaseComponent;
 import net.minecraft.server.v1_7_R4.PlayerConnection;
@@ -19,15 +19,15 @@ public class eTab implements Listener {
 	@EventHandler
 	void TabDoServidor(PlayerJoinEvent evento) {
 		final Player jogador = evento.getPlayer();
-		Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 
 				PlayerConnection connect = ((CraftPlayer) jogador).getHandle().playerConnection;
 				IChatBaseComponent top = ChatSerializer.a(
-						"{'extra': [{text: '', color: 'aqua'}],'color': gold, 'text': '   §c§lSPEED§f§lMC  \n        §cInformações§7 do servidor   '}");
+						"{'extra': [{text: '', color: 'aqua'}],'color': gold, 'text': '   ï¿½cï¿½lSPEEDï¿½fï¿½lMC  \n        ï¿½cInformaï¿½ï¿½esï¿½7 do servidor   '}");
 
 				IChatBaseComponent bottom = ChatSerializer.a(
-						"{'extra': [{'color': 'aqua', 'text': ' \n        §7Nosso site: §cwww.speedmc.com.br \n§7Nosso Twitter: §c@SpeedMC_ "
+						"{'extra': [{'color': 'aqua', 'text': ' \n        ï¿½7Nosso site: ï¿½cwww.speedmc.com.br \nï¿½7Nosso Twitter: ï¿½c@SpeedMC_ "
 								+ "', 'underline': 'true'}], 'color': 'gold', 'text': ''}");
 				if (((CraftPlayer) jogador).getHandle().playerConnection.networkManager.getVersion() < eTab.VERSION) {
 					return;

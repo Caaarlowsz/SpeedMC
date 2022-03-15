@@ -11,14 +11,14 @@ import org.bukkit.event.player.PlayerToggleSneakEvent;
 
 import me.thauandev.API.CooldownAPI;
 import me.thauandev.API.KitAPI;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class Ninja implements Listener {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static HashMap<Player, Player> a = new HashMap();
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static HashMap<Player, Long> b = new HashMap();
-	public static Main plugin;
+	public static SpeedPvP plugin;
 
 	@EventHandler
 	public void a(EntityDamageByEntityEvent paramEntityDamageByEntityEvent) {
@@ -39,7 +39,7 @@ public class Ninja implements Listener {
 		if ((paramPlayerToggleSneakEvent.isSneaking()) && (KitAPI.getKit(localPlayer1) == "Ninja")
 				&& (CooldownAPI.Cooldown.containsKey(localPlayer1.getName()))) {
 			localPlayer1
-					.sendMessage("§fO seu §3§lCOOLDOWN §facaba em: §c§l" + CooldownAPI.Cooldown(localPlayer1) + "s");
+					.sendMessage("ï¿½fO seu ï¿½3ï¿½lCOOLDOWN ï¿½facaba em: ï¿½cï¿½l" + CooldownAPI.Cooldown(localPlayer1) + "s");
 			return;
 		}
 		if ((paramPlayerToggleSneakEvent.isSneaking()) && (KitAPI.getKit(localPlayer1) == "Ninja")
@@ -47,11 +47,11 @@ public class Ninja implements Listener {
 			Player localPlayer2 = (Player) a.get(localPlayer1);
 			if ((localPlayer2 != null) && (!localPlayer2.isDead())) {
 				if (Gladiator.noExecut.contains(localPlayer2)) {
-					localPlayer1.sendMessage("§cEste jogador está em um duelo nas alturas!");
+					localPlayer1.sendMessage("ï¿½cEste jogador estï¿½ em um duelo nas alturas!");
 					return;
 				}
 				if (Gladiator.noExecut.contains(localPlayer1)) {
-					localPlayer1.sendMessage("§cVocê não pode utilizar o kit Ninja durante um duelo no Gladiator!");
+					localPlayer1.sendMessage("ï¿½cVocï¿½ nï¿½o pode utilizar o kit Ninja durante um duelo no Gladiator!");
 					return;
 				}
 				@SuppressWarnings("unused")
@@ -70,7 +70,7 @@ public class Ninja implements Listener {
 					CooldownAPI.addCooldown(localPlayer1, 7);
 					b.put(localPlayer1, Long.valueOf(System.currentTimeMillis() + 10000L));
 				} else {
-					localPlayer1.sendMessage("§cO último jogador hitado está muito longe!");
+					localPlayer1.sendMessage("ï¿½cO ï¿½ltimo jogador hitado estï¿½ muito longe!");
 				}
 			}
 		}

@@ -9,7 +9,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
-public class Proteção implements Listener {
+public class ProteÃ§Ã£o implements Listener {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private static HashMap<Player, ImortalEnum> imortal = new HashMap();

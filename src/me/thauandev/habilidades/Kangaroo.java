@@ -17,10 +17,10 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
 
 import me.thauandev.API.KitAPI;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class Kangaroo implements Listener {
-	public static Main plugin;
+	public static SpeedPvP plugin;
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static ArrayList<Player> kanga = new ArrayList();
 	@SuppressWarnings({ "unchecked", "rawtypes" })

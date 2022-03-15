@@ -29,7 +29,7 @@ import me.thauandev.habilidades.Ajnin;
 import me.thauandev.habilidades.Ninja;
 import me.thauandev.habilidades.Strong;
 import me.thauandev.invencivel.Proteção;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 import me.thauandev.nametag.Array;
 import me.thauandev.nametag.NametagManager;
 import me.thauandev.nametag.NametagUtils;
@@ -47,7 +47,7 @@ public class API {
 
 		int numero = 20;
 		BossBarAPI.setMessage(p, menssagem);
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				BossBarAPI.removeBar(p);
 			}
@@ -98,7 +98,7 @@ public class API {
 	}
 
 	public static void acharTag(Player p) {
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				API.checarGrupo(p);
 				if (cfGrupo.ChecarGrupo(p, "Dono")) {
@@ -323,7 +323,7 @@ public class API {
 	}
 
 	public static void checarNameTag(Player p) {
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			@SuppressWarnings("unused")
 			public void run() {
 
@@ -350,7 +350,7 @@ public class API {
 				}
 			}
 		}, 1L);
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				acharTag(p);
 			}

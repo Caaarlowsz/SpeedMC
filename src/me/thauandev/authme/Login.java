@@ -9,7 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class Login implements Listener {
 
@@ -35,21 +35,21 @@ public class Login implements Listener {
 	@EventHandler
 	public void aoLogin(PlayerJoinEvent e) {
 		final Player p = e.getPlayer();
-		Main.login.add(p.getName());
-		if (Main.plugin.getConfig().contains("Login." + p.getName().toLowerCase() + ".senha")) {
-			Main.plugin.getServer().getScheduler().scheduleSyncRepeatingTask(Main.plugin, new Runnable() {
+		SpeedPvP.login.add(p.getName());
+		if (SpeedPvP.plugin.getConfig().contains("Login." + p.getName().toLowerCase() + ".senha")) {
+			SpeedPvP.plugin.getServer().getScheduler().scheduleSyncRepeatingTask(SpeedPvP.plugin, new Runnable() {
 				public void run() {
-					if (Main.login.contains(p.getName())) {
-						p.sendMessage("§c§lSPEED§f§lMC §fPara efetuar seu registro, digite §c/login (senha)");
+					if (SpeedPvP.login.contains(p.getName())) {
+						p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½fPara efetuar seu registro, digite ï¿½c/login (senha)");
 					}
 				}
 			}, 0, 100);
 		}
-		if (!Main.plugin.getConfig().contains("Login." + p.getName().toLowerCase() + ".senha")) {
-			Main.plugin.getServer().getScheduler().scheduleSyncRepeatingTask(Main.plugin, new Runnable() {
+		if (!SpeedPvP.plugin.getConfig().contains("Login." + p.getName().toLowerCase() + ".senha")) {
+			SpeedPvP.plugin.getServer().getScheduler().scheduleSyncRepeatingTask(SpeedPvP.plugin, new Runnable() {
 				public void run() {
-					if (Main.login.contains(p.getName())) {
-						p.sendMessage("§c§lSPEED§f§lMC §fPara efetuar seu registro, digite §c/register (senha)");
+					if (SpeedPvP.login.contains(p.getName())) {
+						p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½fPara efetuar seu registro, digite ï¿½c/register (senha)");
 					}
 				}
 			}, 0, 100);

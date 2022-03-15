@@ -19,9 +19,9 @@ import org.bukkit.inventory.ItemStack;
 import me.thauandev.API.API;
 import me.thauandev.API.ArraysAPI;
 import me.thauandev.API.KitAPI;
-import me.thauandev.configuração.cfGrupo;
-import me.thauandev.invencivel.Proteção;
-import me.thauandev.main.Main;
+import me.thauandev.configuraï¿½ï¿½o.cfGrupo;
+ï¿½ï¿½o;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 import me.thauandev.scoreboard.sScoreAPI;
 
 public class AdminCommand implements CommandExecutor, Listener {
@@ -39,7 +39,7 @@ public class AdminCommand implements CommandExecutor, Listener {
 				&& e.getAction() == Action.RIGHT_CLICK_AIR
 				|| e.getAction() == Action.RIGHT_CLICK_BLOCK && p.getItemInHand().hasItemMeta()
 						&& p.getItemInHand().getItemMeta().hasDisplayName()
-						&& p.getItemInHand().getItemMeta().getDisplayName().equals("§aTroca Rapida")) {
+						&& p.getItemInHand().getItemMeta().getDisplayName().equals("ï¿½aTroca Rapida")) {
 
 			for (Player todos : Bukkit.getOnlinePlayers()) {
 
@@ -49,19 +49,19 @@ public class AdminCommand implements CommandExecutor, Listener {
 
 			p.setGameMode(GameMode.SURVIVAL);
 			ArraysAPI.Admin.remove(p);
-			p.sendMessage("§aTroca rápida efetuada com sucesso! ");
+			p.sendMessage("ï¿½aTroca rï¿½pida efetuada com sucesso! ");
 
 			p.getInventory().clear();
 			p.getInventory().setArmorContents(null);
 
 			p.getInventory().setItem(4,
-					API.criarItem(p, Material.MAGMA_CREAM, "§aQuickAdmin", new String[] { "" }, 1, (short) 0));
+					API.criarItem(p, Material.MAGMA_CREAM, "ï¿½aQuickAdmin", new String[] { "" }, 1, (short) 0));
 			p.getInventory().setItem(2,
-					API.criarItem(p, Material.MUSHROOM_SOUP, "§aAutoSoup", new String[] { "" }, 1, (short) 0));
+					API.criarItem(p, Material.MUSHROOM_SOUP, "ï¿½aAutoSoup", new String[] { "" }, 1, (short) 0));
 			p.getInventory().setItem(6,
-					API.criarItem(p, Material.IRON_FENCE, "§aJaula", new String[] { "" }, 1, (short) 0));
+					API.criarItem(p, Material.IRON_FENCE, "ï¿½aJaula", new String[] { "" }, 1, (short) 0));
 
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 				public void run() {
 
 					ArraysAPI.Admin.add(p);
@@ -69,11 +69,11 @@ public class AdminCommand implements CommandExecutor, Listener {
 					p.getInventory().setArmorContents(null);
 
 					p.getInventory().setItem(4,
-							API.criarItem(p, Material.MAGMA_CREAM, "§aQuickAdmin", new String[] { "" }, 1, (short) 0));
+							API.criarItem(p, Material.MAGMA_CREAM, "ï¿½aQuickAdmin", new String[] { "" }, 1, (short) 0));
 					p.getInventory().setItem(2,
-							API.criarItem(p, Material.MUSHROOM_SOUP, "§aAutoSoup", new String[] { "" }, 1, (short) 0));
+							API.criarItem(p, Material.MUSHROOM_SOUP, "ï¿½aAutoSoup", new String[] { "" }, 1, (short) 0));
 					p.getInventory().setItem(6,
-							API.criarItem(p, Material.IRON_FENCE, "§aJaula", new String[] { "" }, 1, (short) 0));
+							API.criarItem(p, Material.IRON_FENCE, "ï¿½aJaula", new String[] { "" }, 1, (short) 0));
 
 					p.setGameMode(GameMode.CREATIVE);
 
@@ -97,7 +97,7 @@ public class AdminCommand implements CommandExecutor, Listener {
 				Player t = (Player) e.getRightClicked();
 
 				if (ArraysAPI.Checando.contains(t)) {
-					p.sendMessage("§4§lERRO §7Outro membro da equipe já está realizando testes neste jogador!");
+					p.sendMessage("ï¿½4ï¿½lERRO ï¿½7Outro membro da equipe jï¿½ estï¿½ realizando testes neste jogador!");
 					return;
 
 				}
@@ -108,26 +108,26 @@ public class AdminCommand implements CommandExecutor, Listener {
 
 				p.openInventory(t.getInventory());
 				t.getInventory().setItem(4,
-						API.criarItem(p, Material.MUSHROOM_SOUP, "§f§oSopa", new String[] { "" }, 1, (short) 0));
+						API.criarItem(p, Material.MUSHROOM_SOUP, "ï¿½fï¿½oSopa", new String[] { "" }, 1, (short) 0));
 				t.getInventory().setItem(13,
-						API.criarItem(p, Material.MUSHROOM_SOUP, "§f§oSopa", new String[] { "" }, 1, (short) 0));
+						API.criarItem(p, Material.MUSHROOM_SOUP, "ï¿½fï¿½oSopa", new String[] { "" }, 1, (short) 0));
 				t.getInventory().setItem(9,
-						API.criarItem(p, Material.MUSHROOM_SOUP, "§f§oSopa", new String[] { "" }, 1, (short) 0));
+						API.criarItem(p, Material.MUSHROOM_SOUP, "ï¿½fï¿½oSopa", new String[] { "" }, 1, (short) 0));
 
-				p.sendMessage("§aCarregando informações...");
-				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				p.sendMessage("ï¿½aCarregando informaï¿½ï¿½es...");
+				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 
 						if (API.getAmount(t, Material.BOWL) >= 1) {
 							p.closeInventory();
-							p.sendMessage("§c§m>-------------------------<");
-							p.sendMessage("                §f§lAUTOSOUP      ");
-							p.sendMessage("§c§m>-------------------------<");
+							p.sendMessage("ï¿½cï¿½m>-------------------------<");
+							p.sendMessage("                ï¿½fï¿½lAUTOSOUP      ");
+							p.sendMessage("ï¿½cï¿½m>-------------------------<");
 							p.sendMessage(" ");
-							p.sendMessage("§6• §fProbabilidade: §2§lBAIXA");
-							p.sendMessage("§6• §fSopas tomadas: §6§l1");
+							p.sendMessage("ï¿½6ï¿½ ï¿½fProbabilidade: ï¿½2ï¿½lBAIXA");
+							p.sendMessage("ï¿½6ï¿½ ï¿½fSopas tomadas: ï¿½6ï¿½l1");
 							p.sendMessage(" ");
-							p.sendMessage("§c§m>-------------------------<");
+							p.sendMessage("ï¿½cï¿½m>-------------------------<");
 
 							{
 
@@ -135,38 +135,38 @@ public class AdminCommand implements CommandExecutor, Listener {
 
 							if (API.getAmount(t, Material.BOW) >= 3) {
 								p.closeInventory();
-								p.sendMessage("§c§m>-------------------------<");
-								p.sendMessage("                §f§lAUTOSOUP      ");
-								p.sendMessage("§c§m>-------------------------<");
+								p.sendMessage("ï¿½cï¿½m>-------------------------<");
+								p.sendMessage("                ï¿½fï¿½lAUTOSOUP      ");
+								p.sendMessage("ï¿½cï¿½m>-------------------------<");
 								p.sendMessage(" ");
-								p.sendMessage("§6• §fProbabilidade: §4§lCERTEZA");
-								p.sendMessage("§6• §fSopas tomadas: §6§l3");
+								p.sendMessage("ï¿½6ï¿½ ï¿½fProbabilidade: ï¿½4ï¿½lCERTEZA");
+								p.sendMessage("ï¿½6ï¿½ ï¿½fSopas tomadas: ï¿½6ï¿½l3");
 								p.sendMessage(" ");
-								p.sendMessage("§c§m>-------------------------<");
+								p.sendMessage("ï¿½cï¿½m>-------------------------<");
 							}
 
 							if (API.getAmount(t, Material.BOWL) >= 2) {
 								p.closeInventory();
-								p.sendMessage("§c§m>-------------------------<");
-								p.sendMessage("                §f§lAUTOSOUP      ");
-								p.sendMessage("§c§m>-------------------------<");
+								p.sendMessage("ï¿½cï¿½m>-------------------------<");
+								p.sendMessage("                ï¿½fï¿½lAUTOSOUP      ");
+								p.sendMessage("ï¿½cï¿½m>-------------------------<");
 								p.sendMessage(" ");
-								p.sendMessage("§6• §fProbabilidade: §6§lMEDIA");
-								p.sendMessage("§6• §fSopas tomadas: §6§l2");
+								p.sendMessage("ï¿½6ï¿½ ï¿½fProbabilidade: ï¿½6ï¿½lMEDIA");
+								p.sendMessage("ï¿½6ï¿½ ï¿½fSopas tomadas: ï¿½6ï¿½l2");
 								p.sendMessage(" ");
-								p.sendMessage("§c§m>-------------------------<");
+								p.sendMessage("ï¿½cï¿½m>-------------------------<");
 							}
 
 						} else if (API.getAmount(t, Material.BOWL) == 0) {
 							p.closeInventory();
-							p.sendMessage("§c§m>-------------------------<");
-							p.sendMessage("                §f§lAUTOSOUP      ");
-							p.sendMessage("§c§m>-------------------------<");
+							p.sendMessage("ï¿½cï¿½m>-------------------------<");
+							p.sendMessage("                ï¿½fï¿½lAUTOSOUP      ");
+							p.sendMessage("ï¿½cï¿½m>-------------------------<");
 							p.sendMessage(" ");
-							p.sendMessage("§6• §fProbabilidade: §a§lNENHUMA");
-							p.sendMessage("§6• §fSopas tomadas: §6§l0");
+							p.sendMessage("ï¿½6ï¿½ ï¿½fProbabilidade: ï¿½aï¿½lNENHUMA");
+							p.sendMessage("ï¿½6ï¿½ ï¿½fSopas tomadas: ï¿½6ï¿½l0");
 							p.sendMessage(" ");
-							p.sendMessage("§c§m>-------------------------<");
+							p.sendMessage("ï¿½cï¿½m>-------------------------<");
 						}
 						ArraysAPI.Checando.remove(t);
 						t.getInventory().clear();
@@ -180,7 +180,7 @@ public class AdminCommand implements CommandExecutor, Listener {
 		}
 		if (p.getItemInHand().getType() == Material.IRON_FENCE && ArraysAPI.Admin.contains(p)) {
 			Player t = (Player) e.getRightClicked();
-			p.sendMessage("§c§lSPEED§f§lMC §7Você prendeu o jogador: §c" + t.getName());
+			p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½7Vocï¿½ prendeu o jogador: ï¿½c" + t.getName());
 			t.getLocation().add(0.0D, 13.0D, 0.0D).getBlock().setType(Material.BEDROCK);
 			t.getLocation().add(0.0D, 11.0D, 1.0D).getBlock().setType(Material.BEDROCK);
 			t.getLocation().add(1.0D, 11.0D, 0.0D).getBlock().setType(Material.BEDROCK);
@@ -208,7 +208,7 @@ public class AdminCommand implements CommandExecutor, Listener {
 							&& (!cfGrupo.ChecarGrupo(p, "Mod+") && (!cfGrupo.ChecarGrupo(p, "Mod")
 									&& (!cfGrupo.ChecarGrupo(p, "Trial") && (!cfGrupo.ChecarGrupo(p, "Youtuber+")
 											&& (!cfGrupo.ChecarGrupo(p, "Helper")))))))))) {
-				p.sendMessage("§c§lSPEED§f§lMC §fVoce nao possui §fAcesso ao §c§lADMIN§f!");
+				p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½fVoce nao possui ï¿½fAcesso ao ï¿½cï¿½lADMINï¿½f!");
 				return true;
 			}
 			if (!ArraysAPI.Admin.contains(p)) {
@@ -221,20 +221,20 @@ public class AdminCommand implements CommandExecutor, Listener {
 				p.getInventory().clear();
 				p.getInventory().setArmorContents(null);
 
-				Proteção.setImortal(p, false);
-				p.sendMessage("§c§lADMIN: §fModo Admin: §a§lATIVADO");
-				p.sendMessage("§6§lINVIS: §fVocê está invisível para todos os jogadores!");
+				Proteï¿½ï¿½o.setImortal(p, false);
+				p.sendMessage("ï¿½cï¿½lADMIN: ï¿½fModo Admin: ï¿½aï¿½lATIVADO");
+				p.sendMessage("ï¿½6ï¿½lINVIS: ï¿½fVocï¿½ estï¿½ invisï¿½vel para todos os jogadores!");
 				KitAPI.setKitAntes(p, "Admin");
 				API.setWarp(p, "Admin");
 				p.setHealth(20.0D);
 				p.setMaxHealth(20.0D);
 				p.setGameMode(GameMode.CREATIVE);
 				p.getInventory().setItem(4,
-						API.criarItem(p, Material.MAGMA_CREAM, "§aQuickAdmin", new String[] { "" }, 1, (short) 0));
+						API.criarItem(p, Material.MAGMA_CREAM, "ï¿½aQuickAdmin", new String[] { "" }, 1, (short) 0));
 				p.getInventory().setItem(2,
-						API.criarItem(p, Material.MUSHROOM_SOUP, "§aAutoSoup", new String[] { "" }, 1, (short) 0));
+						API.criarItem(p, Material.MUSHROOM_SOUP, "ï¿½aAutoSoup", new String[] { "" }, 1, (short) 0));
 				p.getInventory().setItem(6,
-						API.criarItem(p, Material.IRON_FENCE, "§aJaula", new String[] { "" }, 1, (short) 0));
+						API.criarItem(p, Material.IRON_FENCE, "ï¿½aJaula", new String[] { "" }, 1, (short) 0));
 
 				setAdmin(p);
 				ArraysAPI.Jogando.remove(p);
@@ -248,8 +248,8 @@ public class AdminCommand implements CommandExecutor, Listener {
 			if (ArraysAPI.Admin.contains(p)) {
 
 				ArraysAPI.Admin.remove(p);
-				p.sendMessage("§c§lADMIN: §fModo Admin: §c§lDESATIVADO");
-				p.sendMessage("§6§lVIS: §fVocê está visível para todos os jogadores!");
+				p.sendMessage("ï¿½cï¿½lADMIN: ï¿½fModo Admin: ï¿½cï¿½lDESATIVADO");
+				p.sendMessage("ï¿½6ï¿½lVIS: ï¿½fVocï¿½ estï¿½ visï¿½vel para todos os jogadores!");
 				KitAPI.setKitAntes(p, kit.get(p));
 				API.setWarp(p, warp.get(p));
 				p.setGameMode(GameMode.SURVIVAL);

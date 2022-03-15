@@ -11,7 +11,7 @@ import org.bukkit.event.player.PlayerToggleSneakEvent;
 
 import me.thauandev.API.CooldownAPI;
 import me.thauandev.API.KitAPI;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class Ajnin implements Listener {
 
@@ -26,7 +26,7 @@ public class Ajnin implements Listener {
 			if (KitAPI.getKit(hitou) == "Ajnin" && !a.containsKey(hitou)) {
 				a.put(hitou, hitado);
 
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 						a.remove(hitou);
 						a.remove(hitado);
@@ -41,7 +41,7 @@ public class Ajnin implements Listener {
 		Player hitou = e.getPlayer();
 		if ((e.isSneaking()) && (KitAPI.getKit(hitou) == "Ajnin")
 				&& (CooldownAPI.Cooldown.containsKey(hitou.getName()))) {
-			hitou.sendMessage("§fO seu §3§lCOOLDOWN §facaba em: §c§l" + CooldownAPI.Cooldown(hitou) + "s");
+			hitou.sendMessage("ï¿½fO seu ï¿½3ï¿½lCOOLDOWN ï¿½facaba em: ï¿½cï¿½l" + CooldownAPI.Cooldown(hitou) + "s");
 			return;
 		}
 
@@ -50,11 +50,11 @@ public class Ajnin implements Listener {
 
 			if ((hitado != null)) {
 				if (Gladiator.noExecut.contains(hitado)) {
-					hitou.sendMessage("§cEste jogador está em um duelo nas alturas!");
+					hitou.sendMessage("ï¿½cEste jogador estï¿½ em um duelo nas alturas!");
 					return;
 				}
 				if (Gladiator.noExecut.contains(hitou)) {
-					hitou.sendMessage("§cVocê não pode utilizar o kit Ninja durante um duelo no Gladiator!");
+					hitou.sendMessage("ï¿½cVocï¿½ nï¿½o pode utilizar o kit Ninja durante um duelo no Gladiator!");
 					return;
 				}
 				if (hitou.getLocation().distance(hitado.getLocation()) < 40.0D) {
@@ -62,7 +62,7 @@ public class Ajnin implements Listener {
 					hitado.teleport(hitou.getLocation());
 					CooldownAPI.addCooldown(hitou, 7);
 				} else {
-					hitou.sendMessage("§cO último jogador hitado está muito longe!");
+					hitou.sendMessage("ï¿½cO ï¿½ltimo jogador hitado estï¿½ muito longe!");
 				}
 			}
 		}

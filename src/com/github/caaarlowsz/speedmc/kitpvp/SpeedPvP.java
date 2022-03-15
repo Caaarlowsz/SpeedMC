@@ -1,7 +1,10 @@
-package me.thauandev.main;
+package com.github.caaarlowsz.speedmc.kitpvp;
 
 import java.util.ArrayList;
 
+import com.github.caaarlowsz.kitpvpapi.KitPvP;
+import com.github.caaarlowsz.kitpvpapi.KitPvPAPI;
+import me.thauandev.configuraÃ§Ã£o.*;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -98,14 +101,6 @@ import me.thauandev.commands.VisCommand;
 import me.thauandev.commands.WarpCommand;
 import me.thauandev.commands.YoutuberCommand;
 import me.thauandev.commands.cRemoveHead;
-import me.thauandev.configuração.WarpsConfig;
-import me.thauandev.configuração.cfConfig;
-import me.thauandev.configuração.cfEntrou;
-import me.thauandev.configuração.cfGrupo;
-import me.thauandev.configuração.cfKitdiario;
-import me.thauandev.configuração.cfPermissão;
-import me.thauandev.configuração.cfStatus;
-import me.thauandev.configuração.cfTempGrupo;
 import me.thauandev.events.ColorSigns;
 import me.thauandev.events.PlacaCHALLENGE;
 import me.thauandev.events.PlacaRecraft;
@@ -139,7 +134,7 @@ import me.thauandev.habilidades.Thor;
 import me.thauandev.habilidades.Timelord;
 import me.thauandev.habilidades.Turtle;
 import me.thauandev.habilidades.Viper;
-import me.thauandev.invencivel.Proteção;
+import me.thauandev.invencivel.ProteÃ§Ã£o;
 import me.thauandev.jumps.Diamante;
 import me.thauandev.jumps.EndPortal;
 import me.thauandev.jumps.Esponja;
@@ -162,13 +157,32 @@ import me.thauandev.umVum.CmdsSpeed;
 import me.thauandev.umVum.Events1v1;
 import me.thauandev.umVum.Speed1v1;
 
-public class Main extends JavaPlugin {
+public class SpeedPvP extends JavaPlugin implements KitPvP {
+	@Override
+	public void onEnable() {
+		super.onEnable();
+		KitPvPAPI.setInstance(this);
+
+		// TODO: Remover quando melhorar a classe principal
+		this.enable();
+	}
+
+	@Override
+	public void onDisable() {
+		super.onDisable();
+		KitPvPAPI.setInstance(null);
+
+		// TODO: Remover quando melhorar a classe principal
+		this.disable();
+	}
+
+	// TODO: Melhorar a classe principal
 
 	public static final String Menssagens = null;
 
-	public static Main main;
+	public static SpeedPvP main;
 
-	public static Main getInstance() {
+	public static SpeedPvP getInstance() {
 		return main;
 	}
 
@@ -186,28 +200,28 @@ public class Main extends JavaPlugin {
 
 	public static ArrayList<String> login = new ArrayList<>();
 
-	public void onEnable() {
+	public void enable() {
 		plugin = this;
-		Bukkit.getConsoleSender().sendMessage("§b§l§m-------------------------------------");
+		Bukkit.getConsoleSender().sendMessage("ï¿½bï¿½lï¿½m-------------------------------------");
 		Bukkit.getConsoleSender().sendMessage("                                     ");
-		Bukkit.getConsoleSender().sendMessage("          §c§lSPEED§f§lMC        ");
+		Bukkit.getConsoleSender().sendMessage("          ï¿½cï¿½lSPEEDï¿½fï¿½lMC        ");
 		Bukkit.getConsoleSender().sendMessage("");
 		Bukkit.getConsoleSender().sendMessage("                                         ");
-		Bukkit.getConsoleSender().sendMessage("§3§lPLUGIN §fO Plugin registrou o Evento §4§lKILL");
-		Bukkit.getConsoleSender().sendMessage("§3§lPLUGIN §fO Plugin registrou o Evento §4§lDEATH");
-		Bukkit.getConsoleSender().sendMessage("§3§lPLUGIN §fO Plugin registrou o Evento §4§lSELECT KIT");
+		Bukkit.getConsoleSender().sendMessage("ï¿½3ï¿½lPLUGIN ï¿½fO Plugin registrou o Evento ï¿½4ï¿½lKILL");
+		Bukkit.getConsoleSender().sendMessage("ï¿½3ï¿½lPLUGIN ï¿½fO Plugin registrou o Evento ï¿½4ï¿½lDEATH");
+		Bukkit.getConsoleSender().sendMessage("ï¿½3ï¿½lPLUGIN ï¿½fO Plugin registrou o Evento ï¿½4ï¿½lSELECT KIT");
 		Bukkit.getConsoleSender().sendMessage("");
 		Bukkit.getConsoleSender().sendMessage("");
-		Bukkit.getConsoleSender().sendMessage("§3§lPLUGIN §fO Plugin registrou com §a§lSUCESSO §fTodos os eventos!");
+		Bukkit.getConsoleSender().sendMessage("ï¿½3ï¿½lPLUGIN ï¿½fO Plugin registrou com ï¿½aï¿½lSUCESSO ï¿½fTodos os eventos!");
 		Bukkit.getConsoleSender().sendMessage("                                             ");
-		Bukkit.getConsoleSender().sendMessage("§b§l§m---------------------------------------------");
+		Bukkit.getConsoleSender().sendMessage("ï¿½bï¿½lï¿½m---------------------------------------------");
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new MoveCheck(), 41L, 40L);
 		for (Player todos : Bukkit.getOnlinePlayers()) {
 			todos.kickPlayer(
-					"   §c§lSERVIDOR REINICIANDO... \n§7Aguarde! \n§7Estamos melhorando a sua jogabilidade, espero que entenda!");
+					"   ï¿½cï¿½lSERVIDOR REINICIANDO... \nï¿½7Aguarde! \nï¿½7Estamos melhorando a sua jogabilidade, espero que entenda!");
 		}
 
-		Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				API.AutomaticMessage();
 			}
@@ -236,21 +250,21 @@ public class Main extends JavaPlugin {
 		PvPCommand.pvp = true;
 	}
 
-	public void onDisable() {
+	public void disable() {
 		PacketsDesabilitar();
-		Bukkit.getConsoleSender().sendMessage("§b§l§m-------------------------------------");
+		Bukkit.getConsoleSender().sendMessage("ï¿½bï¿½lï¿½m-------------------------------------");
 		Bukkit.getConsoleSender().sendMessage("                                     ");
-		Bukkit.getConsoleSender().sendMessage("          §c§lSPEED§f§lMC        ");
+		Bukkit.getConsoleSender().sendMessage("          ï¿½cï¿½lSPEEDï¿½fï¿½lMC        ");
 		Bukkit.getConsoleSender().sendMessage("");
 		Bukkit.getConsoleSender().sendMessage("                                         ");
-		Bukkit.getConsoleSender().sendMessage("§3§lPLUGIN §fO Plugin desregistrou o Evento §4§lKILL");
-		Bukkit.getConsoleSender().sendMessage("§3§lPLUGIN §fO Plugin desregistrou o Evento §4§lDEATH");
-		Bukkit.getConsoleSender().sendMessage("§3§lPLUGIN §fO Plugin desregistrou o Evento §4§lSELECT KIT");
+		Bukkit.getConsoleSender().sendMessage("ï¿½3ï¿½lPLUGIN ï¿½fO Plugin desregistrou o Evento ï¿½4ï¿½lKILL");
+		Bukkit.getConsoleSender().sendMessage("ï¿½3ï¿½lPLUGIN ï¿½fO Plugin desregistrou o Evento ï¿½4ï¿½lDEATH");
+		Bukkit.getConsoleSender().sendMessage("ï¿½3ï¿½lPLUGIN ï¿½fO Plugin desregistrou o Evento ï¿½4ï¿½lSELECT KIT");
 		Bukkit.getConsoleSender().sendMessage("");
 		Bukkit.getConsoleSender().sendMessage("");
-		Bukkit.getConsoleSender().sendMessage("§3§lPLUGIN §fO Plugin Desregistrou com §a§lSUCESSO §fTodos os eventos!");
+		Bukkit.getConsoleSender().sendMessage("ï¿½3ï¿½lPLUGIN ï¿½fO Plugin Desregistrou com ï¿½aï¿½lSUCESSO ï¿½fTodos os eventos!");
 		Bukkit.getConsoleSender().sendMessage("                                             ");
-		Bukkit.getConsoleSender().sendMessage("§b§l§m---------------------------------------------");
+		Bukkit.getConsoleSender().sendMessage("ï¿½bï¿½lï¿½m---------------------------------------------");
 
 	}
 
@@ -271,7 +285,7 @@ public class Main extends JavaPlugin {
 		pm.registerEvents(new Eventos(), this);
 		pm.registerEvents(new eEvents(), this);
 		pm.registerEvents(new eUtills(), this);
-		pm.registerEvents(new Proteção(), this);
+		pm.registerEvents(new ProteÃ§Ã£o(), this);
 		pm.registerEvents(new OpenInventory(), this);
 		pm.registerEvents(new CliqueInventory(), this);
 		pm.registerEvents(new HeadsMenu(), this);
@@ -442,7 +456,7 @@ public class Main extends JavaPlugin {
 		cfGrupo.setarconfig(this);
 		cfKitdiario.setarconfig(this);
 		cfTempGrupo.setarconfig(this);
-		cfPermissão.setarconfig(this);
+		cfPermissÃ£o.setarconfig(this);
 		cfConfig.setarConfig(this);
 		new cfStatus();
 		new WarnCommand();

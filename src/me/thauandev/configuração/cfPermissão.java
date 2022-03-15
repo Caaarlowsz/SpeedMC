@@ -1,4 +1,4 @@
-package me.thauandev.configuração;
+package me.thauandev.configuraÃ§Ã£o;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-public class cfPermissão {
+public class cfPermissÃ£o {
 
 	private static FileConfiguration player_permissao;
 	private static File playerpermissao;
@@ -18,7 +18,7 @@ public class cfPermissão {
 		if (!plugin.getDataFolder().exists()) {
 			plugin.getDataFolder().mkdir();
 		}
-		playerpermissao = new File(plugin.getDataFolder(), "permissões.yml");
+		playerpermissao = new File(plugin.getDataFolder(), "permissï¿½es.yml");
 		if (playerpermissao.exists()) {
 			try {
 				playerpermissao.createNewFile();
@@ -43,14 +43,14 @@ public class cfPermissão {
 
 	public static void setarPermissao(Player p, String Permissao, String trueoufalse) {
 
-		pegarpermissao().set("permissões." + p.getUniqueId() + ".Nick", p.getName());
-		pegarpermissao().set("permissões." + p.getUniqueId() + "." + Permissao, trueoufalse);
-		cfPermissão.salvarconfiguracao();
+		pegarpermissao().set("permissï¿½es." + p.getUniqueId() + ".Nick", p.getName());
+		pegarpermissao().set("permissï¿½es." + p.getUniqueId() + "." + Permissao, trueoufalse);
+		cfPermissÃ£o.salvarconfiguracao();
 	}
 
 	public static boolean getPermissao(Player p, String Permissao) {
 
-		if (pegarpermissao().get("permissões." + p.getUniqueId() + "." + Permissao).equals("true")) {
+		if (pegarpermissao().get("permissï¿½es." + p.getUniqueId() + "." + Permissao).equals("true")) {
 			return true;
 		} else {
 			return false;

@@ -12,7 +12,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import me.thauandev.commands.FlyCommand;
 import me.thauandev.invencivel.Proteção;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 import me.thauandev.scoreboard.sScoreAPI;
 
 public class KitAPI {
@@ -59,7 +59,7 @@ public class KitAPI {
 			p.getInventory().clear();
 			API.setWarp(p, "Arena");
 			sScoreAPI.scoreboard(p);
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 				public void run() {
 					Proteção.setImortal(p, false);
 				}

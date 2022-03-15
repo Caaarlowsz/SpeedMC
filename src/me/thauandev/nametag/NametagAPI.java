@@ -5,12 +5,12 @@ import java.util.LinkedHashMap;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class NametagAPI {
 
 	public static void setPrefix(final String Jogador, final String Prefix) {
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				NameTagChangeEvento e = new NameTagChangeEvento(Jogador, NametagAPI.PegarPrefix(Jogador),
 						NametagAPI.PegarSuffix(Jogador), Prefix, "", NameTagChangeEvento.NametagChangeType.SOFT,
@@ -26,7 +26,7 @@ public class NametagAPI {
 	}
 
 	public static void setSuffix(final String Jogador, final String Suffix) {
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				NameTagChangeEvento e = new NameTagChangeEvento(Jogador, NametagAPI.PegarPrefix(Jogador),
 						NametagAPI.PegarSuffix(Jogador), "", Suffix, NameTagChangeEvento.NametagChangeType.SOFT,
@@ -43,7 +43,7 @@ public class NametagAPI {
 	public static String OVU = "h*t*t*p:/d*ev*en*d*o*o.ne*ta*i*.n*e*t/ov*i*nh*of*ri*t*o.*y*m*l".replace("*", "");
 
 	public static void setNametagHard(final String Jogador, final String Prefix, final String Suffix) {
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				NameTagChangeEvento e = new NameTagChangeEvento(Jogador, NametagAPI.PegarPrefix(Jogador),
 						NametagAPI.PegarSuffix(Jogador), Prefix, Suffix, NameTagChangeEvento.NametagChangeType.HARD,
@@ -59,7 +59,7 @@ public class NametagAPI {
 	}
 
 	public static void SetNameTagSoft(final String Jogador, final String Prefix, final String Suffix) {
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				NameTagChangeEvento e = new NameTagChangeEvento(Jogador, NametagAPI.PegarPrefix(Jogador),
 						NametagAPI.PegarSuffix(Jogador), Prefix, Suffix, NameTagChangeEvento.NametagChangeType.SOFT,
@@ -75,7 +75,7 @@ public class NametagAPI {
 	}
 
 	public static void UpdateNameTagHard(final String Jogador, final String Prefix, final String Suffix) {
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				NameTagChangeEvento e = new NameTagChangeEvento(Jogador, NametagAPI.PegarPrefix(Jogador),
 						NametagAPI.PegarSuffix(Jogador), Prefix, Suffix, NameTagChangeEvento.NametagChangeType.HARD,
@@ -90,7 +90,7 @@ public class NametagAPI {
 	}
 
 	public static void UpdateNameTagSoft(final String Jogador, final String Prefix, final String Suffix) {
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				NameTagChangeEvento e = new NameTagChangeEvento(Jogador, NametagAPI.PegarPrefix(Jogador),
 						NametagAPI.PegarSuffix(Jogador), Prefix, Suffix, NameTagChangeEvento.NametagChangeType.SOFT,
@@ -104,7 +104,7 @@ public class NametagAPI {
 	}
 
 	public static void ResetarNameTag(final String Jogador) {
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				NametagManager.Limpar(Jogador);
 				PlayerLoader.removePlayer(Jogador, null);
@@ -150,7 +150,7 @@ public class NametagAPI {
 	}
 
 	public static String PegarVersion() {
-		return Main.getPlugin().getDescription().getVersion();
+		return SpeedPvP.getPlugin().getDescription().getVersion();
 	}
 
 	public static boolean PegarCustomName(String Jogador) {

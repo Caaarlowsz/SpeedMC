@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.event.Listener;
 
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 import net.minecraft.server.v1_7_R4.EntityFishingHook;
 import net.minecraft.server.v1_7_R4.EntityHuman;
 import net.minecraft.server.v1_7_R4.EntitySnowball;
@@ -26,7 +26,7 @@ public class Cordinha extends EntityFishingHook implements Listener {
 	public boolean lastControllerDead;
 	public boolean isHooked;
 
-	public void Grappler(Main plugin) {
+	public void Grappler(SpeedPvP plugin) {
 	}
 
 	public Cordinha(org.bukkit.World world, EntityHuman entityhuman) {

@@ -12,8 +12,8 @@ import org.bukkit.inventory.ItemStack;
 
 import me.thauandev.API.API;
 import me.thauandev.API.ArraysAPI;
-import me.thauandev.configuração.cfGrupo;
-import me.thauandev.main.Main;
+import me.thauandev.configuraï¿½ï¿½o.cfGrupo;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class AutoSoupCommand implements CommandExecutor {
 
@@ -28,28 +28,28 @@ public class AutoSoupCommand implements CommandExecutor {
 							&& (!cfGrupo.ChecarGrupo(p, "Mod+") && (!cfGrupo.ChecarGrupo(p, "Mod")
 									&& (!cfGrupo.ChecarGrupo(p, "Trial") && (!cfGrupo.ChecarGrupo(p, "Youtuber+")
 											&& (!cfGrupo.ChecarGrupo(p, "Helper")))))))))) {
-				p.sendMessage("Você não possui permissão para executar este comando!");
+				p.sendMessage("Vocï¿½ nï¿½o possui permissï¿½o para executar este comando!");
 				return true;
 			}
 			if (args.length == 0) {
-				p.sendMessage("§c§lSPEED§f§lMC §fUtilize §b/autosoup (JOGADOR)");
+				p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½fUtilize ï¿½b/autosoup (JOGADOR)");
 				p.sendMessage(
-						"§4§lATENCAO §7Verifique se o jogador não está em duelo com alguém pois o teste de autosoup poderá prejudicá-lo.");
+						"ï¿½4ï¿½lATENCAO ï¿½7Verifique se o jogador nï¿½o estï¿½ em duelo com alguï¿½m pois o teste de autosoup poderï¿½ prejudicï¿½-lo.");
 				return true;
 			}
 			if (args.length == 1) {
 				Player t = Bukkit.getPlayer(args[0]);
 				if (t == null) {
-					p.sendMessage("§cO jogador §c§l " + args[0] + " §7está offline.");
+					p.sendMessage("ï¿½cO jogador ï¿½cï¿½l " + args[0] + " ï¿½7estï¿½ offline.");
 					return true;
 				}
 				if (t.getName() == p.getName()) {
-					p.sendMessage("§cVocê não pode testar §c§lAutosoup §cem si mesmo!");
+					p.sendMessage("ï¿½cVocï¿½ nï¿½o pode testar ï¿½cï¿½lAutosoup ï¿½cem si mesmo!");
 					return true;
 				}
 				if (ArraysAPI.Checando.contains(t)) {
 					p.sendMessage(
-							"§4§lAUTOSOUP §7Outro membro da equipe já está testando §c§lAutosoup §7neste jogador. Tente novamente!");
+							"ï¿½4ï¿½lAUTOSOUP ï¿½7Outro membro da equipe jï¿½ estï¿½ testando ï¿½cï¿½lAutosoup ï¿½7neste jogador. Tente novamente!");
 				}
 				inventario.put(t, t.getInventory().getContents());
 				t.getInventory().clear();
@@ -58,27 +58,27 @@ public class AutoSoupCommand implements CommandExecutor {
 
 				p.openInventory(t.getInventory());
 				t.getInventory().setItem(20,
-						API.criarItem(p, Material.MUSHROOM_SOUP, "§f§oSopa", new String[] { "" }, 1, (short) 0));
+						API.criarItem(p, Material.MUSHROOM_SOUP, "ï¿½fï¿½oSopa", new String[] { "" }, 1, (short) 0));
 				t.getInventory().setItem(21,
-						API.criarItem(p, Material.MUSHROOM_SOUP, "§f§oSopa", new String[] { "" }, 1, (short) 0));
+						API.criarItem(p, Material.MUSHROOM_SOUP, "ï¿½fï¿½oSopa", new String[] { "" }, 1, (short) 0));
 				t.getInventory().setItem(22,
-						API.criarItem(p, Material.MUSHROOM_SOUP, "§f§oSopa", new String[] { "" }, 1, (short) 0));
+						API.criarItem(p, Material.MUSHROOM_SOUP, "ï¿½fï¿½oSopa", new String[] { "" }, 1, (short) 0));
 
-				p.sendMessage("§aChecando...");
-				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				p.sendMessage("ï¿½aChecando...");
+				Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 
 						if (API.getAmount(t, Material.BOWL) >= 1) {
 							p.closeInventory();
 							p.sendMessage(" ");
 							p.sendMessage(
-									"§4§lPROBABILIDADE: §fA probabilidade do jogador estar de Autosoup é: §4§lCERTEZA");
+									"ï¿½4ï¿½lPROBABILIDADE: ï¿½fA probabilidade do jogador estar de Autosoup ï¿½: ï¿½4ï¿½lCERTEZA");
 							p.sendMessage(" ");
 						} else if (API.getAmount(t, Material.BOWL) == 0) {
 							p.closeInventory();
 							p.sendMessage(" ");
 							p.sendMessage(
-									"§4§lPROBABILIDADE: §fA probabilidade do jogador estar de Autosoup é: §a§lNENHUMA");
+									"ï¿½4ï¿½lPROBABILIDADE: ï¿½fA probabilidade do jogador estar de Autosoup ï¿½: ï¿½aï¿½lNENHUMA");
 							p.sendMessage(" ");
 						}
 						ArraysAPI.Checando.remove(t);

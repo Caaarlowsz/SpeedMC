@@ -22,10 +22,10 @@ import me.thauandev.API.TopKillStreak;
 import me.thauandev.API.WarpsAPI;
 import me.thauandev.bans.Config;
 import me.thauandev.commands.AdminCommand;
-import me.thauandev.configuração.cfGrupo;
-import me.thauandev.configuração.cfStatus;
-import me.thauandev.invencivel.Proteção;
-import me.thauandev.main.Main;
+ï¿½ï¿½o.cfGrupo;
+import me.thauandev.configuraï¿½ï¿½o.cfStatus;
+ï¿½ï¿½o;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 import me.thauandev.scoreboard.sScoreAPI;
 
 public class eEvents implements Listener {
@@ -56,8 +56,8 @@ public class eEvents implements Listener {
 		Config.getConfig().saveJogadores();
 
 		p.setWalkSpeed(0.2F);
-		Proteção.setImortal(p, true);
-		Proteção.isImortal(p);
+		Proteï¿½ï¿½o.setImortal(p, true);
+		Proteï¿½ï¿½o.isImortal(p);
 		p.getInventory().clear();
 		p.getInventory().setArmorContents(null);
 		p.setGameMode(GameMode.ADVENTURE);
@@ -69,8 +69,8 @@ public class eEvents implements Listener {
 		API.setWarp(p, "Spawn");
 		WarpsAPI.Ir(p, "Spawn");
 
-		API.mandarTitulo(p, "§c§lSPEED§f§lMC");
-		API.mandarSubTitulo(p, "§7Seja bem-vindo, §c" + p.getName());
+		API.mandarTitulo(p, "ï¿½cï¿½lSPEEDï¿½fï¿½lMC");
+		API.mandarSubTitulo(p, "ï¿½7Seja bem-vindo, ï¿½c" + p.getName());
 
 		API.checarPermissao(p);
 
@@ -92,7 +92,7 @@ public class eEvents implements Listener {
 
 		sScoreAPI.scoreboard(p);
 
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				API.sendItems(p);
 			}
@@ -121,10 +121,10 @@ public class eEvents implements Listener {
 		p.sendMessage(" ");
 		p.sendMessage(" ");
 
-		p.sendMessage("§c§lSPEED§f§lMC");
+		p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC");
 		p.sendMessage(" ");
-		p.sendMessage("§7Seja bem vindo ao servidor de §e§lKITPVP");
-		p.sendMessage("§7Siga-nos no nosso §b§lTWITTER §7para saber as novidades §7(§chttp://twitter.com/speedmc_§7)");
+		p.sendMessage("ï¿½7Seja bem vindo ao servidor de ï¿½eï¿½lKITPVP");
+		p.sendMessage("ï¿½7Siga-nos no nosso ï¿½bï¿½lTWITTER ï¿½7para saber as novidades ï¿½7(ï¿½chttp://twitter.com/speedmc_ï¿½7)");
 
 		TopKillStreak.Ks.put(p, Integer.valueOf(0));
 		for (Player players : Bukkit.getOnlinePlayers()) {
@@ -145,13 +145,13 @@ public class eEvents implements Listener {
 		WarpsAPI.Ir(p, "Spawn");
 		API.setWarp(p, "Spawn");
 
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				p.spigot().respawn();
 			}
 		}, 1L);
 
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				API.sendItems(p);
 			}
@@ -164,12 +164,12 @@ public class eEvents implements Listener {
 
 			if (d != null) {
 
-				p.sendMessage("§c§lSPEED§f§lMC §7Voce morreu para §c" + d.getName());
-				p.sendMessage("§7» §6- §e50 moedas.");
+				p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½7Voce morreu para ï¿½c" + d.getName());
+				p.sendMessage("ï¿½7ï¿½ ï¿½6- ï¿½e50 moedas.");
 
-				d.sendMessage("§c§lSPEED§f§lMC §7Voce matou §c" + p.getName());
-				d.sendMessage("§7» §2+ §a1 XP´s. ");
-				d.sendMessage("§7» §6+ §e100 moedas.");
+				d.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½7Voce matou ï¿½c" + p.getName());
+				d.sendMessage("ï¿½7ï¿½ ï¿½2+ ï¿½a1 XPï¿½s. ");
+				d.sendMessage("ï¿½7ï¿½ ï¿½6+ ï¿½e100 moedas.");
 
 				cfStatus.setKills(d);
 				cfStatus.setDeaths(p);
@@ -186,64 +186,64 @@ public class eEvents implements Listener {
 				e.getDrops().clear();
 
 				if (TopKillStreak.getKsTop(p) == 5) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l5");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l5");
 				}
 				if (TopKillStreak.getKsTop(p) == 10) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l10");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l10");
 				}
 				if (TopKillStreak.getKsTop(p) == 15) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l15");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l15");
 				}
 				if (TopKillStreak.getKsTop(p) == 20) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l20");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l20");
 				}
 				if (TopKillStreak.getKsTop(p) == 25) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l25");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l25");
 				}
 				if (TopKillStreak.getKsTop(p) == 30) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l30");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l30");
 				}
 				if (TopKillStreak.getKsTop(p) == 35) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l35");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l35");
 				}
 				if (TopKillStreak.getKsTop(p) == 40) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l40");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l40");
 				}
 				if (TopKillStreak.getKsTop(p) == 45) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l45");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l45");
 				}
 				if (TopKillStreak.getKsTop(p) == 50) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l50");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l50");
 				}
 				if (TopKillStreak.getKsTop(p) == 55) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l55");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l55");
 				}
 				if (TopKillStreak.getKsTop(p) == 60) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l60");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l60");
 				}
 				if (TopKillStreak.getKsTop(p) == 65) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l65");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l65");
 				}
 				if (TopKillStreak.getKsTop(p) == 70) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l70");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l70");
 				}
 				if (TopKillStreak.getKsTop(p) == 75) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l75");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l75");
 				}
 				if (TopKillStreak.getKsTop(p) == 80) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l80");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l80");
 				}
 				if (TopKillStreak.getKsTop(p) == 85) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l85");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l85");
 				}
 				if (TopKillStreak.getKsTop(p) == 90) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l90");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l90");
 				}
 				if (TopKillStreak.getKsTop(p) == 95) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §festá com um §4§lKILLSTREAK §fde §3§l95");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½festï¿½ com um ï¿½4ï¿½lKILLSTREAK ï¿½fde ï¿½3ï¿½l95");
 				}
 				if (TopKillStreak.getKsTop(p) == 100) {
-					Bukkit.broadcastMessage("§3" + d.getName() + " §falcançou o §4§lKILLSTREAK §fmáximo de §3§l100§f!");
+					Bukkit.broadcastMessage("ï¿½3" + d.getName() + " ï¿½falcanï¿½ou o ï¿½4ï¿½lKILLSTREAK ï¿½fmï¿½ximo de ï¿½3ï¿½l100ï¿½f!");
 				} else {
 					e.setDeathMessage(null);
 					e.getDrops().clear();
@@ -277,7 +277,7 @@ public class eEvents implements Listener {
 		HelpTopic t = Bukkit.getServer().getHelpMap().getHelpTopic(msg);
 		if (t == null) {
 			e.setCancelled(true);
-			p.sendMessage("§c§lSPEED§f§lMC §fEste comando nao existe§f!");
+			p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½fEste comando nao existeï¿½f!");
 		}
 	}
 

@@ -11,9 +11,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import me.thauandev.API.WarpsAPI;
-import me.thauandev.configuração.cfGrupo;
-import me.thauandev.invencivel.Proteção;
-import me.thauandev.main.Main;
+import me.thauandev.configuraï¿½ï¿½o.cfGrupo;
+ï¿½ï¿½o;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 import me.thauandev.scoreboard.sScoreAPI;
 
 public class CmdsSpeed implements CommandExecutor {
@@ -58,7 +58,7 @@ public class CmdsSpeed implements CommandExecutor {
 					ItemStack Espada = new ItemStack(Material.DIAMOND_SWORD);
 					Espada.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 1);
 					ItemMeta Espada2 = Espada.getItemMeta();
-					Espada2.setDisplayName("§5§oEspada");
+					Espada2.setDisplayName("ï¿½5ï¿½oEspada");
 					Espada.setItemMeta(Espada2);
 					p.getInventory().addItem(new ItemStack[] { Espada });
 					Player2.getInventory().addItem(new ItemStack[] { Espada });
@@ -75,8 +75,8 @@ public class CmdsSpeed implements CommandExecutor {
 
 					sScoreAPI.scorenull(p);
 					sScoreAPI.scorenull(Player2);
-					Proteção.setImortal(Player2, false);
-					Proteção.setImortal(p, false);
+					Proteï¿½ï¿½o.setImortal(Player2, false);
+					Proteï¿½ï¿½o.setImortal(p, false);
 
 					for (int i = 1; i < 9; i++) {
 						ItemStack Fisherman = new ItemStack(Material.MUSHROOM_SOUP);
@@ -93,7 +93,7 @@ public class CmdsSpeed implements CommandExecutor {
 							Speed1v1.Iniciou.remove(Player2);
 							Speed1v1.Partida1 = false;
 						}
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+						Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 							public void run() {
 								for (Player plr : Bukkit.getOnlinePlayers()) {
 									Player2.hidePlayer(plr);
@@ -104,7 +104,7 @@ public class CmdsSpeed implements CommandExecutor {
 							}
 						}, 2L);
 
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+						Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.plugin, new Runnable() {
 							public void run() {
 								if (Events1v1.congelar.contains(p)) {
 									p.setMaxHealth(20);
@@ -114,7 +114,7 @@ public class CmdsSpeed implements CommandExecutor {
 								}
 							}
 						}, 20L);
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+						Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.plugin, new Runnable() {
 							public void run() {
 								if (Events1v1.congelar.contains(p)) {
 									p.setMaxHealth(20);
@@ -124,7 +124,7 @@ public class CmdsSpeed implements CommandExecutor {
 								}
 							}
 						}, 40L);
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+						Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.plugin, new Runnable() {
 							public void run() {
 								if (Events1v1.congelar.contains(p)) {
 									p.setMaxHealth(20);

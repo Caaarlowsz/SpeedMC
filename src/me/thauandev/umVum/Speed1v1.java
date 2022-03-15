@@ -12,7 +12,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class Speed1v1 implements Listener {
@@ -39,15 +39,15 @@ public class Speed1v1 implements Listener {
 					Nome = p.getName();
 					Partida1 = true;
 					p.getInventory().removeItem(new ItemStack[] { Join1v1.Cinza });
-					p.sendMessage("§c§lSPEED§f§lMC §aVocê entrou na fila para o 1v1 rápido.");
+					p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½aVocï¿½ entrou na fila para o 1v1 rï¿½pido.");
 					Iniciou.add(p);
 					Trocar(p);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.plugin, new Runnable() {
 						public void run() {
 							Speed1v1.NeginhoSegundos.add(p);
 						}
 					}, 2L);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.plugin, new Runnable() {
 						public void run() {
 							if (Speed1v1.NeginhoSegundos.contains(p)) {
 								Speed1v1.NeginhoSegundos.remove(p);
@@ -59,7 +59,7 @@ public class Speed1v1 implements Listener {
 								p.getInventory().removeItem(new ItemStack[] { Join1v1.Verde3 });
 								if (!Events1v1.inPvP.contains(p)) {
 									p.updateInventory();
-									p.sendMessage("§cNenhum duelo foi encontrado!");
+									p.sendMessage("ï¿½cNenhum duelo foi encontrado!");
 									p.getInventory().setItem(5, Join1v1.Cinza);
 								}
 							}
@@ -89,7 +89,7 @@ public class Speed1v1 implements Listener {
 					Speed1v1.Nome = "";
 					Speed1v1.Iniciou.remove(p);
 					Speed1v1.NeginhoSegundos.remove(p);
-					p.sendMessage("§cVocê saiu da fila de 1v1 rápido.");
+					p.sendMessage("ï¿½cVocï¿½ saiu da fila de 1v1 rï¿½pido.");
 					p.getInventory().setItem(5, Join1v1.Cinza);
 					return;
 				}

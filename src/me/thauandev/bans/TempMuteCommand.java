@@ -8,8 +8,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import me.thauandev.API.HorarioAPI;
-import me.thauandev.configuração.cfGrupo;
-import me.thauandev.main.Main;
+import me.thauandev.configuraï¿½ï¿½o.cfGrupo;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class TempMuteCommand implements CommandExecutor {
 
@@ -25,84 +25,84 @@ public class TempMuteCommand implements CommandExecutor {
 					&& (!cfGrupo.ChecarGrupo(jogador, "Mod+") && (!cfGrupo.ChecarGrupo(jogador, "Mod")
 							&& (!cfGrupo.ChecarGrupo(jogador, "Trial") && (!cfGrupo.ChecarGrupo(jogador, "Youtuber+")
 									&& (!cfGrupo.ChecarGrupo(jogador, "Helper")))))))))) {
-				API.sendMsg(jogador, "§c§l(!) §cVocê não possui permissão para utilizar este comando!");
+				API.sendMsg(jogador, "ï¿½cï¿½l(!) ï¿½cVocï¿½ nï¿½o possui permissï¿½o para utilizar este comando!");
 				return true;
 			}
 			if (args.length == 0) {
-				API.sendMsg(jogador, "§b§lTEMPMUTE §fUtilize §b§l/tempmute §b(jogador) (sigla)");
+				API.sendMsg(jogador, "ï¿½bï¿½lTEMPMUTE ï¿½fUtilize ï¿½bï¿½l/tempmute ï¿½b(jogador) (sigla)");
 				API.sendMsg(jogador, " ");
-				API.sendMsg(jogador, "§2§lSIGLAS §fAbaixo segue a lista de siglas e seus significados...");
+				API.sendMsg(jogador, "ï¿½2ï¿½lSIGLAS ï¿½fAbaixo segue a lista de siglas e seus significados...");
 				API.sendMsg(jogador, " ");
-				API.sendMsg(jogador, "§6• §3§lflood §f- §8(Floodar os chats do servidor) ");
+				API.sendMsg(jogador, "ï¿½6ï¿½ ï¿½3ï¿½lflood ï¿½f- ï¿½8(Floodar os chats do servidor) ");
 				API.sendMsg(jogador,
-						"§6• §3§lpdvip §f- §8(Solicitar VIP para algum membro da equipe sem qualquer propósito) ");
+						"ï¿½6ï¿½ ï¿½3ï¿½lpdvip ï¿½f- ï¿½8(Solicitar VIP para algum membro da equipe sem qualquer propï¿½sito) ");
 				API.sendMsg(jogador,
-						"§6• §3§lpdstaff §f- §8(Solicitar algum cargo na equipe sem a necessidade de formulários) ");
-				API.sendMsg(jogador, "§6• §3§lofj §f- §8(Ofensa aos jogadores)");
+						"ï¿½6ï¿½ ï¿½3ï¿½lpdstaff ï¿½f- ï¿½8(Solicitar algum cargo na equipe sem a necessidade de formulï¿½rios) ");
+				API.sendMsg(jogador, "ï¿½6ï¿½ ï¿½3ï¿½lofj ï¿½f- ï¿½8(Ofensa aos jogadores)");
 				API.sendMsg(jogador,
-						"§6• §3§lcitch §f- §8(Citar qualquer canal do Youtube com o intuito de divulgar o próprio ou terceiros)");
-				API.sendMsg(jogador, "§6• §3§lcitsv §f- §8(Citar o nome de qualquer outro servidor)");
+						"ï¿½6ï¿½ ï¿½3ï¿½lcitch ï¿½f- ï¿½8(Citar qualquer canal do Youtube com o intuito de divulgar o prï¿½prio ou terceiros)");
+				API.sendMsg(jogador, "ï¿½6ï¿½ ï¿½3ï¿½lcitsv ï¿½f- ï¿½8(Citar o nome de qualquer outro servidor)");
 				API.sendMsg(jogador,
-						"§6• §3§lcomercio §f- §8(Comercialização: Venda ou troca de produtos materiais ou virtuais)");
+						"ï¿½6ï¿½ ï¿½3ï¿½lcomercio ï¿½f- ï¿½8(Comercializaï¿½ï¿½o: Venda ou troca de produtos materiais ou virtuais)");
 				API.sendMsg(jogador,
-						"§6• §3§lspam §f- §8(Spammar nos chats do servidor. Falar coisas sem fundamento com a finalidade de atingir)");
+						"ï¿½6ï¿½ ï¿½3ï¿½lspam ï¿½f- ï¿½8(Spammar nos chats do servidor. Falar coisas sem fundamento com a finalidade de atingir)");
 				API.sendMsg(jogador,
-						"§6• §3§lcplk §f- §8(Falar continuamente com a tecla Caps-Lock ativada, mesmo após alguma advertência)");
+						"ï¿½6ï¿½ ï¿½3ï¿½lcplk ï¿½f- ï¿½8(Falar continuamente com a tecla Caps-Lock ativada, mesmo apï¿½s alguma advertï¿½ncia)");
 				API.sendSound(jogador, Sound.NOTE_PLING, 10);
 				return true;
 			}
 			final Player vitima = Bukkit.getPlayer(args[0]);
 			if (vitima == null) {
-				API.sendMsg(jogador, "§cO jogador em questão está offline ou nunca entrou no servidor!");
+				API.sendMsg(jogador, "ï¿½cO jogador em questï¿½o estï¿½ offline ou nunca entrou no servidor!");
 				API.sendSound(jogador, Sound.NOTE_PLING, 10);
 				return true;
 			}
 			if (vitima.getName() == jogador.getName()) {
-				API.sendMsg(jogador, "§cVocê não pode mutar a si mesmo!");
+				API.sendMsg(jogador, "ï¿½cVocï¿½ nï¿½o pode mutar a si mesmo!");
 				API.sendSound(jogador, Sound.NOTE_PLING, 10);
 				return true;
 			}
 			if (Config.getConfig().getMute().get("Mute." + vitima.getUniqueId()) != null) {
-				API.sendMsg(jogador, "§fO jogador §6§l" + vitima.getName() + "§f já está §9§lMUTADO§f!");
+				API.sendMsg(jogador, "ï¿½fO jogador ï¿½6ï¿½l" + vitima.getName() + "ï¿½f jï¿½ estï¿½ ï¿½9ï¿½lMUTADOï¿½f!");
 				API.sendSound(jogador, Sound.NOTE_PLING, 10);
 				return true;
 			}
 			if (Config.getConfig().getTempMute().get("TempMute." + vitima.getUniqueId()) != null) {
-				API.sendMsg(jogador, "§fO jogador §6§l" + vitima.getName() + " §fjá está §9§lMUTADO§f! ");
+				API.sendMsg(jogador, "ï¿½fO jogador ï¿½6ï¿½l" + vitima.getName() + " ï¿½fjï¿½ estï¿½ ï¿½9ï¿½lMUTADOï¿½f! ");
 				API.sendSound(jogador, Sound.NOTE_PLING, 10);
 				return true;
 			}
 			if (args.length == 1) {
-				API.sendMsg(jogador, "§b§lTEMPMUTE §fUtilize §b§l/tempmute §b(jogador) (sigla)");
+				API.sendMsg(jogador, "ï¿½bï¿½lTEMPMUTE ï¿½fUtilize ï¿½bï¿½l/tempmute ï¿½b(jogador) (sigla)");
 				API.sendMsg(jogador, " ");
-				API.sendMsg(jogador, "§2§lSILAS §fAbaixo segue a lista de siglas e seus significados...");
+				API.sendMsg(jogador, "ï¿½2ï¿½lSILAS ï¿½fAbaixo segue a lista de siglas e seus significados...");
 				API.sendMsg(jogador, " ");
-				API.sendMsg(jogador, "§6• §3§lflood §f- §8(Floodar os chats do servidor) ");
+				API.sendMsg(jogador, "ï¿½6ï¿½ ï¿½3ï¿½lflood ï¿½f- ï¿½8(Floodar os chats do servidor) ");
 				API.sendMsg(jogador,
-						"§6• §3§lpdvip §f- §8(Solicitar VIP para algum membro da equipe sem qualquer propósito) ");
+						"ï¿½6ï¿½ ï¿½3ï¿½lpdvip ï¿½f- ï¿½8(Solicitar VIP para algum membro da equipe sem qualquer propï¿½sito) ");
 				API.sendMsg(jogador,
-						"§6• §3§lpdstaff §f- §8(Solicitar algum cargo na equipe sem a necessidade de formulários) ");
-				API.sendMsg(jogador, "§6• §3§lofj §f- §8(Ofensa aos jogadores)");
+						"ï¿½6ï¿½ ï¿½3ï¿½lpdstaff ï¿½f- ï¿½8(Solicitar algum cargo na equipe sem a necessidade de formulï¿½rios) ");
+				API.sendMsg(jogador, "ï¿½6ï¿½ ï¿½3ï¿½lofj ï¿½f- ï¿½8(Ofensa aos jogadores)");
 				API.sendMsg(jogador,
-						"§6• §3§lcitch §f- §8(Citar qualquer canal do Youtube com o intuito de divulgar o próprio ou terceiros)");
-				API.sendMsg(jogador, "§6• §3§lcitsv §f- §8(Citar o nome de qualquer outro servidor)");
+						"ï¿½6ï¿½ ï¿½3ï¿½lcitch ï¿½f- ï¿½8(Citar qualquer canal do Youtube com o intuito de divulgar o prï¿½prio ou terceiros)");
+				API.sendMsg(jogador, "ï¿½6ï¿½ ï¿½3ï¿½lcitsv ï¿½f- ï¿½8(Citar o nome de qualquer outro servidor)");
 				API.sendMsg(jogador,
-						"§6• §3§lcomercio §f- §8(Comercialização: Venda ou troca de produtos materiais ou virtuais)");
+						"ï¿½6ï¿½ ï¿½3ï¿½lcomercio ï¿½f- ï¿½8(Comercializaï¿½ï¿½o: Venda ou troca de produtos materiais ou virtuais)");
 				API.sendMsg(jogador,
-						"§6• §3§lspam §f- §8(Spammar nos chats do servidor. Falar coisas sem fundamento; com a finalidade de atingir)");
+						"ï¿½6ï¿½ ï¿½3ï¿½lspam ï¿½f- ï¿½8(Spammar nos chats do servidor. Falar coisas sem fundamento; com a finalidade de atingir)");
 				API.sendMsg(jogador,
-						"§6• §3§lcplk §f- §8(Falar continuamente com a tecla Caps-Lock ativada, mesmo após alguma advertência)");
+						"ï¿½6ï¿½ ï¿½3ï¿½lcplk ï¿½f- ï¿½8(Falar continuamente com a tecla Caps-Lock ativada, mesmo apï¿½s alguma advertï¿½ncia)");
 				API.sendSound(jogador, Sound.NOTE_PLING, 10);
 				return true;
 			}
 			if (args[1].equalsIgnoreCase("flood")) {
-				API.sendMsg(jogador, "§b§lTEMPMUTE §fVocê mutou o jogador §6§l" + vitima.getName()
-						+ " §b§lTEMPORARIAMENTE§f. Motivo: §c§lFlood");
-				API.sendStaff("§b§lTEMPMUTE §f" + jogador.getName() + " mutou o jogador §6§l" + vitima.getName()
-						+ "§b§l TEMPORARIAMENTE§f. Motivo: §c§lFlood");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fVocê foi §b§lMUTADO TEMPORARIAMENTE§f. Por: §4§l"
-						+ jogador.getName() + "§f. Motivo §c§lFlood§f.");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fO seu §b§lTEMPMUTE §facaba em §3§l2 dias§f.");
+				API.sendMsg(jogador, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ " ï¿½bï¿½lTEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lFlood");
+				API.sendStaff("ï¿½bï¿½lTEMPMUTE ï¿½f" + jogador.getName() + " mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ "ï¿½bï¿½l TEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lFlood");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ foi ï¿½bï¿½lMUTADO TEMPORARIAMENTEï¿½f. Por: ï¿½4ï¿½l"
+						+ jogador.getName() + "ï¿½f. Motivo ï¿½cï¿½lFloodï¿½f.");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fO seu ï¿½bï¿½lTEMPMUTE ï¿½facaba em ï¿½3ï¿½l2 diasï¿½f.");
 
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Nome", vitima.getName());
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Mutado por",
@@ -112,11 +112,11 @@ public class TempMuteCommand implements CommandExecutor {
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Data do mute",
 						HorarioAPI.getHorario());
 				Config.getConfig().saveTempMute();
-				Bukkit.getScheduler().scheduleAsyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleAsyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 						if (Config.getConfig().getTempMute().get("TempMute." + vitima.getUniqueId()) != null) {
-							API.sendStaff("§6§lPARDON §f" + vitima.getName() + " foi desmutado por: §c§lCONSOLE");
-							API.sendMsg(vitima, "§fVocê foi §6§lDESMUTADO §fautomaticamente!");
+							API.sendStaff("ï¿½6ï¿½lPARDON ï¿½f" + vitima.getName() + " foi desmutado por: ï¿½cï¿½lCONSOLE");
+							API.sendMsg(vitima, "ï¿½fVocï¿½ foi ï¿½6ï¿½lDESMUTADO ï¿½fautomaticamente!");
 							Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId(), null);
 							Config.getConfig().saveTempMute();
 						}
@@ -125,13 +125,13 @@ public class TempMuteCommand implements CommandExecutor {
 				return true;
 			}
 			if (args[1].equalsIgnoreCase("pdvip")) {
-				API.sendMsg(jogador, "§b§lTEMPMUTE §fVocê mutou o jogador §6§l" + vitima.getName()
-						+ " §b§lTEMPORARIAMENTE§f. Motivo: §c§lPedir Vip");
-				API.sendStaff("§b§lTEMPMUTE §f" + jogador.getName() + " mutou o jogador §6§l" + vitima.getName()
-						+ "§b§l TEMPORARIAMENTE§f. Motivo: §c§l");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fVocê foi §b§lMUTADO TEMPORARIAMENTE§f. Por: §4§l"
-						+ jogador.getName() + "§f. Motivo §c§lPedir Vip§f.");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fO seu §b§lTEMPMUTE §facaba em §3§l2 dias§f.");
+				API.sendMsg(jogador, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ " ï¿½bï¿½lTEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lPedir Vip");
+				API.sendStaff("ï¿½bï¿½lTEMPMUTE ï¿½f" + jogador.getName() + " mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ "ï¿½bï¿½l TEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½l");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ foi ï¿½bï¿½lMUTADO TEMPORARIAMENTEï¿½f. Por: ï¿½4ï¿½l"
+						+ jogador.getName() + "ï¿½f. Motivo ï¿½cï¿½lPedir Vipï¿½f.");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fO seu ï¿½bï¿½lTEMPMUTE ï¿½facaba em ï¿½3ï¿½l2 diasï¿½f.");
 
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Nome", vitima.getName());
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Mutado por",
@@ -141,11 +141,11 @@ public class TempMuteCommand implements CommandExecutor {
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Data do mute",
 						HorarioAPI.getHorario());
 				Config.getConfig().saveTempMute();
-				Bukkit.getScheduler().scheduleAsyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleAsyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 						if (Config.getConfig().getTempMute().get("TempMute." + vitima.getUniqueId()) != null) {
-							API.sendStaff("§6§lPARDON §f" + vitima.getName() + " foi desmutado por: §c§lCONSOLE");
-							API.sendMsg(vitima, "§fVocê foi §6§lDESMUTADO §fautomaticamente!");
+							API.sendStaff("ï¿½6ï¿½lPARDON ï¿½f" + vitima.getName() + " foi desmutado por: ï¿½cï¿½lCONSOLE");
+							API.sendMsg(vitima, "ï¿½fVocï¿½ foi ï¿½6ï¿½lDESMUTADO ï¿½fautomaticamente!");
 							Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId(), null);
 							Config.getConfig().saveTempMute();
 						}
@@ -154,13 +154,13 @@ public class TempMuteCommand implements CommandExecutor {
 				return true;
 			}
 			if (args[1].equalsIgnoreCase("pdstaff")) {
-				API.sendMsg(jogador, "§b§lTEMPMUTE §fVocê mutou o jogador §6§l" + vitima.getName()
-						+ " §b§lTEMPORARIAMENTE§f. Motivo: §c§lPedir Staff");
-				API.sendStaff("§b§lTEMPMUTE §f" + jogador.getName() + " mutou o jogador §6§l" + vitima.getName()
-						+ "§b§l TEMPORARIAMENTE§f. Motivo: §c§lPedir Staff");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fVocê foi §b§lMUTADO TEMPORARIAMENTE§f. Por: §4§l"
-						+ jogador.getName() + "§f. Motivo §c§lPedir Staff§f.");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fO seu §b§lTEMPMUTE §facaba em §3§l3 dias§f.");
+				API.sendMsg(jogador, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ " ï¿½bï¿½lTEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lPedir Staff");
+				API.sendStaff("ï¿½bï¿½lTEMPMUTE ï¿½f" + jogador.getName() + " mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ "ï¿½bï¿½l TEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lPedir Staff");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ foi ï¿½bï¿½lMUTADO TEMPORARIAMENTEï¿½f. Por: ï¿½4ï¿½l"
+						+ jogador.getName() + "ï¿½f. Motivo ï¿½cï¿½lPedir Staffï¿½f.");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fO seu ï¿½bï¿½lTEMPMUTE ï¿½facaba em ï¿½3ï¿½l3 diasï¿½f.");
 
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Nome", vitima.getName());
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Mutado por",
@@ -170,11 +170,11 @@ public class TempMuteCommand implements CommandExecutor {
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Data do mute",
 						HorarioAPI.getHorario());
 				Config.getConfig().saveTempMute();
-				Bukkit.getScheduler().scheduleAsyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleAsyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 						if (Config.getConfig().getTempMute().get("TempMute." + vitima.getUniqueId()) != null) {
-							API.sendStaff("§6§lPARDON §f" + vitima.getName() + " foi desmutado por: §c§lCONSOLE");
-							API.sendMsg(vitima, "§fVocê foi §6§lDESMUTADO §fautomaticamente!");
+							API.sendStaff("ï¿½6ï¿½lPARDON ï¿½f" + vitima.getName() + " foi desmutado por: ï¿½cï¿½lCONSOLE");
+							API.sendMsg(vitima, "ï¿½fVocï¿½ foi ï¿½6ï¿½lDESMUTADO ï¿½fautomaticamente!");
 							Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId(), null);
 							Config.getConfig().saveTempMute();
 						}
@@ -183,13 +183,13 @@ public class TempMuteCommand implements CommandExecutor {
 				return true;
 			}
 			if (args[1].equalsIgnoreCase("ofj")) {
-				API.sendMsg(jogador, "§b§lTEMPMUTE §fVocê mutou o jogador §6§l" + vitima.getName()
-						+ " §b§lTEMPORARIAMENTE§f. Motivo: §c§lOfensa a Jogador");
-				API.sendStaff("§b§lTEMPMUTE §f" + jogador.getName() + " mutou o jogador §6§l" + vitima.getName()
-						+ "§b§l TEMPORARIAMENTE§f. Motivo: §c§lOfensa a Jogador");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fVocê foi §b§lMUTADO TEMPORARIAMENTE§f. Por: §4§l"
-						+ jogador.getName() + "§f. Motivo §c§lOfensa a Jogador§f.");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fO seu §b§lTEMPMUTE §facaba em §3§l2 dias§f.");
+				API.sendMsg(jogador, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ " ï¿½bï¿½lTEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lOfensa a Jogador");
+				API.sendStaff("ï¿½bï¿½lTEMPMUTE ï¿½f" + jogador.getName() + " mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ "ï¿½bï¿½l TEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lOfensa a Jogador");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ foi ï¿½bï¿½lMUTADO TEMPORARIAMENTEï¿½f. Por: ï¿½4ï¿½l"
+						+ jogador.getName() + "ï¿½f. Motivo ï¿½cï¿½lOfensa a Jogadorï¿½f.");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fO seu ï¿½bï¿½lTEMPMUTE ï¿½facaba em ï¿½3ï¿½l2 diasï¿½f.");
 
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Nome", vitima.getName());
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Mutado por",
@@ -200,11 +200,11 @@ public class TempMuteCommand implements CommandExecutor {
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Data do mute",
 						HorarioAPI.getHorario());
 				Config.getConfig().saveTempMute();
-				Bukkit.getScheduler().scheduleAsyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleAsyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 						if (Config.getConfig().getTempMute().get("TempMute." + vitima.getUniqueId()) != null) {
-							API.sendStaff("§6§lPARDON §f" + vitima.getName() + " foi desmutado por: §c§lCONSOLE");
-							API.sendMsg(vitima, "§fVocê foi §6§lDESMUTADO §fautomaticamente!");
+							API.sendStaff("ï¿½6ï¿½lPARDON ï¿½f" + vitima.getName() + " foi desmutado por: ï¿½cï¿½lCONSOLE");
+							API.sendMsg(vitima, "ï¿½fVocï¿½ foi ï¿½6ï¿½lDESMUTADO ï¿½fautomaticamente!");
 							Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId(), null);
 							Config.getConfig().saveTempMute();
 						}
@@ -213,13 +213,13 @@ public class TempMuteCommand implements CommandExecutor {
 				return true;
 			}
 			if (args[1].equalsIgnoreCase("citch")) {
-				API.sendMsg(jogador, "§b§lTEMPMUTE §fVocê mutou o jogador §6§l" + vitima.getName()
-						+ " §b§lTEMPORARIAMENTE§f. Motivo: §c§lCitação de Canais");
-				API.sendStaff("§b§lTEMPMUTE §f" + jogador.getName() + " mutou o jogador §6§l" + vitima.getName()
-						+ "§b§l TEMPORARIAMENTE§f. Motivo: §c§lCitação de Canais");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fVocê foi §b§lMUTADO TEMPORARIAMENTE§f. Por: §4§l"
-						+ jogador.getName() + "§f. Motivo §c§lCitação de Canais§f.");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fO seu §b§lTEMPMUTE §facaba em §3§l2 dias§f.");
+				API.sendMsg(jogador, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ " ï¿½bï¿½lTEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lCitaï¿½ï¿½o de Canais");
+				API.sendStaff("ï¿½bï¿½lTEMPMUTE ï¿½f" + jogador.getName() + " mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ "ï¿½bï¿½l TEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lCitaï¿½ï¿½o de Canais");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ foi ï¿½bï¿½lMUTADO TEMPORARIAMENTEï¿½f. Por: ï¿½4ï¿½l"
+						+ jogador.getName() + "ï¿½f. Motivo ï¿½cï¿½lCitaï¿½ï¿½o de Canaisï¿½f.");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fO seu ï¿½bï¿½lTEMPMUTE ï¿½facaba em ï¿½3ï¿½l2 diasï¿½f.");
 
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Nome", vitima.getName());
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Mutado por",
@@ -229,11 +229,11 @@ public class TempMuteCommand implements CommandExecutor {
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Data do mute",
 						HorarioAPI.getHorario());
 				Config.getConfig().saveTempMute();
-				Bukkit.getScheduler().scheduleAsyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleAsyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 						if (Config.getConfig().getTempMute().get("TempMute." + vitima.getUniqueId()) != null) {
-							API.sendStaff("§6§lPARDON §f" + vitima.getName() + " foi desmutado por: §c§lCONSOLE");
-							API.sendMsg(vitima, "§fVocê foi §6§lDESMUTADO §fautomaticamente!");
+							API.sendStaff("ï¿½6ï¿½lPARDON ï¿½f" + vitima.getName() + " foi desmutado por: ï¿½cï¿½lCONSOLE");
+							API.sendMsg(vitima, "ï¿½fVocï¿½ foi ï¿½6ï¿½lDESMUTADO ï¿½fautomaticamente!");
 							Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId(), null);
 							Config.getConfig().saveTempMute();
 						}
@@ -242,13 +242,13 @@ public class TempMuteCommand implements CommandExecutor {
 				return true;
 			}
 			if (args[1].equalsIgnoreCase("citsv")) {
-				API.sendMsg(jogador, "§b§lTEMPMUTE §fVocê mutou o jogador §6§l" + vitima.getName()
-						+ " §b§lTEMPORARIAMENTE§f. Motivo: §c§lCitação de Servidores");
-				API.sendStaff("§b§lTEMPMUTE §f" + jogador.getName() + " mutou o jogador §6§l" + vitima.getName()
-						+ "§b§l TEMPORARIAMENTE§f. Motivo: §c§lCitação de Servidores");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fVocê foi §b§lMUTADO TEMPORARIAMENTE§f. Por: §4§l"
-						+ jogador.getName() + "§f. Motivo §c§lCitação de Servidores§f.");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fO seu §b§lTEMPMUTE §facaba em §3§l2 dias§f.");
+				API.sendMsg(jogador, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ " ï¿½bï¿½lTEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lCitaï¿½ï¿½o de Servidores");
+				API.sendStaff("ï¿½bï¿½lTEMPMUTE ï¿½f" + jogador.getName() + " mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ "ï¿½bï¿½l TEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lCitaï¿½ï¿½o de Servidores");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ foi ï¿½bï¿½lMUTADO TEMPORARIAMENTEï¿½f. Por: ï¿½4ï¿½l"
+						+ jogador.getName() + "ï¿½f. Motivo ï¿½cï¿½lCitaï¿½ï¿½o de Servidoresï¿½f.");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fO seu ï¿½bï¿½lTEMPMUTE ï¿½facaba em ï¿½3ï¿½l2 diasï¿½f.");
 
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Nome", vitima.getName());
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Mutado por",
@@ -259,11 +259,11 @@ public class TempMuteCommand implements CommandExecutor {
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Data do mute",
 						HorarioAPI.getHorario());
 				Config.getConfig().saveTempMute();
-				Bukkit.getScheduler().scheduleAsyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleAsyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 						if (Config.getConfig().getTempMute().get("TempMute." + vitima.getUniqueId()) != null) {
-							API.sendStaff("§6§lPARDON §f" + vitima.getName() + " foi desmutado por: §c§lCONSOLE");
-							API.sendMsg(vitima, "§fVocê foi §6§lDESMUTADO §fautomaticamente!");
+							API.sendStaff("ï¿½6ï¿½lPARDON ï¿½f" + vitima.getName() + " foi desmutado por: ï¿½cï¿½lCONSOLE");
+							API.sendMsg(vitima, "ï¿½fVocï¿½ foi ï¿½6ï¿½lDESMUTADO ï¿½fautomaticamente!");
 							Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId(), null);
 							Config.getConfig().saveTempMute();
 						}
@@ -272,13 +272,13 @@ public class TempMuteCommand implements CommandExecutor {
 				return true;
 			}
 			if (args[1].equalsIgnoreCase("comercio")) {
-				API.sendMsg(jogador, "§b§lTEMPMUTE §fVocê mutou o jogador §6§l" + vitima.getName()
-						+ " §b§lTEMPORARIAMENTE§f. Motivo: §c§lComercialização");
-				API.sendStaff("§b§lTEMPMUTE §f" + jogador.getName() + " mutou o jogador §6§l" + vitima.getName()
-						+ "§b§l TEMPORARIAMENTE§f. Motivo: §c§lComercialização");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fVocê foi §b§lMUTADO TEMPORARIAMENTE§f. Por: §4§l"
-						+ jogador.getName() + "§f. Motivo §c§lComercialização§f.");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fO seu §b§lTEMPMUTE §facaba em §3§l2 dias§f.");
+				API.sendMsg(jogador, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ " ï¿½bï¿½lTEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lComercializaï¿½ï¿½o");
+				API.sendStaff("ï¿½bï¿½lTEMPMUTE ï¿½f" + jogador.getName() + " mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ "ï¿½bï¿½l TEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lComercializaï¿½ï¿½o");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ foi ï¿½bï¿½lMUTADO TEMPORARIAMENTEï¿½f. Por: ï¿½4ï¿½l"
+						+ jogador.getName() + "ï¿½f. Motivo ï¿½cï¿½lComercializaï¿½ï¿½oï¿½f.");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fO seu ï¿½bï¿½lTEMPMUTE ï¿½facaba em ï¿½3ï¿½l2 diasï¿½f.");
 
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Nome", vitima.getName());
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Mutado por",
@@ -289,11 +289,11 @@ public class TempMuteCommand implements CommandExecutor {
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Data do mute",
 						HorarioAPI.getHorario());
 				Config.getConfig().saveTempMute();
-				Bukkit.getScheduler().scheduleAsyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleAsyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 						if (Config.getConfig().getTempMute().get("TempMute." + vitima.getUniqueId()) != null) {
-							API.sendStaff("§6§lPARDON §f" + vitima.getName() + " foi desmutado por: §c§lCONSOLE");
-							API.sendMsg(vitima, "§fVocê foi §6§lDESMUTADO §fautomaticamente!");
+							API.sendStaff("ï¿½6ï¿½lPARDON ï¿½f" + vitima.getName() + " foi desmutado por: ï¿½cï¿½lCONSOLE");
+							API.sendMsg(vitima, "ï¿½fVocï¿½ foi ï¿½6ï¿½lDESMUTADO ï¿½fautomaticamente!");
 							Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId(), null);
 							Config.getConfig().saveTempMute();
 						}
@@ -302,13 +302,13 @@ public class TempMuteCommand implements CommandExecutor {
 				return true;
 			}
 			if (args[1].equalsIgnoreCase("spam")) {
-				API.sendMsg(jogador, "§b§lTEMPMUTE §fVocê mutou o jogador §6§l" + vitima.getName()
-						+ " §b§lTEMPORARIAMENTE§f. Motivo: §c§lSpam");
-				API.sendStaff("§b§lTEMPMUTE §f" + jogador.getName() + " mutou o jogador §6§l" + vitima.getName()
-						+ "§b§l TEMPORARIAMENTE§f. Motivo: §c§lSpam");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fVocê foi §b§lMUTADO TEMPORARIAMENTE§f. Por: §4§l"
-						+ jogador.getName() + "§f. Motivo §c§lSpam§f.");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fO seu §b§lTEMPMUTE §facaba em §3§l2 dias§f.");
+				API.sendMsg(jogador, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ " ï¿½bï¿½lTEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lSpam");
+				API.sendStaff("ï¿½bï¿½lTEMPMUTE ï¿½f" + jogador.getName() + " mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ "ï¿½bï¿½l TEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lSpam");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ foi ï¿½bï¿½lMUTADO TEMPORARIAMENTEï¿½f. Por: ï¿½4ï¿½l"
+						+ jogador.getName() + "ï¿½f. Motivo ï¿½cï¿½lSpamï¿½f.");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fO seu ï¿½bï¿½lTEMPMUTE ï¿½facaba em ï¿½3ï¿½l2 diasï¿½f.");
 
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Nome", vitima.getName());
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Mutado por",
@@ -318,11 +318,11 @@ public class TempMuteCommand implements CommandExecutor {
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Data do mute",
 						HorarioAPI.getHorario());
 				Config.getConfig().saveTempMute();
-				Bukkit.getScheduler().scheduleAsyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleAsyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 						if (Config.getConfig().getTempMute().get("TempMute." + vitima.getUniqueId()) != null) {
-							API.sendStaff("§6§lPARDON §f" + vitima.getName() + " foi desmutado por: §c§lCONSOLE");
-							API.sendMsg(vitima, "§fVocê foi §6§lDESMUTADO §fautomaticamente!");
+							API.sendStaff("ï¿½6ï¿½lPARDON ï¿½f" + vitima.getName() + " foi desmutado por: ï¿½cï¿½lCONSOLE");
+							API.sendMsg(vitima, "ï¿½fVocï¿½ foi ï¿½6ï¿½lDESMUTADO ï¿½fautomaticamente!");
 							Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId(), null);
 							Config.getConfig().saveTempMute();
 						}
@@ -331,13 +331,13 @@ public class TempMuteCommand implements CommandExecutor {
 				return true;
 			}
 			if (args[1].equalsIgnoreCase("caps")) {
-				API.sendMsg(jogador, "§b§lTEMPMUTE §fVocê mutou o jogador §6§l" + vitima.getName()
-						+ " §b§lTEMPORARIAMENTE§f. Motivo: §c§lCaps-Lock");
-				API.sendStaff("§b§lTEMPMUTE §f" + jogador.getName() + " mutou o jogador §6§l" + vitima.getName()
-						+ "§b§l TEMPORARIAMENTE§f. Motivo: §c§lCaps-Lock");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fVocê foi §b§lMUTADO TEMPORARIAMENTE§f. Por: §4§l"
-						+ jogador.getName() + "§f. Motivo §c§lCaps-Lock§f.");
-				API.sendMsg(vitima, "§b§lTEMPMUTE §fO seu §b§lTEMPMUTE §facaba em §3§l2 dias§f.");
+				API.sendMsg(jogador, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ " ï¿½bï¿½lTEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lCaps-Lock");
+				API.sendStaff("ï¿½bï¿½lTEMPMUTE ï¿½f" + jogador.getName() + " mutou o jogador ï¿½6ï¿½l" + vitima.getName()
+						+ "ï¿½bï¿½l TEMPORARIAMENTEï¿½f. Motivo: ï¿½cï¿½lCaps-Lock");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fVocï¿½ foi ï¿½bï¿½lMUTADO TEMPORARIAMENTEï¿½f. Por: ï¿½4ï¿½l"
+						+ jogador.getName() + "ï¿½f. Motivo ï¿½cï¿½lCaps-Lockï¿½f.");
+				API.sendMsg(vitima, "ï¿½bï¿½lTEMPMUTE ï¿½fO seu ï¿½bï¿½lTEMPMUTE ï¿½facaba em ï¿½3ï¿½l2 diasï¿½f.");
 
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Nome", vitima.getName());
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Mutado por",
@@ -347,11 +347,11 @@ public class TempMuteCommand implements CommandExecutor {
 				Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId() + ".Data do mute",
 						HorarioAPI.getHorario());
 				Config.getConfig().saveTempMute();
-				Bukkit.getScheduler().scheduleAsyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleAsyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 						if (Config.getConfig().getTempMute().get("TempMute." + vitima.getUniqueId()) != null) {
-							API.sendStaff("§6§lPARDON §f" + vitima.getName() + " foi desmutado por: §c§lCONSOLE");
-							API.sendMsg(vitima, "§fVocê foi §6§lDESMUTADO §fautomaticamente!");
+							API.sendStaff("ï¿½6ï¿½lPARDON ï¿½f" + vitima.getName() + " foi desmutado por: ï¿½cï¿½lCONSOLE");
+							API.sendMsg(vitima, "ï¿½fVocï¿½ foi ï¿½6ï¿½lDESMUTADO ï¿½fautomaticamente!");
 							Config.getConfig().getTempMute().set("TempMute." + vitima.getUniqueId(), null);
 							Config.getConfig().saveTempMute();
 						}
@@ -359,25 +359,25 @@ public class TempMuteCommand implements CommandExecutor {
 				}, 3456000L);
 				return true;
 			}
-			API.sendMsg(jogador, "§b§lTEMPMUTE §fUtilize §b§l/tempmute §b(jogador) (sigla)");
+			API.sendMsg(jogador, "ï¿½bï¿½lTEMPMUTE ï¿½fUtilize ï¿½bï¿½l/tempmute ï¿½b(jogador) (sigla)");
 			API.sendMsg(jogador, " ");
-			API.sendMsg(jogador, "§2§lSILAS §fAbaixo segue a lista de siglas e seus significados...");
+			API.sendMsg(jogador, "ï¿½2ï¿½lSILAS ï¿½fAbaixo segue a lista de siglas e seus significados...");
 			API.sendMsg(jogador, " ");
-			API.sendMsg(jogador, "§6• §3§lflood §f- §8(Floodar os chats do servidor) ");
+			API.sendMsg(jogador, "ï¿½6ï¿½ ï¿½3ï¿½lflood ï¿½f- ï¿½8(Floodar os chats do servidor) ");
 			API.sendMsg(jogador,
-					"§6• §3§lpdvip §f- §8(Solicitar VIP para algum membro da equipe sem qualquer propósito) ");
+					"ï¿½6ï¿½ ï¿½3ï¿½lpdvip ï¿½f- ï¿½8(Solicitar VIP para algum membro da equipe sem qualquer propï¿½sito) ");
 			API.sendMsg(jogador,
-					"§6• §3§lpdstaff §f- §8(Solicitar algum cargo na equipe sem a necessidade de formulários) ");
-			API.sendMsg(jogador, "§6• §3§lofj §f- §8(Ofensa aos jogadores)");
+					"ï¿½6ï¿½ ï¿½3ï¿½lpdstaff ï¿½f- ï¿½8(Solicitar algum cargo na equipe sem a necessidade de formulï¿½rios) ");
+			API.sendMsg(jogador, "ï¿½6ï¿½ ï¿½3ï¿½lofj ï¿½f- ï¿½8(Ofensa aos jogadores)");
 			API.sendMsg(jogador,
-					"§6• §3§lcitch §f- §8(Citar qualquer canal do Youtube com o intuito de divulgar o próprio ou terceiros)");
-			API.sendMsg(jogador, "§6• §3§lcitsv §f- §8(Citar o nome de qualquer outro servidor)");
+					"ï¿½6ï¿½ ï¿½3ï¿½lcitch ï¿½f- ï¿½8(Citar qualquer canal do Youtube com o intuito de divulgar o prï¿½prio ou terceiros)");
+			API.sendMsg(jogador, "ï¿½6ï¿½ ï¿½3ï¿½lcitsv ï¿½f- ï¿½8(Citar o nome de qualquer outro servidor)");
 			API.sendMsg(jogador,
-					"§6• §3§lcomercio §f- §8(Comercialização: Venda ou troca de produtos materiais ou virtuais)");
+					"ï¿½6ï¿½ ï¿½3ï¿½lcomercio ï¿½f- ï¿½8(Comercializaï¿½ï¿½o: Venda ou troca de produtos materiais ou virtuais)");
 			API.sendMsg(jogador,
-					"§6• §3§lspam §f- §8(Spammar nos chats do servidor. Falar coisas sem fundamento; com a finalidade de atingir)");
+					"ï¿½6ï¿½ ï¿½3ï¿½lspam ï¿½f- ï¿½8(Spammar nos chats do servidor. Falar coisas sem fundamento; com a finalidade de atingir)");
 			API.sendMsg(jogador,
-					"§6• §3§lcplk §f- §8(Falar continuamente com a tecla Caps-Lock ativada, mesmo após alguma advertência)");
+					"ï¿½6ï¿½ ï¿½3ï¿½lcplk ï¿½f- ï¿½8(Falar continuamente com a tecla Caps-Lock ativada, mesmo apï¿½s alguma advertï¿½ncia)");
 			API.sendSound(jogador, Sound.NOTE_PLING, 10);
 			return true;
 		}

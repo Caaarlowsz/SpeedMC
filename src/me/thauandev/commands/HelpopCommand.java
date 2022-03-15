@@ -7,8 +7,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import me.thauandev.API.ArraysAPI;
-import me.thauandev.configuração.cfGrupo;
-import me.thauandev.main.Main;
+import me.thauandev.configuraï¿½ï¿½o.cfGrupo;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class HelpopCommand implements CommandExecutor {
 
@@ -17,14 +17,14 @@ public class HelpopCommand implements CommandExecutor {
 		Player p = (Player) Sender;
 
 		if (ArraysAPI.CooldownDica.contains(p)) {
-			p.sendMessage("§c§lSPEED§f§lMC §6» §7Aguarde para executar outro comando");
+			p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½6ï¿½ ï¿½7Aguarde para executar outro comando");
 			return true;
 		}
 		if (Args.length == 0) {
-			p.sendMessage("§c§lSPEED§f§lMC §6» §7Utilize §c/helpop (ajuda)");
+			p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½6ï¿½ ï¿½7Utilize ï¿½c/helpop (ajuda)");
 			return true;
 		}
-		p.sendMessage("§c§lSPEED§f§lMC §6» §7Sua dica foi enviada com sucesso a algum staffer");
+		p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½6ï¿½ ï¿½7Sua dica foi enviada com sucesso a algum staffer");
 		String dica = " ";
 		for (int i = 0; i < Args.length; i++) {
 			if (i == Args.length - 1) {
@@ -35,7 +35,7 @@ public class HelpopCommand implements CommandExecutor {
 		}
 		ArraysAPI.CooldownDica.add(p);
 
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				if (ArraysAPI.CooldownDica.contains(p)) {
 					ArraysAPI.CooldownDica.remove(p);
@@ -48,9 +48,9 @@ public class HelpopCommand implements CommandExecutor {
 							|| ((cfGrupo.ChecarGrupo(s, "Mod") || ((cfGrupo.ChecarGrupo(s, "Trial"))))))))))))) {
 
 				s.sendMessage(" ");
-				s.sendMessage("    §c§lDICA   ");
-				s.sendMessage("  §fPlayer §c" + p.getDisplayName());
-				s.sendMessage("  §fDica §c" + dica);
+				s.sendMessage("    ï¿½cï¿½lDICA   ");
+				s.sendMessage("  ï¿½fPlayer ï¿½c" + p.getDisplayName());
+				s.sendMessage("  ï¿½fDica ï¿½c" + dica);
 				s.sendMessage(" ");
 			}
 		}

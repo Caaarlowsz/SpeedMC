@@ -12,7 +12,7 @@ import me.thauandev.API.API;
 import me.thauandev.API.KitAPI;
 import me.thauandev.API.TopKillStreak;
 import me.thauandev.API.WarpsAPI;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 import me.thauandev.scoreboard.sScoreAPI;
 
 public class SpawnCommand implements CommandExecutor {
@@ -23,11 +23,11 @@ public class SpawnCommand implements CommandExecutor {
 		Player p = (Player) Sender;
 		if (Cmd.getName().equalsIgnoreCase("spawn")) {
 
-			p.sendMessage("§c§lSPEED§f§lMC §fVocê está sendo teleportado §fpara o Spawn!");
+			p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½fVocï¿½ estï¿½ sendo teleportado ï¿½fpara o Spawn!");
 			p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 9999, 9999));
 			p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 9999, 9999));
 
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 				public void run() {
 
 					TopKillStreak.Ks.put(p, Integer.valueOf(0));

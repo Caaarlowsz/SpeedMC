@@ -17,11 +17,11 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
 
 import me.thauandev.API.KitAPI;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class Grappler implements Listener {
 
-	public static Main plugin;
+	public static SpeedPvP plugin;
 	Map<Player, Cordinha> hooks = new HashMap<>();
 
 	@EventHandler

@@ -16,7 +16,7 @@ import org.bukkit.util.Vector;
 
 import me.thauandev.API.CooldownAPI;
 import me.thauandev.API.KitAPI;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class Sumo implements Listener {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -48,7 +48,7 @@ public class Sumo implements Listener {
 							e.getPlayer().teleport(Local.add(0.0D, 1.0D, 0.0D));
 							CooldownAPI.addCooldown(p, 35);
 							this.Cima.add(p.getName());
-							Bukkit.getServer().getScheduler().runTaskLater(Main.getPlugin(), new Runnable() {
+							Bukkit.getServer().getScheduler().runTaskLater(SpeedPvP.getPlugin(), new Runnable() {
 								public void run() {
 									a.setType(Material.AIR);
 									Sumo.this.remover.remove(a);
@@ -57,7 +57,7 @@ public class Sumo implements Listener {
 						}
 					}
 				} else {
-					p.sendMessage("§fO seu §3§lCOOLDOWN §facaba em: §c§l" + CooldownAPI.Cooldown(p) + "s");
+					p.sendMessage("ï¿½fO seu ï¿½3ï¿½lCOOLDOWN ï¿½facaba em: ï¿½cï¿½l" + CooldownAPI.Cooldown(p) + "s");
 				}
 			}
 		}

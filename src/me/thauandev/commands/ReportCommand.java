@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 
 import me.thauandev.API.ChatInterativo;
 import me.thauandev.configuração.cfGrupo;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class ReportCommand implements CommandExecutor {
 
@@ -54,7 +54,7 @@ public class ReportCommand implements CommandExecutor {
 
 							ChatInterativo.Comando(s.getName(), "§fClique §c§l§nAQUI §fpara teleportar até o jogador.",
 									"/tp " + target.getName(), "§eClique! §8(botão esquerdo)");
-							Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+							Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 								public void run() {
 									reported.remove(p.getName());
 								}

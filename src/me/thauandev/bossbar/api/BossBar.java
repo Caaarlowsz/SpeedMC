@@ -37,7 +37,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import me.thauandev.bossbar.ClassBuilder;
 import me.thauandev.bossbar.NMSClass;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 /**
  * © Copyright 2015 inventivetalent
@@ -77,7 +77,7 @@ public class BossBar extends BukkitRunnable {
 
 		if (timeout > 0) {
 			this.healthMinus = this.getMaxHealth() / timeout;
-			this.runTaskTimer(Main.getPlugin(), 20, 20);
+			this.runTaskTimer(SpeedPvP.getPlugin(), 20, 20);
 		}
 	}
 

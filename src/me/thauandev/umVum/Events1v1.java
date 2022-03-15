@@ -27,9 +27,9 @@ import org.bukkit.potion.PotionEffect;
 import me.thauandev.API.API;
 import me.thauandev.API.KitAPI;
 import me.thauandev.API.WarpsAPI;
-import me.thauandev.configuração.cfGrupo;
-import me.thauandev.invencivel.Proteção;
-import me.thauandev.main.Main;
+import me.thauandev.configuraï¿½ï¿½o.cfGrupo;
+ï¿½ï¿½o;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class Events1v1 implements Listener {
@@ -49,16 +49,16 @@ public class Events1v1 implements Listener {
 		}
 		if (p.getItemInHand().equals(Join1v1.Item_)) {
 			if (ChamouDuelo.contains(p)) {
-				p.sendMessage("§cAguarde para desafiar outro jogador...");
+				p.sendMessage("ï¿½cAguarde para desafiar outro jogador...");
 				return;
 			}
 			final Player Player2 = (Player) event.getRightClicked();
 
 			AceitarDuelo.add(Player2);
 			ChamouDuelo.add(p);
-			p.sendMessage("§c§lSPEED§f§lMC §fVocê desafiou o jogador: §c" + Player2.getName() + " §fpara um duelo!");
-			Player2.sendMessage("§c§lSPEED§f§lMC §fVocê foi desafiado por: §c" + p.getName() + " §fpara um duelo!");
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+			p.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½fVocï¿½ desafiou o jogador: ï¿½c" + Player2.getName() + " ï¿½fpara um duelo!");
+			Player2.sendMessage("ï¿½cï¿½lSPEEDï¿½fï¿½lMC ï¿½fVocï¿½ foi desafiado por: ï¿½c" + p.getName() + " ï¿½fpara um duelo!");
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.plugin, new Runnable() {
 				public void run() {
 					if (Events1v1.ChamouDuelo.contains(p)) {
 						Events1v1.ChamouDuelo.remove(p);
@@ -74,7 +74,7 @@ public class Events1v1 implements Listener {
 		final Player player = event.getPlayer();
 		if (congelar.contains(player)) {
 			event.setTo(player.getLocation());
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.plugin, new Runnable() {
 				public void run() {
 					Events1v1.congelar.remove(player);
 				}
@@ -100,8 +100,8 @@ public class Events1v1 implements Listener {
 					congelar.add(p);
 					congelar.add(Player2);
 
-					Proteção.setImortal(Player2, false);
-					Proteção.setImortal(p, false);
+					Proteï¿½ï¿½o.setImortal(Player2, false);
+					Proteï¿½ï¿½o.setImortal(p, false);
 
 					WarpsAPI.Ir(Player2, "1v1loc2");
 					WarpsAPI.Ir(p, "1v1loc1");
@@ -119,7 +119,7 @@ public class Events1v1 implements Listener {
 					ItemStack Espada = new ItemStack(Material.DIAMOND_SWORD);
 					Espada.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 1);
 					ItemMeta Espada2 = Espada.getItemMeta();
-					Espada2.setDisplayName("§5§oEspada");
+					Espada2.setDisplayName("ï¿½5ï¿½oEspada");
 					Espada.setItemMeta(Espada2);
 					p.getInventory().addItem(new ItemStack[] { Espada });
 					Player2.getInventory().addItem(new ItemStack[] { Espada });
@@ -149,7 +149,7 @@ public class Events1v1 implements Listener {
 							Speed1v1.Iniciou.remove(Player2);
 							Speed1v1.Partida1 = false;
 						}
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+						Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 							public void run() {
 								for (Player plr : Bukkit.getOnlinePlayers()) {
 									Player2.hidePlayer(plr);
@@ -159,7 +159,7 @@ public class Events1v1 implements Listener {
 								}
 							}
 						}, 2L);
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+						Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.plugin, new Runnable() {
 							public void run() {
 								if (Events1v1.congelar.contains(p)) {
 									p.setMaxHealth(20);
@@ -169,7 +169,7 @@ public class Events1v1 implements Listener {
 								}
 							}
 						}, 20L);
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+						Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.plugin, new Runnable() {
 							public void run() {
 								if (Events1v1.congelar.contains(p)) {
 									p.setMaxHealth(20);
@@ -179,7 +179,7 @@ public class Events1v1 implements Listener {
 								}
 							}
 						}, 40L);
-						Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
+						Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.plugin, new Runnable() {
 							public void run() {
 								if (Events1v1.congelar.contains(p)) {
 									p.setMaxHealth(20);
@@ -212,15 +212,15 @@ public class Events1v1 implements Listener {
 
 					m.sendMessage("     ");
 					m.sendMessage(
-							"§aVocê ganhou o duelo contra " + v.getName() + "§a com §a§l" + amountv + " §asopas.");
+							"ï¿½aVocï¿½ ganhou o duelo contra " + v.getName() + "ï¿½a com ï¿½aï¿½l" + amountv + " ï¿½asopas.");
 					m.sendMessage("     ");
 
-					Proteção.setImortal(v, true);
-					Proteção.setImortal(m, true);
+					Proteï¿½ï¿½o.setImortal(v, true);
+					Proteï¿½ï¿½o.setImortal(m, true);
 
 					v.sendMessage("     ");
-					v.sendMessage("§cVocê perdeu o duelo contra " + m.getName() + ". §cO jogador estava com §c§l"
-							+ amountm + " §csopas.");
+					v.sendMessage("ï¿½cVocï¿½ perdeu o duelo contra " + m.getName() + ". ï¿½cO jogador estava com ï¿½cï¿½l"
+							+ amountm + " ï¿½csopas.");
 					v.sendMessage("     ");
 
 					WarpsAPI.Ir(m, "1v1");
@@ -231,7 +231,7 @@ public class Events1v1 implements Listener {
 					for (PotionEffect effect : m.getActivePotionEffects()) {
 						m.removePotionEffect(effect.getType());
 					}
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 						public void run() {
 							WarpsAPI.Ir(v, "1v1");
 							v.setGameMode(GameMode.SURVIVAL);
@@ -250,7 +250,7 @@ public class Events1v1 implements Listener {
 					JogandoSair.remove(m.getName());
 					JogandoSair.remove(v.getName());
 
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 						public void run() {
 							v.getInventory().clear();
 							m.getInventory().clear();
@@ -295,17 +295,17 @@ public class Events1v1 implements Listener {
 
 					m.sendMessage("     ");
 					m.sendMessage(
-							"§aVocê ganhou o duelo contra " + v.getName() + "§a com §a§l" + amountv + " §asopas.");
+							"ï¿½aVocï¿½ ganhou o duelo contra " + v.getName() + "ï¿½a com ï¿½aï¿½l" + amountv + " ï¿½asopas.");
 					m.sendMessage("     ");
 
 					inPvP.remove(m);
 					inPvP.remove(v);
-					Proteção.setImortal(v, true);
-					Proteção.setImortal(m, true);
+					Proteï¿½ï¿½o.setImortal(v, true);
+					Proteï¿½ï¿½o.setImortal(m, true);
 
 					v.sendMessage("     ");
-					v.sendMessage("§cVocê perdeu o duelo contra " + m.getName() + ". §cO jogador estava com §c§l"
-							+ amountm + " §csopas.");
+					v.sendMessage("ï¿½cVocï¿½ perdeu o duelo contra " + m.getName() + ". ï¿½cO jogador estava com ï¿½cï¿½l"
+							+ amountm + " ï¿½csopas.");
 					v.sendMessage("     ");
 
 					WarpsAPI.Ir(m, "1v1");
@@ -316,7 +316,7 @@ public class Events1v1 implements Listener {
 					for (PotionEffect effect : m.getActivePotionEffects()) {
 						m.removePotionEffect(effect.getType());
 					}
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 						public void run() {
 							WarpsAPI.Ir(v, "1v1");
 							v.setGameMode(GameMode.SURVIVAL);
@@ -332,7 +332,7 @@ public class Events1v1 implements Listener {
 					Jogando1v1Player.remove(m);
 					JogandoSair.remove(m.getName());
 					JogandoSair.remove(v.getName());
-					Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+					Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 						public void run() {
 							v.getInventory().clear();
 							m.getInventory().clear();
@@ -381,14 +381,14 @@ public class Events1v1 implements Listener {
 			inPvP.remove(t);
 			t.setMaxHealth(20.0D);
 			t.setHealth(20.0D);
-			Proteção.setImortal(t, true);
+			Proteï¿½ï¿½o.setImortal(t, true);
 			t.setGameMode(GameMode.SURVIVAL);
 			t.getInventory().setArmorContents(null);
 			t.getInventory().clear();
 			for (PotionEffect effect : t.getActivePotionEffects()) {
 				t.removePotionEffect(effect.getType());
 			}
-			t.sendMessage("§fO jogador §e§l" + p.getName() + " §fdeslogou durante o duelo!");
+			t.sendMessage("ï¿½fO jogador ï¿½eï¿½l" + p.getName() + " ï¿½fdeslogou durante o duelo!");
 
 			t.getInventory().setItem(3, Join1v1.Item_);
 			t.getInventory().setItem(5, Join1v1.Cinza);
@@ -409,7 +409,7 @@ public class Events1v1 implements Listener {
 				&& !cfGrupo.ChecarGrupo(p, "Admin") && !cfGrupo.ChecarGrupo(p, "Gerente")
 				&& !cfGrupo.ChecarGrupo(p, "Mod+") && !cfGrupo.ChecarGrupo(p, "Mod") && !cfGrupo.ChecarGrupo(p, "Trial")
 				&& !cfGrupo.ChecarGrupo(p, "Youtuber+") && !cfGrupo.ChecarGrupo(p, "Helper"))) {
-			event.getPlayer().sendMessage("§cVocê não pode utilizar comandos na §6§l1V1§f. Use §3§l/SPAWN§f!");
+			event.getPlayer().sendMessage("ï¿½cVocï¿½ nï¿½o pode utilizar comandos na ï¿½6ï¿½l1V1ï¿½f. Use ï¿½3ï¿½l/SPAWNï¿½f!");
 			event.setCancelled(true);
 		}
 	}
@@ -422,7 +422,7 @@ public class Events1v1 implements Listener {
 					&& !cfGrupo.ChecarGrupo(p, "Admin") && !cfGrupo.ChecarGrupo(p, "Gerente")
 					&& !cfGrupo.ChecarGrupo(p, "Mod+") && !cfGrupo.ChecarGrupo(p, "Mod")
 					&& !cfGrupo.ChecarGrupo(p, "Trial")) {
-				event.getPlayer().sendMessage("§cVocê está impossibilitado de utilizar comandos durante o duelo!");
+				event.getPlayer().sendMessage("ï¿½cVocï¿½ estï¿½ impossibilitado de utilizar comandos durante o duelo!");
 				event.setCancelled(true);
 			}
 		}

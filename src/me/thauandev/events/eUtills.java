@@ -63,7 +63,7 @@ import me.thauandev.API.KitAPI;
 import me.thauandev.API.WarpsAPI;
 import me.thauandev.configuração.cfGrupo;
 import me.thauandev.invencivel.Proteção;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 import me.thauandev.scoreboard.sScoreAPI;
 
 public class eUtills implements Listener {
@@ -74,7 +74,7 @@ public class eUtills implements Listener {
 	public static void addCooldown(Player p, int Tempo) {
 		CooldownChat.put(p.getName(), Long.valueOf(System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(Tempo)));
 
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				CooldownChat.remove(p.getName());
 			}
@@ -95,7 +95,7 @@ public class eUtills implements Listener {
 
 	@EventHandler
 	public void onItemDrop(final ItemSpawnEvent e) {
-		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask((Plugin) Main.getInstance(),
+		Bukkit.getServer().getScheduler().scheduleSyncDelayedTask((Plugin) SpeedPvP.getInstance(),
 				(Runnable) new Runnable() {
 					@Override
 					public void run() {
@@ -396,13 +396,13 @@ public class eUtills implements Listener {
 
 				p.sendMessage("§7Você morreu para o §a§lVOID§7!");
 
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 						p.spigot().respawn();
 					}
 				}, 1L);
 
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 						API.sendItems(p);
 					}
@@ -571,7 +571,7 @@ public class eUtills implements Listener {
 	@EventHandler
 	public void dropar(ItemSpawnEvent e) {
 
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 			public void run() {
 				e.getEntity().remove();
 			}
@@ -631,7 +631,7 @@ public class eUtills implements Listener {
 				API.mandarActionBar(bateu, hitado.getName() + " §7- §c" + KitAPI.getKit(hitado));
 				API.BarAPI(bateu, hitado.getName() + " §7- §c" + KitAPI.getKit(hitado));
 
-				Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+				Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 					public void run() {
 						API.inCombat.remove(bateu);
 						API.inCombat.remove(hitado);

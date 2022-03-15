@@ -1,4 +1,4 @@
-package me.thauandev.configuração;
+package me.thauandev.configuraÃ§Ã£o;
 
 import java.io.File;
 import java.io.IOException;

@@ -10,7 +10,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.util.Vector;
 
 import me.thauandev.API.KitAPI;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class Anchor implements Listener {
 	@EventHandler(priority = EventPriority.MONITOR)
@@ -26,7 +26,7 @@ public class Anchor implements Listener {
 		if (KitAPI.getKit(p).equalsIgnoreCase("Anchor")) {
 			p.setVelocity(new Vector());
 			p.playSound(p.getLocation(), Sound.ANVIL_BREAK, 4.0F, 4.0F);
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getInstance(), new Runnable() {
 				public void run() {
 					p.setVelocity(new Vector());
 				}
@@ -35,7 +35,7 @@ public class Anchor implements Listener {
 		if (KitAPI.getKit(a).equalsIgnoreCase("Anchor")) {
 			a.playSound(a.getLocation(), Sound.ANVIL_BREAK, 4.0F, 4.0F);
 			p.setVelocity(new Vector());
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(SpeedPvP.getInstance(), new Runnable() {
 				public void run() {
 					p.setVelocity(new Vector());
 				}

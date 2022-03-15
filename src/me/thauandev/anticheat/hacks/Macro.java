@@ -8,7 +8,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import me.thauandev.anticheat.Utills;
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class Macro implements Listener {
 
@@ -43,13 +43,13 @@ public class Macro implements Listener {
 				Utills.ClicksMacro.remove(Jogador);
 				Utills.MacroClicks.remove(Jogador);
 			}
-		}.runTaskLater(Main.getPlugin(), 20L);
+		}.runTaskLater(SpeedPvP.getPlugin(), 20L);
 		if (((Integer) Utills.MacroClicks.get(Jogador)).intValue() >= 45) {
 			Utills.Macro = MacroTalvez.getMenssagem().replace("nick", Jogador.getName())
 					.replace("avisos", Utills.AvisosMacro.get(Jogador) + "")
 					.replace("clicks", Utills.ClicksMacro.get(Jogador) + "");
 
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 				public void run() {
 					if (Utills.Macro != null) {
 						Utills.AvisosMacro.put(Jogador, Integer.valueOf(Utills.AvisosMacro.get(Jogador) + 1));
@@ -68,7 +68,7 @@ public class Macro implements Listener {
 					.replace("avisos", Utills.AvisosMacro.get(Jogador) + "")
 					.replace("clicks", Utills.ClicksMacro.get(Jogador) + "");
 
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 				public void run() {
 					if (Utills.Macro != null) {
 						Utills.AvisosMacro.put(Jogador, Integer.valueOf(Utills.AvisosMacro.get(Jogador) + 1));
@@ -87,7 +87,7 @@ public class Macro implements Listener {
 					.replace("avisos", Utills.AvisosMacro.get(Jogador) + "")
 					.replace("clicks", Utills.ClicksMacro.get(Jogador) + "");
 
-			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable() {
+			Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(), new Runnable() {
 				public void run() {
 					if (Utills.Macro != null) {
 						Utills.AvisosMacro.put(Jogador, Integer.valueOf(Utills.AvisosMacro.get(Jogador) + 1));

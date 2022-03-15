@@ -16,14 +16,14 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 
-import me.thauandev.main.Main;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 
 public class Block implements Listener {
 
 	@EventHandler
 	public void Mover(PlayerMoveEvent e) {
 		Player p = e.getPlayer();
-		if (Main.login.contains(p.getName())) {
+		if (SpeedPvP.login.contains(p.getName())) {
 			p.teleport(p);
 		}
 	}
@@ -31,7 +31,7 @@ public class Block implements Listener {
 	@EventHandler
 	public void onPickUp(PlayerPickupItemEvent event) {
 		Player p = event.getPlayer();
-		if (Main.login.contains(p.getName())) {
+		if (SpeedPvP.login.contains(p.getName())) {
 			event.setCancelled(true);
 		}
 	}
@@ -39,7 +39,7 @@ public class Block implements Listener {
 	@EventHandler
 	public void onDrop(PlayerDropItemEvent event) {
 		Player p = event.getPlayer();
-		if (Main.login.contains(p.getName())) {
+		if (SpeedPvP.login.contains(p.getName())) {
 			event.setCancelled(true);
 		}
 	}
@@ -47,7 +47,7 @@ public class Block implements Listener {
 	@EventHandler
 	public void onClickInventorySpec(InventoryClickEvent event) {
 		Player p = (Player) event.getWhoClicked();
-		if (Main.login.contains(p.getName())) {
+		if (SpeedPvP.login.contains(p.getName())) {
 			event.setCancelled(true);
 			p.updateInventory();
 		}
@@ -56,7 +56,7 @@ public class Block implements Listener {
 	@EventHandler
 	public void onOpenInventorySpec(InventoryOpenEvent event) {
 		Player p = (Player) event.getPlayer();
-		if (Main.login.contains(p.getName())) {
+		if (SpeedPvP.login.contains(p.getName())) {
 			event.setCancelled(true);
 		}
 	}
@@ -64,7 +64,7 @@ public class Block implements Listener {
 	@EventHandler
 	public void onBlockBreak(BlockBreakEvent event) {
 		Player p = event.getPlayer();
-		if (Main.login.contains(p.getName())) {
+		if (SpeedPvP.login.contains(p.getName())) {
 			event.setCancelled(true);
 		}
 	}
@@ -72,7 +72,7 @@ public class Block implements Listener {
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent event) {
 		Player p = event.getPlayer();
-		if (Main.login.contains(p.getName())) {
+		if (SpeedPvP.login.contains(p.getName())) {
 			event.setCancelled(true);
 		}
 	}
@@ -80,7 +80,7 @@ public class Block implements Listener {
 	@EventHandler
 	public void onChat(PlayerChatEvent event) {
 		Player p = event.getPlayer();
-		if (Main.login.contains(p.getName())) {
+		if (SpeedPvP.login.contains(p.getName())) {
 			event.setCancelled(true);
 		}
 	}
@@ -89,13 +89,13 @@ public class Block implements Listener {
 	public void onDamage(EntityDamageByEntityEvent event) {
 		if (event.getEntity() instanceof Player) {
 			Player p = (Player) event.getEntity();
-			if (Main.login.contains(p.getName())) {
+			if (SpeedPvP.login.contains(p.getName())) {
 				event.setCancelled(true);
 			}
 		}
 		if (event.getDamager() instanceof Player) {
 			Player p = (Player) event.getDamager();
-			if (Main.login.contains(p.getName())) {
+			if (SpeedPvP.login.contains(p.getName())) {
 				event.setCancelled(true);
 			}
 		}
@@ -104,7 +104,7 @@ public class Block implements Listener {
 	@EventHandler
 	public void onInteract(PlayerInteractEvent event) {
 		Player p = event.getPlayer();
-		if (Main.login.contains(p.getName())) {
+		if (SpeedPvP.login.contains(p.getName())) {
 			event.setCancelled(true);
 		}
 	}
@@ -112,7 +112,7 @@ public class Block implements Listener {
 	@EventHandler
 	public void Mover(AsyncPlayerChatEvent e) {
 		Player p = e.getPlayer();
-		if (Main.login.contains(p.getName())) {
+		if (SpeedPvP.login.contains(p.getName())) {
 			e.setCancelled(true);
 		} else {
 			e.setCancelled(false);
@@ -124,7 +124,7 @@ public class Block implements Listener {
 		Player p = e.getPlayer();
 		String cmd = e.getMessage();
 
-		if (Main.login.contains(p.getName())) {
+		if (SpeedPvP.login.contains(p.getName())) {
 			if (cmd.contains("login") || (cmd.contains("register"))) {
 				e.setCancelled(false);
 			} else {

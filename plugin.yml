@@ -2,7 +2,7 @@ name: SpeedMC
 version: 1.0
 author: ThauanDeveloper
 description: Plugin for SpeedMC
-main: me.thauandev.main.Main
+main: com.github.caaarlowsz.speedmc.kitpvp.Main
 commands:
   kills:
   register:

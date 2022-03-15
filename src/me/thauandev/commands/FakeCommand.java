@@ -15,8 +15,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.PluginManager;
 
-import me.thauandev.configuração.cfGrupo;
-import me.thauandev.main.Main;
+import me.thauandev.configuraï¿½ï¿½o.cfGrupo;
+import com.github.caaarlowsz.speedmc.kitpvp.SpeedPvP;
 import me.thauandev.nametag.Array;
 import me.thauandev.nametag.NameTagChangeEvento;
 import me.thauandev.nametag.NameTagChangeEvento.NametagChangeReason;
@@ -44,7 +44,7 @@ public class FakeCommand implements Listener, CommandExecutor {
 						|| cfGrupo.ChecarGrupo(p, "Mod") || cfGrupo.ChecarGrupo(p, "Youtuber+")
 						|| cfGrupo.ChecarGrupo(p, "Youtuber")) {
 					if (args.length == 0) {
-						p.sendMessage("§1§lFAKE§f Voce nao selecionou um fake.");
+						p.sendMessage("ï¿½1ï¿½lFAKEï¿½f Voce nao selecionou um fake.");
 						return false;
 					} else if (args.length == 1) {
 						if (args[0].equalsIgnoreCase("remove")) {
@@ -52,15 +52,15 @@ public class FakeCommand implements Listener, CommandExecutor {
 								usandoFake.remove(p);
 								fakes.remove(p.getName());
 								p.setDisplayName((String) fake.get(p.getName()));
-								p.setPlayerListName("§7" + (String) fake.get(p.getName()));
+								p.setPlayerListName("ï¿½7" + (String) fake.get(p.getName()));
 
-								String suffix = " §7(" + sScoreAPI.getRank(p) + "§7)";
+								String suffix = " ï¿½7(" + sScoreAPI.getRank(p) + "ï¿½7)";
 								reason = NameTagChangeEvento.NametagChangeReason.SET_SUFFIX;
 								suffix = NametagUtils.formatColors(suffix);
 
 								mudarNome(p, (String) fake.get(p.getName()));
-								p.sendMessage("§1§lFAKE§f Fake §e§lRESETADO§f Com sucesso!");
-								Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(null), new Runnable() {
+								p.sendMessage("ï¿½1ï¿½lFAKEï¿½f Fake ï¿½eï¿½lRESETADOï¿½f Com sucesso!");
+								Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(null), new Runnable() {
 									public void run() {
 									}
 								}, 2L);
@@ -68,12 +68,12 @@ public class FakeCommand implements Listener, CommandExecutor {
 							}
 						} else if (!fakes.contains(args[0])) {
 							if (usandoFake.contains(p)) {
-								p.sendMessage("§1§lFAKE§f Tire Seu Fake para colocar outro.");
+								p.sendMessage("ï¿½1ï¿½lFAKEï¿½f Tire Seu Fake para colocar outro.");
 								return true;
 							}
 
 							if (args[0].length() > 14) {
-								p.sendMessage("§1§lFAKE§f O nick que voce escolheu nao esta desponivel.");
+								p.sendMessage("ï¿½1ï¿½lFAKEï¿½f O nick que voce escolheu nao esta desponivel.");
 								return true;
 							}
 							String nome = p.getName();
@@ -84,14 +84,14 @@ public class FakeCommand implements Listener, CommandExecutor {
 							fake.put(p.getName(), nome);
 							p.setDisplayName(args[0]);
 							p.setPlayerListName(args[0]);
-							p.sendMessage("§1§lFAKE§f Fake Alterado Para " + args[0]);
-							Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(null), new Runnable() {
+							p.sendMessage("ï¿½1ï¿½lFAKEï¿½f Fake Alterado Para " + args[0]);
+							Bukkit.getScheduler().scheduleSyncDelayedTask(SpeedPvP.getPlugin(null), new Runnable() {
 								public void run() {
-									String prefix = "§7";
-									p.setDisplayName("§7" + p.getName());
-									p.setPlayerListName("§7" + p.getName());
+									String prefix = "ï¿½7";
+									p.setDisplayName("ï¿½7" + p.getName());
+									p.setPlayerListName("ï¿½7" + p.getName());
 
-									String suffix = " §7(" + sScoreAPI.getRank(p) + "§7)";
+									String suffix = " ï¿½7(" + sScoreAPI.getRank(p) + "ï¿½7)";
 									reason = NameTagChangeEvento.NametagChangeReason.SET_SUFFIX;
 									suffix = NametagUtils.formatColors(suffix);
 
@@ -104,11 +104,11 @@ public class FakeCommand implements Listener, CommandExecutor {
 						}
 					}
 				} else {
-					p.sendMessage("§3§lDEFAULT§f§lMC §fVoce nao §a§lPOSSUI §fpermissao para o §1§lFAKE");
+					p.sendMessage("ï¿½3ï¿½lDEFAULTï¿½fï¿½lMC ï¿½fVoce nao ï¿½aï¿½lPOSSUI ï¿½fpermissao para o ï¿½1ï¿½lFAKE");
 				}
 			}
 		} else {
-			sender.sendMessage("§7Apenas Players Podem Usar §aFake");
+			sender.sendMessage("ï¿½7Apenas Players Podem Usar ï¿½aFake");
 		}
 		return false;
 	}
